@@ -1,0 +1,550 @@
+# OHAI, Sway!!!
+# owait Sway ignores comments. UwU
+# Uhh, Architector #4 wrote this. Dunno if it's necessary to sign a config, but, eh.
+# vim:ts=8:
+
+# ALSO OH GOD YOU CANT JUST PASTE AN i3 CONFIG HERE SWAY GETS IT ALL WRONG
+# AND HATES COMMENTS AT THE END OF THINGS
+# so yeah this is derivative off my i3 config lololol
+
+#################################################################
+#		SETTINGS: Stuff that isn't bindings		#
+#################################################################
+# Note: I consider different modes(like resize mode) to be bindings.
+# That's because they are practically just different binding layouts.
+
+# Make the most useless key the most useful key!
+set $mod Mod4
+# Mod1 is ALT key
+# Mod4 is Super key (or "Windows" key cuz Microsoft said so lol)
+
+# Command to lock the screen.
+set $lockcmd physlock
+
+# i3-gaps doesn't like window titles. Let's remove them!
+# (tho this is Sway, not i3-gaps, but still)
+# default_border pixel 3
+# muh gaps
+#gaps inner 10
+
+# Actually I don't want gaps anymore, but i3's borders are too thick so imma change
+default_border normal 1
+
+# Makes it so that you need to click on a window for it to have focus.
+focus_follows_mouse no
+
+# With this, trying to switch to a workspace that you are on already
+# sends you to your last one instead.
+workspace_auto_back_and_forth yes
+
+# No one touches my focus!!
+#no_focus [class=".*"]
+#focus_on_window_activation urgent
+# Actually nevermind, this means that when I spawn a new window the focus is still on the old one.
+# That is very unusual for me. Besides, I think I'm okay with things stealing my focus
+# now that I've figured how to spawn a "new window here" template window, so that anything
+# that steals my focus just replaces that template and I can keep doing my thing.
+
+# Makes it so that you need to hold $mod to be able to move/resize windows with mouse.
+floating_modifier $mod
+
+# Remove constraints on window size in floating mode.
+floating_minimum_size 1 x 1
+floating_maximum_size -1 x -1
+
+# Launch cool stuff
+# PulseAudio, to hear things
+exec --no-startup-id "start-pulseaudio-x11" 
+# To set up colors, fonts, and other various things which programs
+# (like terminal emulator urxvt) read from X resources
+exec --no-startup-id "xrdb ~/.Xresources" 
+# Clipboard manager
+exec --no-startup-id "copyq" 
+# Desktop compositor
+#exec --no-startup-id "picom" # Don't need a window compositor because Wayland/Sway acts as one!
+# Notification manager
+exec --no-startup-id "dunst" 
+# Control the pointer from the keyboard (actually really handy!)
+exec --no-startup-id "keynav" 
+# Hide the pointer when mouse isn't used
+exec --no-startup-id "unclutter -jitter 2 --ignore-scrolling" 
+# Set wallpaper to a cool picture
+exec --no-startup-id "hsetroot -cover ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg" 
+# My (crappy) script that turns on screen locker when laptop lid is closed
+exec --no-startup-id "i3_watch_lid.sh" 
+# When an application wants to do an administrative thing (i.e. you run gparted
+# or "systemctl restart something"), this will pop up asking me for password to
+# confirm the action.
+exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1" 
+# My (less crappy) script that allows me to toggle Redshift (program that shifts
+# screen light to red, duh), which with "on" parameter turns it on instead.
+#exec --no-startup-id "redshift.sh on" # Couldn't figure out how to make reshift work on Wayland lol
+
+# I like this font.
+# Also, apparently you should put your font config before your bar settings.
+font pango:DejaVu Sans Mono 9
+#font pango:TimesNewRoman 9
+#font pango:Terminus (TTF) 9
+
+# Bar settings
+bar {
+	# Disable clicking on the bar's workspace buttons
+	#bindsym			button1		nop
+	# Allows the bar to be displayed only on this screen
+	#output eDP		
+	# Shows tray icons only on the instance of the bar that is on this screen.
+	tray_output eDP
+	# Put the bar at the top of the screen.
+	position top
+	# What command to use to get the text to draw on the bar.
+	status_command "i3status | i3status-wrapper.py"
+	#status_command "cat /dev/urandom"	# That is actually really fun.
+	
+	# Set font
+	font pango:DejaVu Sans Mono 9
+	#font pango:TimesNewRoman 9
+	colors {
+		# Bar colors. See Sway documentation for what is what: man 5 sway
+		# Default colors:
+		#background	#000000
+		#statusline	#ffffff
+		#separator	#666666
+		#Class	-	-	border	backgr.	text
+		#focused_workspace	#4c7899	#285577	#ffffff
+		#active_workspace	#333333	#5f676a	#ffffff
+		#inactive_workspace	#333333	#222222	#888888
+		#urgent_workspace	#2f343a	#900000	#ffffff
+		#binding_mode		#2f343a	#900000	#ffffff
+
+		# Default colors, adjusted to match high contrast edits seen
+		# farther down in the config.
+		#background	#000000
+		#statusline	#ffffff
+		#separator	#666666
+		##Class	-	-	border	backgr.	text
+		#focused_workspace	#8888FF	#335577	#ffffff
+		#active_workspace	#5F676A	#333333	#ffffff
+		#inactive_workspace	#222222	#111111 #888888
+		#urgent_workspace	#2f343a	#900000	#ffffff
+		#binding_mode		#2f343a	#900000	#ffffff
+
+		# And switching red and blue channels in those default colors.
+		# Also messed with urgent and binding mode colors.
+		background	#000000
+		statusline	#ffffff
+		separator	#666666
+		#Class	-	-	border	backgr.	text
+		focused_workspace	#FF8888	#775533	#ffffff
+		active_workspace	#6A675F	#333333	#ffffff
+		inactive_workspace	#222222	#111111 #888888
+		urgent_workspace	#8888FF	#233597	#ffffff
+		binding_mode		#88FF88 #239735	#ffffff
+	}
+
+	# Sway specific stuff
+	height 19
+	status_padding 0
+}
+
+# Force preferred windows to float.
+for_window [class="Thunar"]			floating enable
+for_window [class="keepassxc"]			floating enable
+for_window [class="dolphin"]			floating enable
+for_window [class="Cadence"]			floating enable
+for_window [class="Tor Browser"]		floating enable
+for_window [class="Catia"]			floating enable
+for_window [class="Pavucontrol"]		floating enable
+#for_window [title="Sketch"]			floating enable
+for_window [class="transmission"]		floating enable
+for_window [title="Blender Preferences"]	floating enable
+for_window [title="glxgears"]			floating enable
+#for_window [title=" - Oracle VM VirtualBox"]	floating enable
+#for_window [class="VirtualBoxVM"]		floating enable
+
+# Colors. See Sway documentation for what is what: man 5 sway
+
+# Default colors:
+#Class	-	-	-	border	backgr.	text	indic.	child_border
+#client.focused			#4c7899	#285577	#ffffff	#2e9ef4	#285577
+#client.focused_inactive	#333333	#5f676a	#ffffff	#484e50	#5f676a
+#client.unfocused		#333333	#222222	#888888	#292d2e	#222222
+#client.urgent			#2f343a	#900000	#ffffff	#900000	#900000
+#client.placeholder		#000000	#0c0c0c	#ffffff	#000000	#0c0c0c
+
+# Having trouble distinguishing windows that are in focus and the next window indicator.
+# This is a higher contrast version of the default colors to aid in that.
+client.focused			#8888FF	#335577	#ffffff	#FFFFFF	#8888FF
+client.focused_inactive		#5F676A	#333333	#ffffff	#484e50	#5f676a
+client.unfocused		#222222 #111111	#888888	#285577	#222222
+
+# Switching red and blue channels for lulz
+client.focused			#FF8888	#775533	#ffffff	#FFFFFF	#FF8888
+client.focused_inactive		#6A675F	#333333	#ffffff	#504e48	#6a675f
+client.unfocused		#222222 #111111	#888888	#775528	#222222
+client.urgent			#8888FF	#233597	#ffffff	#000090	#000090
+client.placeholder		#000000	#0c0c0c	#ffffff	#000000	#0c0c0c
+
+
+### SWAY SPECIFIC STUFF
+
+# Enable touchpad tapping
+input * tap enabled
+
+# Set more (in)sane key repeat delay/rate
+input * repeat_delay 170
+input * repeat_rate 60
+
+# Numpad ON by default
+input * xkb_numlock enabled
+
+# I hate mouse acceleration
+input * accel_profile flat
+
+# I hate big mouse speed
+input * pointer_accel -0.5
+
+# Fine, my touchpad keeps big mouse speed.
+input "type:touchpad" pointer_accel 0
+
+# Muh keyboard layouts
+input * xkb_layout "us,ru"
+
+# allow switching keyboard layouts with ALT+SHIFT and also compose key
+input * xkb_options "grp:lalt_lshift_toggle,compose:rctrl"
+
+# Set wallpaper
+# output * bg ~/Pictures/Halifax_Sunset_by_Vlad_Drobinin.jpg center
+output * bg "#000000" solid_color
+
+# Get behavior closer to i3 with one child of a tabbed/stacked container
+hide_edge_borders --i3 none
+
+# Set same titlebar padding size as in i3
+titlebar_padding 2
+
+#################################################################
+#		BINDINGS: Stuff that isn't settings		#
+#################################################################
+
+#
+# BTW: Sway does not understand bindings when you switch to another
+# keyboard layout like i3 does. As a result, to allow using bindings
+# from another keyboard layout, you have to append "--to-code"
+# to literally every single binding. As a result, they might
+# not align with tabulation as nicely as it does in my original i3
+# config, as I apply the parameter using a vim command:
+# :%s/^bindsym^I/bindsym --to-code/
+#             ↑↑ a literal TAB character, which vim
+#             renders as ^I on its commmandline
+# To convert back, you'll need:
+# %s/^bindsym --to-code/bindsym^I/
+#                              ↑↑ a literal TAB character
+
+# reload the configuration file
+bindsym --to-code		$mod+Shift+c			reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym --to-code		$mod+Shift+r			restart
+
+#	#	#	#	#	#
+#	Laptop key based bindings.	#
+#	#	#	#	#	#
+
+# 12 bindings for 12 FN+F* combinations (FN+F1, FN+F2, FN+F3...)
+# Each binding is duplicated to a corresponding $mod+F* binding.
+# Your laptop's bindings may be different! (or you might not even have a laptop, I dunno)
+
+# F1	Help. Here opens current Sway config file.
+bindsym --to-code		$mod+F1				exec --no-startup-id "i3-sensible-terminal -e vim ~/.config/sway/config"
+#bindsym			Mod4+F1				exec --no-startup-id "i3-sensible-terminal -e vim ~/.config/sway/config"
+# FN+F1 equates to Super+F1, but since Super(Mod4) is my $mod key, i3 complains about duplicate bindings.
+
+# F2	Brightness down.
+bindsym --to-code		$mod+F2				exec --no-startup-id "brightness.sh -4"
+bindsym --to-code		XF86MonBrightnessDown		exec --no-startup-id "brightness.sh -4"
+
+# F3	Brightness up.
+bindsym --to-code		$mod+F3				exec --no-startup-id "brightness.sh 4"
+bindsym --to-code		XF86MonBrightnessUp		exec --no-startup-id "brightness.sh 4"
+
+# F4	Switch projector mode. Here toggles touchpad.
+bindsym --to-code		$mod+F4				exec --no-startup-id "toggletouch.sh"
+bindsym --to-code		$mod+p				exec --no-startup-id "toggletouch.sh"
+
+# F5	Empty. Here refreshes i3status.
+bindsym --to-code		$mod+F5				exec --no-startup-id "killall -USR1 i3status"
+# FN+F5 does nothing on my laptop. No, really, it doesn't even send any signals to work with.
+
+# F6	Mute volume. Here toggles default PulseAudio sink.
+bindsym --to-code		$mod+F6				exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+bindsym --to-code		XF86AudioMute 			exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+
+# F7	Decrease volume.
+bindsym --to-code		$mod+F7				exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%" 
+bindsym --to-code		XF86AudioLowerVolume		exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+
+# F8	Increase volume.
+bindsym --to-code		$mod+F8				exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+bindsym --to-code		XF86AudioRaiseVolume		exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+# Next 3 bindings are for media players. Mine are for mpv launched with "umpv" script.
+# F9 	Previous playlist track.
+bindsym --to-code		$mod+F9				exec --no-startup-id "echo playlist-prev > ~/.umpv_fifo"
+bindsym --to-code		XF86AudioPrev			exec --no-startup-id "echo playlist-prev > ~/.umpv_fifo"
+
+# F10 	Play/Pause.
+bindsym --to-code		$mod+F10			exec --no-startup-id "echo cycle pause   > ~/.umpv_fifo"
+bindsym --to-code		XF86AudioPlay			exec --no-startup-id "echo cycle pause   > ~/.umpv_fifo"
+
+# F11	Next playlist track.
+bindsym --to-code		$mod+F11			exec --no-startup-id "echo playlist-next > ~/.umpv_fifo"
+bindsym --to-code		XF86AudioNext			exec --no-startup-id "echo playlist-next > ~/.umpv_fifo"
+
+# F12	Airplane mode. Triggers my redshift toggler script
+bindsym --to-code		$mod+F12			exec --no-startup-id "redshift.sh"
+bindsym --to-code		XF86RFKill			exec --no-startup-id "redshift.sh"
+
+# PrintScreen (or Insert if pressed with FN) is the key I have right after F12. Let's extend the bindings past F12! :D
+# Triggers my autoclicker script thing.
+bindsym --to-code		$mod+Print			exec --no-startup-id "clicker.sh"
+#bindsym			Insert				exec --no-startup-id "clicker.sh"
+# I don't want to override Insert because it's a nice key to have, so instead I'll compromise the consistency
+# I had with "FN+key does same as $mod+key" thing. lol
+
+
+## Laptop lid keys.
+#  Again, your laptop's bindings may be different!
+#  Also note that this is only for when you close the laptop lid when i3 (i.e. the X server)
+#  is focused and you don't have a lock screen that would be consuming inputs instead of i3,
+#  meaning that these 2 here aren't that useful for normal usage. Listen to APCI events instead!
+# Laptop lid closing.
+#bindsym			XF86WLAN
+
+# Laptop lid opening.
+#bindsym			XF86WakeUp
+
+# Power button. Here mapped to a script that pops up a notification that basically says "no".
+bindsym --to-code		XF86PowerOff			exec --no-startup-id "shutdown.py"
+
+# I like these things to have available.
+bindsym --to-code		$mod+Ctrl+l			exec --no-startup-id $lockcmd
+bindsym --to-code		$mod+Ctrl+p			exec --no-startup-id "i3-sensible-terminal -e ping.sh"
+# Trust me, it gets embarrassing when you have 500+ms ping time to your own router.
+
+# This creates an empty placeholder which will swallow the next window that spawns.
+# Really useful if you know in any second now a window from some application will
+# spawn and hijack your focus screwing up your layout in the process. lol
+bindsym --to-code		$mod+Shift+Return		append_layout "~/.config/i3/placeholder"
+
+# Take a screenshot. This script of mine gives me a screen region selection,
+# puts it to /tmp/randompic_$USER.png, and into the clipboard, to then use either.
+bindsym --release	$mod+Shift+s			exec --no-startup-id "gyazolocal"
+# And this one uploads to imgur and copies the link.
+bindsym --release	$mod+Ctrl+s			exec --no-startup-id "gyazo"
+
+# I have only bare essentials installed on my system, meaning that
+# I also use only essential shortcuts that are very important.
+bindsym 		$mod+u				exec --no-startup-id "espeak uwu?"
+
+# Gaps size.
+# It's great fun increasing gaps size until containers get a 
+# negative size and applications start freaking out... :D
+# (though, then they start glitching out and not working properly in most cases...)
+bindsym --to-code		$mod+BackSpace			gaps	inner	current	set	0
+bindsym --to-code		$mod+minus			gaps	inner	current	plus	10
+bindsym --to-code		$mod+equal			gaps	inner	current	minus	10
+
+# Allow changing opacity of the current window. idk how to implement in Sway lol
+#bindsym			$mod+KP_Subtract		exec --no-startup-id "picom-trans -c -20"
+#bindsym			$mod+KP_Add			exec --no-startup-id "picom-trans -c +20"
+
+# Allow changing border type between normal, 3 pixel wide and none.
+bindsym --to-code		$mod+Ctrl+1			border	normal	1
+bindsym --to-code		$mod+Ctrl+2			border	pixel	1
+bindsym --to-code		$mod+Ctrl+3			border	none
+bindsym --to-code		$mod+Ctrl+4			border	pixel	3
+bindsym --to-code		$mod+Ctrl+5			border	pixel	2
+
+# Force kill current window. Scary, hence awkward to press.
+bindsym --to-code		$mod+Shift+Ctrl+q		exec --no-startup-id "forcekill.sh"
+
+# Start a terminal.
+bindsym --to-code		$mod+Return			exec --no-startup-id i3-sensible-terminal
+
+# Close focused window.
+bindsym --to-code		$mod+Shift+q			kill
+# Close a window by middle-clicking its bar (if it has one lol).
+bindsym --to-code		button2				kill
+
+# Start dmenu (a program launcher)
+bindsym --to-code		$mod+d				exec --no-startup-id  dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym		$mod+d				exec --no-startup-id i3-dmenu-desktop
+
+
+# Change focus. Edited to comply with Vi keys.
+bindsym --to-code		$mod+h				focus left
+bindsym --to-code		$mod+j				focus down
+bindsym --to-code		$mod+k				focus up
+bindsym --to-code		$mod+l				focus right
+
+bindsym --to-code		$mod+Left			focus left
+bindsym --to-code		$mod+Down			focus down
+bindsym --to-code		$mod+Up				focus up
+bindsym --to-code		$mod+Right			focus right
+
+# I admit I may or may not have a habit from Windows seen here.
+# Besides, in a layout where all windows are floating and overlap
+# because there's no other way to use software with fixed size big windows,
+# and in commonplace 1 hand on mouse posture, this is useful!
+bindsym --to-code		$mod+Tab			focus right
+bindsym --to-code		$mod+Shift+Tab			focus left
+bindsym --to-code		$mod+Ctrl+Tab			focus down
+bindsym --to-code		$mod+Ctrl+Shift+Tab		focus up
+
+
+# Move focused window. Edited to comply with Vi keys.
+bindsym --to-code		$mod+Shift+h			move left
+bindsym --to-code		$mod+Shift+j			move down
+bindsym --to-code		$mod+Shift+k			move up
+bindsym --to-code		$mod+Shift+l			move right
+
+bindsym --to-code		$mod+Shift+Left			move left
+bindsym --to-code		$mod+Shift+Down			move down
+bindsym --to-code		$mod+Shift+Up			move up
+bindsym --to-code		$mod+Shift+Right		move right
+
+# Wrap current window into a horisontal split container
+# I use " the way it's in tmux! (because familiarity, and also because h is occupied by vi keys)
+bindsym --to-code		$mod+quotedbl			split h
+bindsym --to-code		$mod+apostrophe			split h
+# Allright, fine, g is also nice.
+bindsym --to-code		$mod+g				split h
+
+# Wrap current window into a vertical split container
+bindsym --to-code		$mod+v				split v
+
+# Put focused window/container as fullscreen.
+bindsym --to-code		$mod+f				fullscreen toggle
+
+# Change current container's layout mode.
+bindsym --to-code		$mod+s				layout stacking
+bindsym --to-code		$mod+w				layout tabbed
+bindsym --to-code		$mod+e				layout toggle split
+bindsym --to-code		$mod+Ctrl+v			layout splitv
+bindsym --to-code		$mod+Ctrl+quotedbl		layout splith
+bindsym --to-code		$mod+Ctrl+apostrophe		layout splith
+bindsym --to-code		$mod+Ctrl+g			layout splith
+
+# Toggle current container between tiling and floating. 
+# DUDE YOU CAN PUT A CONTAINER WITH MULTIPLE WINDOWS INTO FLOATING MODE HOLY COW
+bindsym --to-code		$mod+Shift+space		floating toggle
+
+# change focus between tiling / floating windows
+bindsym --to-code		$mod+space			focus mode_toggle
+
+# focus the parent container
+bindsym --to-code		$mod+a				focus parent
+
+# focus the child container
+bindsym --to-code		$mod+Shift+a			focus child
+
+# Toggle sticky status of the current window (to make it follow you on all workspaces)
+bindsym --to-code		$mod+q				sticky toggle
+
+# Switch to a workspace. Makes sense to put workspace 0 onto ~, doesn't it?
+# (although I put a scratchpad thing there which I don't really use lmao)
+# actually yeah, scratch that scratchpad idea, I'll have another workspace instead lol
+bindsym --to-code		$mod+1				workspace 1
+bindsym --to-code		$mod+2				workspace 2
+bindsym --to-code		$mod+3				workspace 3
+bindsym --to-code		$mod+4				workspace 4
+bindsym --to-code		$mod+5				workspace 5
+bindsym --to-code		$mod+6				workspace 6
+bindsym --to-code		$mod+7				workspace 7
+bindsym --to-code		$mod+8				workspace 8
+bindsym --to-code		$mod+9				workspace 9
+bindsym --to-code		$mod+0				workspace 10
+bindsym --to-code		$mod+grave			workspace 0
+#bindsym			$mod+grave			scratchpad show
+
+bindsym --to-code		$mod+z				workspace prev
+bindsym --to-code		$mod+x				workspace next
+
+# Move focused container to a workspace.
+# Keep in mind that it's faster to select entire containers with $mod+A, and then
+# move them at once. Sounds obvious, but I didn't figure that out myself for
+# an embarrassingly long time. ._.
+bindsym --to-code		$mod+Shift+1			move container to workspace 1
+bindsym --to-code		$mod+Shift+2			move container to workspace 2
+bindsym --to-code		$mod+Shift+3			move container to workspace 3
+bindsym --to-code		$mod+Shift+4			move container to workspace 4
+bindsym --to-code		$mod+Shift+5			move container to workspace 5
+bindsym --to-code		$mod+Shift+6			move container to workspace 6
+bindsym --to-code		$mod+Shift+7			move container to workspace 7
+bindsym --to-code		$mod+Shift+8			move container to workspace 8
+bindsym --to-code		$mod+Shift+9			move container to workspace 9
+bindsym --to-code		$mod+Shift+0			move container to workspace 10
+bindsym --to-code		$mod+Shift+grave		move container to workspace 0
+#bindsym			$mod+Shift+grave		move scratchpad
+
+bindsym --to-code		$mod+Shift+z			move container to workspace prev
+bindsym --to-code		$mod+Shift+x			move container to workspace next
+
+
+# Resize mode. Edited to comply with Vi keys.
+# Also, CTRL gives smaller steps while SHIFT gives bigger steps.
+mode "resize" {
+
+        bindsym			h			resize shrink width		5 px or 5 ppt
+        bindsym			j			resize grow height		5 px or 5 ppt
+        bindsym			k			resize shrink height		5 px or 5 ppt
+        bindsym			l			resize grow width		5 px or 5 ppt
+        bindsym			Left			resize shrink width		5 px or 5 ppt
+        bindsym			Down			resize grow height		5 px or 5 ppt
+        bindsym			Up			resize shrink height		5 px or 5 ppt
+        bindsym			Right			resize grow width		5 px or 5 ppt
+
+        bindsym			Shift+h			resize shrink width		15 px or 15 ppt
+        bindsym			Shift+j			resize grow height		15 px or 15 ppt
+        bindsym			Shift+k			resize shrink height		15 px or 15 ppt
+        bindsym			Shift+l			resize grow width		15 px or 15 ppt
+        bindsym			Shift+Left		resize shrink width		15 px or 15 ppt
+        bindsym			Shift+Down		resize grow height		15 px or 15 ppt
+        bindsym			Shift+Up		resize shrink height		15 px or 15 ppt
+        bindsym			Shift+Right		resize grow width		15 px or 15 ppt
+
+        bindsym			Ctrl+h			resize shrink width		2 px or 2 ppt
+        bindsym			Ctrl+j			resize grow height		2 px or 2 ppt
+        bindsym			Ctrl+k			resize shrink height		2 px or 2 ppt
+        bindsym			Ctrl+l			resize grow width		2 px or 2 ppt
+        bindsym			Ctrl+Left		resize shrink width		2 px or 2 ppt
+        bindsym			Ctrl+Down		resize grow height		2 px or 2 ppt
+        bindsym			Ctrl+Up			resize shrink height		2 px or 2 ppt
+        bindsym			Ctrl+Right		resize grow width		2 px or 2 ppt
+        # back to normal: Enter or Escape
+        bindsym			Return			mode "default"
+        bindsym			Escape			mode "default"
+}
+bindsym --to-code		$mod+r				mode "resize"
+
+
+# Toggle the bar on/off
+bindsym --to-code		$mod+b				bar mode toggle
+
+# Got it from https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html
+set $mode_system System (l) lock, (q) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+		bindsym			l		exec --no-startup-id "i3exit lock", mode "default"
+		bindsym			q		exec --no-startup-id "i3exit logout", mode "default"
+		bindsym			s		exec --no-startup-id "i3exit suspend", mode "default"
+		bindsym			h		exec --no-startup-id "i3exit hibernate", mode "default"
+		bindsym			r		exec --no-startup-id "i3exit reboot", mode "default"
+		bindsym			Shift+s		exec --no-startup-id "i3exit shutdown", mode "default"
+
+		# back to normal: Enter or Escape
+		bindsym			Return		mode "default"
+		bindsym			Escape		mode "default"
+}
+bindsym --to-code		$mod+Shift+e			mode "$mode_system"
+

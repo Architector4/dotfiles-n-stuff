@@ -1,0 +1,1 @@
+/bin/dmenu -fn "DejaVu Sans Mono:pixelsize=14" -nb "#000000" -nf "#FFFFFF" -sb "#FF8888" -sf "#FFFFFF" "$@"

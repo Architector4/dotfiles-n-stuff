@@ -1,0 +1,35 @@
+#!/bin/bash
+
+file=/tmp/randompic_$USER.png # lolololol
+
+if [[ $# > 0 ]];then
+	file=$1
+fi
+
+rm $file
+#scrot -s $file
+#scrot -a$(slop -f %x,%y,%w,%h -o) $file
+
+umask 077 # Prevent others from being able to read the file
+gyazolocal2 $file
+
+#xclip -in -selection clipboard -target image/png $file # does nothing xd
+copyq write image/png - < $file
+copyq select 0
+
+
+# Ask the user if they want to open this image in GIMP.
+# Got annoyed of this feature quickly, as copyq is able
+# to preserve it in keyboard so I can open GIMP and
+# paste myself. Was useful before I found copyq though!
+
+#answer=$(echo "no
+#yes" | dmenu -p "Open in GIMP?" -l 2)
+#
+#if [ $answer '=' "yes" ]
+#then
+#	gimp $file
+##else
+##	echo no
+#fi
+

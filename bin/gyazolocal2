@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -z "$WAYLAND_DISPLAY" ]; then	# Running on X
+	GEOMETRY=$(slop -f %x,%y,%w,%h -o -q)
+else					# Running on wayland
+	GEOMETRY=$(slurp)
+fi
+if [ -n "$GEOMETRY" ]; then
+	if [ -z "$WAYLAND_DISPLAY" ]; then	# Running on X
+		scrot -a "$GEOMETRY" $@
+	else					# Running on wayland
+		grim -g "$GEOMETRY" $@
+	fi
+fi

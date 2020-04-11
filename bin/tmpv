@@ -1,0 +1,2 @@
+# Use MPV to watch videos in your terminal!
+mpv --profile=sw-fast --vo=caca "$@"

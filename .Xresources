@@ -1,0 +1,97 @@
+! Monospace font for applications that care about it
+*.font:				xft:DejaVu Sans Mono:pixelsize=12
+*.faceName:			xft:DejaVu Sans Mono:pixelsize=12
+! Font for things that only use bitmap fonts (forgot what things exactly lol)
+*.vt100.font:			6x13
+
+
+!
+! COLOR CONFIGURATION
+!
+
+! Foreground and background colors.
+! URxvt entry is to give it transparency
+*.foreground:			#FFFFFF
+*.background:			#000000
+URxvt.background:		[85]#000000
+
+! Black
+*.color0:			#000000
+URxvt.color0:			[85]#000000
+! Red
+*.color1:			#FF2222
+! Green
+*.color2:			#00DD00
+! Yellow
+*.color3:			#FFEE00
+! Blue
+*.color4:			#6666FF
+! Magenta
+*.color5:			#FF44FF
+! Cyan
+*.color6:			#77BBFF
+! White
+*.color7:			#FFFFFF
+
+! Black
+*.color8:			#666666
+! Red
+*.color9:			#FF2222
+! Green
+*.color10:			#00DD00
+! Yellow
+*.color11:			#FFEE55
+! Blue
+*.color12:			#6666FF
+! Magenta
+*.color13:			#FF44FF
+! Cyan
+*.color14:			#77BBFF
+! White
+*.color15:			#FFFFFF
+
+! "Bold color" - not sure what it refers to lol
+!*.colorBD:			#FFFFFF
+
+!
+! URXVT CONFIGURATION
+!
+
+! Scrollbars are overrated
+URxvt.scrollBar:		False
+! I like my scrollbar buffers BIG
+URxvt.saveLines:		16383
+! Remove weird spacing between each letter cell
+URxvt.letterSpace:		-1
+! Color depth
+URxvt.depth:			32
+! Extensions to use
+URxvt.perl-ext-common:		default,clipboard,url-select,keyboard-select,resize-font
+
+! EXTENSION url-select
+! Does what it says on the tin - allows quickly opening URLs visible on the terminal.
+! Highlight URLs on Alt+U
+URxvt.keysym.M-u:		perl:url-select:select_next
+! When selecting a link in that highlight mode, open it with exo-open
+URxvt.url-select.launcher:	exo-open
+! Underline all links visible to the plugin
+URxvt.url-select.underline:	true
+
+! EXTENSION keyboard-select
+! Allows pressing a shortcut to enter a selection mode (which also shows an obvious
+! green marker in bottom right of your screen when you are in it) where you get to control
+! a virtual "cursor" and with vim-like bindings you can highlight a part of the current
+! visible buffer to copy it and stuff, without using the mouse
+! Activate selection mode on Alt+Escape
+URxvt.keysym.M-Escape:		perl:keyboard-select:activate
+! Activate vim-like searching on Alt+S
+URxvt.keysym.M-s:		perl:keyboard-select:search
+! When yanking a selection, put it into clipboard for quick CTRL+V action
+URxvt.keyboard-select.clipboard: true
+
+! EXTENSION resize-font
+! Allows resizing the font realtime
+! Alt+J to make it smaller
+URxvt.resize-font.smaller:	A-j
+! Alt+J to make it bigger
+URxvt.resize-font.bigger:	A-k

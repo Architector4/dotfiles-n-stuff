@@ -1,0 +1,10 @@
+{
+	"name": "New window here",
+		"swallows": [
+			{
+				"class": ".*",
+				"title": ".*"
+			}
+		],
+		"type": "con"
+}

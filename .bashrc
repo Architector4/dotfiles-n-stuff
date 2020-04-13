@@ -120,9 +120,11 @@ alias cal="cal -m"
 alias feh="feh --conversion-timeout 1"
 # This Proton trick actually works, but I'm fine with vanilla Wine now.
 #alias wine="~/.steam/steam/steamapps/common/Proton\ 4.2/dist/bin/wine"
-# To speed up opening files
-alias o="exo-open" # Not needed anymore as I've set up scripts named like that in ~/bin
-alias о="exo-open" # Russian о here.
+# To speed up opening files. This actually doesn't work in non-interactive
+# shells, so I've decided to instead create symlinks with these names
+# to provide equivalent functionality in all cases.
+#alias o="exo-open" 
+#alias о="exo-open" # Russian о here.
 
 # "mkcd" to mkdir and then cd to the result
 mkcd() { mkdir "$@";cd "$@";}

@@ -1,0 +1,3 @@
+exo-open "$@"
+# This file's name is a cyrillic letter о, so that I don't have
+# to switch my keyboard layout to execute this command lol

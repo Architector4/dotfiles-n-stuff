@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 # On-demand autoclicker.
-# Copyright clicker.sh™ © ® architector4©® 2019 from a subreddit lol
+# Copybottom clicker.sh by Architector #4 2020
 
 # Status file is an empty file that signifies if the script is running or not.
 # Helps to allow for the toggling behavior.
@@ -11,7 +11,7 @@ BUTTON=1
 
 if [ -f "$STATUSFILE" ]; then
 	# Status file exists, meaning the script is running.
-	# Remove it! BLERGH FORGOT THAT ONE LOL
+	# Remove it!
 	rm $STATUSFILE
 	# Release mouse, just in case.
 	xdotool mouseup $BUTTON

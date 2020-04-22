@@ -99,9 +99,6 @@ bar {
 	status_command "i3status | i3status-wrapper.py"
 	#status_command "cat /dev/urandom"	# That is actually really fun.
 	
-	# Set font
-	font pango:DejaVu Sans Mono 9
-	#font pango:TimesNewRoman 9
 	colors {
 		# Bar colors. See i3 documentation for what is what:
 		# https://i3wm.org/docs/userguide.html#_colors

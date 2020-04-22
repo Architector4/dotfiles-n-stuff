@@ -1,3 +1,5 @@
+! Set DPI, because random applications get confused about it and mess things up.
+*.dpi: 72
 ! Monospace font for applications that care about it
 *.font:				xft:DejaVu Sans Mono:pixelsize=12
 *.faceName:			xft:DejaVu Sans Mono:pixelsize=12
@@ -59,6 +61,7 @@ URxvt.color0:			[85]#000000
 
 ! Scrollbars are overrated
 URxvt.scrollBar:		False
+
 ! I like my scroll buffers BIG
 URxvt.saveLines:		16383
 ! Remove weird spacing between each letter cell

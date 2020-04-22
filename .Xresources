@@ -61,7 +61,6 @@ URxvt.color0:			[85]#000000
 
 ! Scrollbars are overrated
 URxvt.scrollBar:		False
-
 ! I like my scroll buffers BIG
 URxvt.saveLines:		16383
 ! Remove weird spacing between each letter cell

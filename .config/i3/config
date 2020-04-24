@@ -25,9 +25,6 @@ set $lockcmd physlock
 # Actually I don't want gaps anymore, but i3's borders are too thick so imma change
 default_border normal 1
 
-#border_radius 400
-# These rounded borders of i3-gaps-rounded look funny, but unpreferable.
-
 # Makes it so that you need to click on a window for it to have focus.
 focus_follows_mouse no
 
@@ -81,9 +78,9 @@ exec --no-startup-id "redshift.sh on"
 
 # I like this font.
 # Also, apparently you should put your font config before your bar settings.
-font pango:DejaVu Sans Mono 9
-#font pango:TimesNewRoman 9
-#font pango:Terminus (TTF) 9
+font pango:DejaVu Sans Mono 12
+#font pango:TimesNewRoman 12
+#font pango:Terminus (TTF) 12
 
 # Bar settings
 bar {
@@ -247,12 +244,15 @@ bindsym			$mod+F12			exec --no-startup-id "redshift.sh"
 bindsym			XF86RFKill			exec --no-startup-id "redshift.sh"
 
 # PrintScreen (or Insert if pressed with FN) is the key I have right after F12. Let's extend the bindings past F12! :D
-# Triggers my autoclicker script thing.
-bindsym			$mod+Print			exec --no-startup-id "clicker.sh"
-#bindsym			Insert				exec --no-startup-id "clicker.sh"
+# Opens the "CLICKER" mode, as seen at the end of the file.
+bindsym			$mod+Print			mode CLICKER
+#bindsym			Insert				mode CLICKER
 # I don't want to override Insert because it's a nice key to have, so instead I'll compromise the consistency
 # I had with "FN+key does same as $mod+key" thing. lol
 
+# For some reason, when shutting down X, I see notices about this key. So I have this here to hopefully someday
+# see it trigger so that I can figure out what this is even about lol
+bindsym			XF86Fullscreen			exec --no-startup-id "notify-send XF86Fullscreen"
 
 ## Laptop lid keys.
 #  Again, your laptop's bindings may be different!
@@ -492,3 +492,18 @@ mode "$mode_system" {
 }
 bindsym			$mod+Shift+e			mode "$mode_system"
 
+# Clicker mode - when in it, press the mouse button's number you want to repeatedly click.
+# If clicker is active, any number turns it off.
+mode "CLICKER" {
+		bindsym			1		exec --no-startup-id "clicker.sh 1", mode "default"
+		bindsym			2		exec --no-startup-id "clicker.sh 2", mode "default"
+		bindsym			3		exec --no-startup-id "clicker.sh 3", mode "default"
+		bindsym			4		exec --no-startup-id "clicker.sh 4", mode "default"
+		bindsym			5		exec --no-startup-id "clicker.sh 5", mode "default"
+		bindsym			6		exec --no-startup-id "clicker.sh 6", mode "default"
+		bindsym			7		exec --no-startup-id "clicker.sh 7", mode "default"
+		bindsym			8		exec --no-startup-id "clicker.sh 8", mode "default"
+		bindsym			9		exec --no-startup-id "clicker.sh 9", mode "default"
+		bindsym			Return		mode "default"
+		bindsym			Escape		mode "default"
+}

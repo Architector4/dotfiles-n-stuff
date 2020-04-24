@@ -6,8 +6,11 @@
 # Helps to allow for the toggling behavior.
 STATUSFILE=~/.clicking
 
-# 1st button of mouse, left button. 2 is middle button, 3 is right button
-BUTTON=1
+if [ -n "$1" ]; then
+	BUTTON="$1"
+else
+	BUTTON=1
+fi
 
 if [ -f "$STATUSFILE" ]; then
 	# Status file exists, meaning the script is running.

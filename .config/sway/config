@@ -300,12 +300,15 @@ bindsym --to-code		$mod+F12			exec --no-startup-id "redshift.sh"
 bindsym --to-code		XF86RFKill			exec --no-startup-id "redshift.sh"
 
 # PrintScreen (or Insert if pressed with FN) is the key I have right after F12. Let's extend the bindings past F12! :D
-# Triggers my autoclicker script thing.
-bindsym --to-code		$mod+Print			exec --no-startup-id "clicker.sh"
-#bindsym			Insert				exec --no-startup-id "clicker.sh"
+# Opens the "CLICKER" mode, as seen at the end of the file.
+bindsym --to-code		$mod+Print			mode CLICKER
+#bindsym --to-code		Insert				mode CLICKER
 # I don't want to override Insert because it's a nice key to have, so instead I'll compromise the consistency
 # I had with "FN+key does same as $mod+key" thing. lol
 
+# For some reason, when shutting down X, I see notices about this key. So I have this here to hopefully someday
+# see it trigger so that I can figure out what this is even about lol
+bindsym			XF86Fullscreen			exec --no-startup-id "notify-send XF86Fullscreen"
 
 ## Laptop lid keys.
 #  Again, your laptop's bindings may be different!
@@ -545,3 +548,18 @@ mode "$mode_system" {
 }
 bindsym --to-code		$mod+Shift+e			mode "$mode_system"
 
+# Clicker mode - when in it, press the mouse button's number you want to repeatedly click.
+# If clicker is active, any number turns it off.
+mode "CLICKER" {
+		bindsym --to-code		1		exec --no-startup-id "clicker.sh 1", mode "default"
+		bindsym --to-code		2		exec --no-startup-id "clicker.sh 2", mode "default"
+		bindsym --to-code		3		exec --no-startup-id "clicker.sh 3", mode "default"
+		bindsym --to-code		4		exec --no-startup-id "clicker.sh 4", mode "default"
+		bindsym --to-code		5		exec --no-startup-id "clicker.sh 5", mode "default"
+		bindsym --to-code		6		exec --no-startup-id "clicker.sh 6", mode "default"
+		bindsym --to-code		7		exec --no-startup-id "clicker.sh 7", mode "default"
+		bindsym --to-code		8		exec --no-startup-id "clicker.sh 8", mode "default"
+		bindsym --to-code		9		exec --no-startup-id "clicker.sh 9", mode "default"
+		bindsym --to-code		Return		mode "default"
+		bindsym --to-code		Escape		mode "default"
+}

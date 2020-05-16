@@ -82,9 +82,9 @@ exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1"
 
 # I like this font.
 # Also, apparently you should put your font config before your bar settings.
-font pango:DejaVu Sans Mono 9
-#font pango:TimesNewRoman 9
-#font pango:Terminus (TTF) 9
+font pango:DejaVu Sans Mono 12
+#font pango:TimesNewRoman 12
+#font pango:Terminus (TTF) 12
 
 # Bar settings
 bar {
@@ -147,9 +147,12 @@ bar {
 for_window [class="Thunar"]			floating enable
 for_window [class="keepassxc"]			floating enable
 for_window [class="dolphin"]			floating enable
+for_window [class="pcmanfm"]			floating enable
 for_window [class="Cadence"]			floating enable
 for_window [class="Tor Browser"]		floating enable
 for_window [class="Catia"]			floating enable
+for_window [class="qemu-system-x86_64"]		floating enable
+for_window [class="crow"]			floating enable
 for_window [class="Pavucontrol"]		floating enable
 #for_window [title="Sketch"]			floating enable
 for_window [class="transmission"]		floating enable
@@ -339,6 +342,8 @@ bindsym --to-code		$mod+Shift+Return		append_layout "~/.config/i3/placeholder"
 bindsym --release	$mod+Shift+s			exec --no-startup-id "gyazolocal"
 # And this one uploads to imgur and copies the link.
 bindsym --release	$mod+Ctrl+s			exec --no-startup-id "gyazo"
+# This one uploads a gif to imgur and copies the link.
+bindsym --release	$mod+Ctrl+g			exec --no-startup-id "gyazogif"
 
 # I have only bare essentials installed on my system, meaning that
 # I also use only essential shortcuts that are very important.
@@ -535,16 +540,16 @@ bindsym --to-code		$mod+b				bar mode toggle
 # Got it from https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html
 set $mode_system System (l) lock, (q) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-		bindsym			l		exec --no-startup-id "i3exit lock", mode "default"
-		bindsym			q		exec --no-startup-id "i3exit logout", mode "default"
-		bindsym			s		exec --no-startup-id "i3exit suspend", mode "default"
-		bindsym			h		exec --no-startup-id "i3exit hibernate", mode "default"
-		bindsym			r		exec --no-startup-id "i3exit reboot", mode "default"
-		bindsym			Shift+s		exec --no-startup-id "i3exit shutdown", mode "default"
+		bindsym	--to-code		l		exec --no-startup-id "i3exit lock", mode "default"
+		bindsym	--to-code		q		exec --no-startup-id "i3exit logout", mode "default"
+		bindsym	--to-code		s		exec --no-startup-id "i3exit suspend", mode "default"
+		bindsym	--to-code		h		exec --no-startup-id "i3exit hibernate", mode "default"
+		bindsym	--to-code		r		exec --no-startup-id "i3exit reboot", mode "default"
+		bindsym	--to-code		Shift+s		exec --no-startup-id "i3exit shutdown", mode "default"
 
 		# back to normal: Enter or Escape
-		bindsym			Return		mode "default"
-		bindsym			Escape		mode "default"
+		bindsym	--to-code		Return		mode "default"
+		bindsym	--to-code		Escape		mode "default"
 }
 bindsym --to-code		$mod+Shift+e			mode "$mode_system"
 

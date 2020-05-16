@@ -24,8 +24,9 @@ filetype plugin indent on
 :hi MatchParen	ctermbg=4
 " Set background color of a misspelled word to red
 :hi SpellBad	ctermbg=1
-" Set background color of a line that differs to green
-:hi DiffChange	ctermbg=2
+" Set background color of a line that differs to deep blue
+" (probably needs a 32bit color supporting terminal tho)
+:hi DiffChange	ctermbg=10
 " Set background color of text that differs to red
 :hi DiffText	ctermbg=4
 

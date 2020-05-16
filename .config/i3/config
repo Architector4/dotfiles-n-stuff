@@ -144,6 +144,7 @@ for_window [class="pcmanfm"]			floating enable
 for_window [class="Cadence"]			floating enable
 for_window [class="Tor Browser"]		floating enable
 for_window [class="Catia"]			floating enable
+for_window [class="qemu-system-x86_64"]		floating enable
 for_window [class="crow"]			floating enable
 for_window [class="Pavucontrol"]		floating enable
 #for_window [title="Sketch"]			floating enable
@@ -283,6 +284,8 @@ bindsym			$mod+Shift+Return		append_layout "~/.config/i3/placeholder"
 bindsym --release	$mod+Shift+s			exec --no-startup-id "gyazolocal"
 # And this one uploads to imgur and copies the link.
 bindsym --release	$mod+Ctrl+s			exec --no-startup-id "gyazo"
+# This one uploads a gif to imgur and copies the link.
+bindsym --release	$mod+Ctrl+g			exec --no-startup-id "gyazogif"
 
 # I have only bare essentials installed on my system, meaning that
 # I also use only essential shortcuts that are very important.

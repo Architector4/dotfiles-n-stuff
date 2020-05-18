@@ -1,5 +1,6 @@
 #!/bin/sh
 # Start X server with key repeating starting when you hold a key for
-# at least 170ms (or 0.17s), and repeat the key every 16ms (or 0.016s)
-# And some other thing to don't allow connections from outside I guess lol
-exec /usr/bin/X -ardelay 170 -arinterval 16 -nolisten tcp "$@"
+# at least 170ms (or 0.17s), and repeat the key every 16ms (or 0.016s);
+# with 72 DPI (I don't like correct DPI, I like 12pt=12px font size match);
+# And ignoring incoming TCP connections.
+exec /usr/bin/X -ardelay 170 -arinterval 16 -dpi 72 -nolisten tcp "$@"

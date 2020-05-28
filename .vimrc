@@ -7,9 +7,10 @@ map <F6> :setlocal spell!<CR>
 :set number
 " Turn on syntax highlighting
 :syntax on
-" I forgot what this does lol
 " When using TAB autocompletion, show a list of autocompletable things
-:set wildmenu
+":set wildmenu
+" Make TAB autocompletion bash-like
+:set wildmode=list,longest
 " Don't allow random files to tell vim which settings it should use.
 " Actually screw it, this feature is cool so I'll keep it enabled.
 ":set nomodeline

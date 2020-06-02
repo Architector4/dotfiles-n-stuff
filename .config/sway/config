@@ -311,7 +311,8 @@ bindsym --to-code		$mod+Print			mode CLICKER
 
 # For some reason, when shutting down X, I see notices about this key. So I have this here to hopefully someday
 # see it trigger so that I can figure out what this is even about lol
-bindsym			XF86Fullscreen			exec --no-startup-id "notify-send XF86Fullscreen"
+#bindsym			XF86Fullscreen			exec --no-startup-id "notify-send XF86Fullscreen"
+# Nevermind, Wayland doesn't want any of it and errors on this being an invalid key.
 
 ## Laptop lid keys.
 #  Again, your laptop's bindings may be different!

@@ -22,8 +22,7 @@ set $mod Mod4
 set $lockcmd physlock
 
 # i3-gaps doesn't like window titles. Let's remove them!
-# (tho this is Sway, not i3-gaps, but still)
-# default_border pixel 3
+#default_border pixel 3
 # muh gaps
 #gaps inner 10
 
@@ -161,7 +160,8 @@ for_window [title="glxgears"]			floating enable
 #for_window [title=" - Oracle VM VirtualBox"]	floating enable
 #for_window [class="VirtualBoxVM"]		floating enable
 
-# Colors. See Sway documentation for what is what: man 5 sway
+# Colors. See Sway documentation for what is what:
+# man 5 sway
 
 # Default colors:
 #Class	-	-	-	border	backgr.	text	indic.	child_border
@@ -496,6 +496,9 @@ bindsym --to-code		$mod+Shift+grave		move container to workspace 0
 bindsym --to-code		$mod+Shift+z			move container to workspace prev
 bindsym --to-code		$mod+Shift+x			move container to workspace next
 
+bindsym --to-code		$mod+Shift+less			move workspace to output left
+bindsym --to-code		$mod+Shift+greater		move workspace to output right
+
 
 # Resize mode. Edited to comply with Vi keys.
 # Also, CTRL gives smaller steps while SHIFT gives bigger steps.
@@ -540,16 +543,16 @@ bindsym --to-code		$mod+b				bar mode toggle
 # Got it from https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html
 set $mode_system System (l) lock, (q) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-		bindsym	--to-code		l		exec --no-startup-id "i3exit lock", mode "default"
-		bindsym	--to-code		q		exec --no-startup-id "i3exit logout", mode "default"
-		bindsym	--to-code		s		exec --no-startup-id "i3exit suspend", mode "default"
-		bindsym	--to-code		h		exec --no-startup-id "i3exit hibernate", mode "default"
-		bindsym	--to-code		r		exec --no-startup-id "i3exit reboot", mode "default"
-		bindsym	--to-code		Shift+s		exec --no-startup-id "i3exit shutdown", mode "default"
+		bindsym --to-code		l		exec --no-startup-id "i3exit lock", mode "default"
+		bindsym --to-code		q		exec --no-startup-id "i3exit logout", mode "default"
+		bindsym --to-code		s		exec --no-startup-id "i3exit suspend", mode "default"
+		bindsym --to-code		h		exec --no-startup-id "i3exit hibernate", mode "default"
+		bindsym --to-code		r		exec --no-startup-id "i3exit reboot", mode "default"
+		bindsym --to-code		Shift+s		exec --no-startup-id "i3exit shutdown", mode "default"
 
 		# back to normal: Enter or Escape
-		bindsym	--to-code		Return		mode "default"
-		bindsym	--to-code		Escape		mode "default"
+		bindsym --to-code		Return		mode "default"
+		bindsym --to-code		Escape		mode "default"
 }
 bindsym --to-code		$mod+Shift+e			mode "$mode_system"
 

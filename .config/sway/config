@@ -1,11 +1,7 @@
-# OHAI, Sway!!!
-# owait Sway ignores comments. UwU
+# OHAI, i3!!!
+# owait i3 ignores comments. UwU
 # Uhh, Architector #4 wrote this. Dunno if it's necessary to sign a config, but, eh.
 # vim:ts=8:
-
-# ALSO OH GOD YOU CANT JUST PASTE AN i3 CONFIG HERE SWAY GETS IT ALL WRONG
-# AND HATES COMMENTS AT THE END OF THINGS
-# so yeah this is derivative off my i3 config lololol
 
 #################################################################
 #		SETTINGS: Stuff that isn't bindings		#
@@ -60,7 +56,7 @@ exec --no-startup-id "xrdb ~/.Xresources"
 # Clipboard manager
 exec --no-startup-id "copyq" 
 # Desktop compositor
-#exec --no-startup-id "picom" # Don't need a window compositor because Wayland/Sway acts as one!
+exec --no-startup-id "picom" 
 # Notification manager
 exec --no-startup-id "dunst" 
 # Control the pointer from the keyboard (actually really handy!)
@@ -77,7 +73,7 @@ exec --no-startup-id "i3_watch_lid.sh"
 exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1" 
 # My (less crappy) script that allows me to toggle Redshift (program that shifts
 # screen light to red, duh), which with "on" parameter turns it on instead.
-#exec --no-startup-id "redshift.sh on" # Couldn't figure out how to make reshift work on Wayland lol
+exec --no-startup-id "redshift.sh on" 
 
 # I like this font.
 # Also, apparently you should put your font config before your bar settings.
@@ -88,7 +84,7 @@ font pango:DejaVu Sans Mono 12
 # Bar settings
 bar {
 	# Disable clicking on the bar's workspace buttons
-	#bindsym			button1		nop
+	#$mybind		button1		nop
 	# Allows the bar to be displayed only on this screen
 	#output eDP		
 	# Shows tray icons only on the instance of the bar that is on this screen.
@@ -100,7 +96,8 @@ bar {
 	#status_command "cat /dev/urandom"	# That is actually really fun.
 	
 	colors {
-		# Bar colors. See Sway documentation for what is what: man 5 sway
+		# Bar colors. See i3 documentation for what is what:
+		# https://i3wm.org/docs/userguide.html#_colors
 		# Default colors:
 		#background	#000000
 		#statusline	#ffffff
@@ -136,10 +133,6 @@ bar {
 		urgent_workspace	#8888FF	#233597	#ffffff
 		binding_mode		#88FF88 #239735	#ffffff
 	}
-
-	# Sway specific stuff
-	height 19
-	status_padding 0
 }
 
 # Force preferred windows to float.
@@ -160,8 +153,8 @@ for_window [title="glxgears"]			floating enable
 #for_window [title=" - Oracle VM VirtualBox"]	floating enable
 #for_window [class="VirtualBoxVM"]		floating enable
 
-# Colors. See Sway documentation for what is what:
-# man 5 sway
+# Colors. See i3 documentation for what is what:
+# https://i3wm.org/docs/userguide.html#_changing_colors
 
 # Default colors:
 #Class	-	-	-	border	backgr.	text	indic.	child_border
@@ -185,65 +178,20 @@ client.urgent			#8888FF	#233597	#ffffff	#000090	#000090
 client.placeholder		#000000	#0c0c0c	#ffffff	#000000	#0c0c0c
 
 
-### SWAY SPECIFIC STUFF
-
-# Enable touchpad tapping
-input * tap enabled
-
-# Set more (in)sane key repeat delay/rate
-input * repeat_delay 170
-input * repeat_rate 60
-
-# Numpad ON by default
-input * xkb_numlock enabled
-
-# I hate mouse acceleration
-input * accel_profile flat
-
-# I hate big mouse speed
-input * pointer_accel -0.5
-
-# Fine, my touchpad keeps big mouse speed.
-input "type:touchpad" pointer_accel 0
-
-# Muh keyboard layouts
-input * xkb_layout "us,ru"
-
-# allow switching keyboard layouts with ALT+SHIFT and also compose key
-input * xkb_options "grp:lalt_lshift_toggle,compose:rctrl"
-
-# Set wallpaper
-# output * bg ~/Pictures/Halifax_Sunset_by_Vlad_Drobinin.jpg center
-output * bg "#000000" solid_color
-
-# Get behavior closer to i3 with one child of a tabbed/stacked container
-hide_edge_borders --i3 none
-
-# Set same titlebar padding size as in i3
-titlebar_padding 2
-
 #################################################################
 #		BINDINGS: Stuff that isn't settings		#
 #################################################################
 
-#
-# BTW: Sway does not understand bindings when you switch to another
-# keyboard layout like i3 does. As a result, to allow using bindings
-# from another keyboard layout, you have to append "--to-code"
-# to literally every single binding. As a result, they might
-# not align with tabulation as nicely as it does in my original i3
-# config, as I apply the parameter using a vim command:
-# :%s/^bindsym^I/bindsym --to-code/
-#             ↑↑ a literal TAB character, which vim
-#             renders as ^I on its commmandline
-# To convert back, you'll need:
-# %s/^bindsym --to-code/bindsym^I/
-#                              ↑↑ a literal TAB character
+# Sway's bindsym acts differently than i3's, so to keep
+# the two configs as close as possible, I have to use a variable
+# that is set to the correct binding command.
+set $mybind bindsym
+
 
 # reload the configuration file
-bindsym --to-code		$mod+Shift+c			reload
+$mybind			$mod+Shift+c			reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym --to-code		$mod+Shift+r			restart
+$mybind			$mod+Shift+r			restart
 
 #	#	#	#	#	#
 #	Laptop key based bindings.	#
@@ -253,66 +201,60 @@ bindsym --to-code		$mod+Shift+r			restart
 # Each binding is duplicated to a corresponding $mod+F* binding.
 # Your laptop's bindings may be different! (or you might not even have a laptop, I dunno)
 
-# F1	Help. Here opens current Sway config file.
-bindsym --to-code		$mod+F1				exec --no-startup-id "i3-sensible-terminal -e vim ~/.config/sway/config"
-#bindsym			Mod4+F1				exec --no-startup-id "i3-sensible-terminal -e vim ~/.config/sway/config"
+# F1	Help. Here opens current config file.
+$mybind			$mod+F1				exec --no-startup-id "i3-sensible-terminal -e $EDITOR ~/.config/i3/config"
 # FN+F1 equates to Super+F1, but since Super(Mod4) is my $mod key, i3 complains about duplicate bindings.
 
 # F2	Brightness down.
-bindsym --to-code		$mod+F2				exec --no-startup-id "brightness.sh -4"
-bindsym --to-code		XF86MonBrightnessDown		exec --no-startup-id "brightness.sh -4"
+$mybind			$mod+F2				exec --no-startup-id "brightness.sh -4"
+$mybind			XF86MonBrightnessDown		exec --no-startup-id "brightness.sh -4"
 
 # F3	Brightness up.
-bindsym --to-code		$mod+F3				exec --no-startup-id "brightness.sh 4"
-bindsym --to-code		XF86MonBrightnessUp		exec --no-startup-id "brightness.sh 4"
+$mybind			$mod+F3				exec --no-startup-id "brightness.sh 4"
+$mybind			XF86MonBrightnessUp		exec --no-startup-id "brightness.sh 4"
 
 # F4	Switch projector mode. Here toggles touchpad.
-bindsym --to-code		$mod+F4				exec --no-startup-id "toggletouch.sh"
-bindsym --to-code		$mod+p				exec --no-startup-id "toggletouch.sh"
+$mybind			$mod+F4				exec --no-startup-id "toggletouch.sh"
+$mybind			$mod+p				exec --no-startup-id "toggletouch.sh"
 
 # F5	Empty. Here refreshes i3status.
-bindsym --to-code		$mod+F5				exec --no-startup-id "killall -USR1 i3status"
+$mybind			$mod+F5				exec --no-startup-id "killall -USR1 i3status"
 # FN+F5 does nothing on my laptop. No, really, it doesn't even send any signals to work with.
 
 # F6	Mute volume. Here toggles default PulseAudio sink.
-bindsym --to-code		$mod+F6				exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-bindsym --to-code		XF86AudioMute 			exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+$mybind			$mod+F6				exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+$mybind			XF86AudioMute 			exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 
 # F7	Decrease volume.
-bindsym --to-code		$mod+F7				exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%" 
-bindsym --to-code		XF86AudioLowerVolume		exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+$mybind			$mod+F7				exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%" 
+$mybind			XF86AudioLowerVolume		exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%"
 
 # F8	Increase volume.
-bindsym --to-code		$mod+F8				exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%"
-bindsym --to-code		XF86AudioRaiseVolume		exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+$mybind			$mod+F8				exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+$mybind			XF86AudioRaiseVolume		exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%"
 # Next 3 bindings are for media players. Mine are for mpv launched with "umpv" script.
 # F9 	Previous playlist track.
-bindsym --to-code		$mod+F9				exec --no-startup-id "echo playlist-prev > ~/.umpv_fifo"
-bindsym --to-code		XF86AudioPrev			exec --no-startup-id "echo playlist-prev > ~/.umpv_fifo"
+$mybind			$mod+F9				exec --no-startup-id "echo playlist-prev > ~/.umpv_fifo"
+$mybind			XF86AudioPrev			exec --no-startup-id "echo playlist-prev > ~/.umpv_fifo"
 
 # F10 	Play/Pause.
-bindsym --to-code		$mod+F10			exec --no-startup-id "echo cycle pause   > ~/.umpv_fifo"
-bindsym --to-code		XF86AudioPlay			exec --no-startup-id "echo cycle pause   > ~/.umpv_fifo"
+$mybind			$mod+F10			exec --no-startup-id "echo cycle pause   > ~/.umpv_fifo"
+$mybind			XF86AudioPlay			exec --no-startup-id "echo cycle pause   > ~/.umpv_fifo"
 
 # F11	Next playlist track.
-bindsym --to-code		$mod+F11			exec --no-startup-id "echo playlist-next > ~/.umpv_fifo"
-bindsym --to-code		XF86AudioNext			exec --no-startup-id "echo playlist-next > ~/.umpv_fifo"
+$mybind			$mod+F11			exec --no-startup-id "echo playlist-next > ~/.umpv_fifo"
+$mybind			XF86AudioNext			exec --no-startup-id "echo playlist-next > ~/.umpv_fifo"
 
 # F12	Airplane mode. Triggers my redshift toggler script
-bindsym --to-code		$mod+F12			exec --no-startup-id "redshift.sh"
-bindsym --to-code		XF86RFKill			exec --no-startup-id "redshift.sh"
+$mybind			$mod+F12			exec --no-startup-id "redshift.sh"
+$mybind			XF86RFKill			exec --no-startup-id "redshift.sh"
 
 # PrintScreen (or Insert if pressed with FN) is the key I have right after F12. Let's extend the bindings past F12! :D
 # Opens the "CLICKER" mode, as seen at the end of the file.
-bindsym --to-code		$mod+Print			mode CLICKER
-#bindsym --to-code		Insert				mode CLICKER
+$mybind			$mod+Print			mode CLICKER
+#$mybind			Insert				mode CLICKER
 # I don't want to override Insert because it's a nice key to have, so instead I'll compromise the consistency
 # I had with "FN+key does same as $mod+key" thing. lol
-
-# For some reason, when shutting down X, I see notices about this key. So I have this here to hopefully someday
-# see it trigger so that I can figure out what this is even about lol
-#bindsym			XF86Fullscreen			exec --no-startup-id "notify-send XF86Fullscreen"
-# Nevermind, Wayland doesn't want any of it and errors on this being an invalid key.
 
 ## Laptop lid keys.
 #  Again, your laptop's bindings may be different!
@@ -320,255 +262,251 @@ bindsym --to-code		$mod+Print			mode CLICKER
 #  is focused and you don't have a lock screen that would be consuming inputs instead of i3,
 #  meaning that these 2 here aren't that useful for normal usage. Listen to APCI events instead!
 # Laptop lid closing.
-#bindsym			XF86WLAN
+#$mybind			XF86WLAN
 
 # Laptop lid opening.
-#bindsym			XF86WakeUp
+#$mybind			XF86WakeUp
 
 # Power button. Here mapped to a script that pops up a notification that basically says "no".
-bindsym --to-code		XF86PowerOff			exec --no-startup-id "shutdown.py"
+$mybind			XF86PowerOff			exec --no-startup-id "shutdown.py"
 
 # I like these things to have available.
-bindsym --to-code		$mod+Ctrl+l			exec --no-startup-id $lockcmd
-bindsym --to-code		$mod+Ctrl+p			exec --no-startup-id "i3-sensible-terminal -e ping.sh"
+$mybind			$mod+Ctrl+l			exec --no-startup-id $lockcmd
+$mybind			$mod+Ctrl+p			exec --no-startup-id "i3-sensible-terminal -e ping.sh"
 # Trust me, it gets embarrassing when you have 500+ms ping time to your own router.
 
 # This creates an empty placeholder which will swallow the next window that spawns.
 # Really useful if you know in any second now a window from some application will
 # spawn and hijack your focus screwing up your layout in the process. lol
-bindsym --to-code		$mod+Shift+Return		append_layout "~/.config/i3/placeholder"
+$mybind			$mod+Shift+Return		append_layout "~/.config/i3/placeholder"
 
 # Take a screenshot. This script of mine gives me a screen region selection,
 # puts it to /tmp/randompic_$USER.png, and into the clipboard, to then use either.
-bindsym --release	$mod+Shift+s			exec --no-startup-id "gyazolocal"
+$mybind --release	$mod+Shift+s			exec --no-startup-id "gyazolocal"
 # And this one uploads to imgur and copies the link.
-bindsym --release	$mod+Ctrl+s			exec --no-startup-id "gyazo"
+$mybind --release	$mod+Ctrl+s			exec --no-startup-id "gyazo"
 # This one uploads a gif to imgur and copies the link.
-bindsym --release	$mod+Ctrl+g			exec --no-startup-id "gyazogif"
+$mybind --release	$mod+Ctrl+g			exec --no-startup-id "gyazogif"
 
 # I have only bare essentials installed on my system, meaning that
 # I also use only essential shortcuts that are very important.
-bindsym 		$mod+u				exec --no-startup-id "espeak uwu?"
+$mybind			$mod+u				exec --no-startup-id "espeak uwu?"
 
 # Gaps size.
 # It's great fun increasing gaps size until containers get a 
 # negative size and applications start freaking out... :D
 # (though, then they start glitching out and not working properly in most cases...)
-bindsym --to-code		$mod+BackSpace			gaps	inner	current	set	0
-bindsym --to-code		$mod+minus			gaps	inner	current	plus	10
-bindsym --to-code		$mod+equal			gaps	inner	current	minus	10
-
-# Allow changing opacity of the current window. idk how to implement in Sway lol
-#bindsym			$mod+KP_Subtract		exec --no-startup-id "picom-trans -c -20"
-#bindsym			$mod+KP_Add			exec --no-startup-id "picom-trans -c +20"
+$mybind			$mod+BackSpace			gaps	inner	current	set	0
+$mybind			$mod+minus			gaps	inner	current	plus	10
+$mybind			$mod+equal			gaps	inner	current	minus	10
 
 # Allow changing border type between normal, 3 pixel wide and none.
-bindsym --to-code		$mod+Ctrl+1			border	normal	1
-bindsym --to-code		$mod+Ctrl+2			border	pixel	1
-bindsym --to-code		$mod+Ctrl+3			border	none
-bindsym --to-code		$mod+Ctrl+4			border	pixel	3
-bindsym --to-code		$mod+Ctrl+5			border	pixel	2
+$mybind			$mod+Ctrl+1			border	normal	1
+$mybind			$mod+Ctrl+2			border	pixel	1
+$mybind			$mod+Ctrl+3			border	none
+$mybind			$mod+Ctrl+4			border	pixel	3
+$mybind			$mod+Ctrl+5			border	pixel	2
 
 # Force kill current window. Scary, hence awkward to press.
-bindsym --to-code		$mod+Shift+Ctrl+q		exec --no-startup-id "forcekill.sh"
+$mybind			$mod+Shift+Ctrl+q		exec --no-startup-id "forcekill.sh"
 
 # Start a terminal.
-bindsym --to-code		$mod+Return			exec --no-startup-id i3-sensible-terminal
+$mybind			$mod+Return			exec --no-startup-id i3-sensible-terminal
 
 # Close focused window.
-bindsym --to-code		$mod+Shift+q			kill
+$mybind			$mod+Shift+q			kill
 # Close a window by middle-clicking its bar (if it has one lol).
-bindsym --to-code		button2				kill
+$mybind			button2				kill
 
 # Start dmenu (a program launcher)
-bindsym --to-code		$mod+d				exec --no-startup-id  dmenu_run
+$mybind			$mod+d				exec --no-startup-id  dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym		$mod+d				exec --no-startup-id i3-dmenu-desktop
+# $mybind		$mod+d				exec --no-startup-id i3-dmenu-desktop
 
 
 # Change focus. Edited to comply with Vi keys.
-bindsym --to-code		$mod+h				focus left
-bindsym --to-code		$mod+j				focus down
-bindsym --to-code		$mod+k				focus up
-bindsym --to-code		$mod+l				focus right
+$mybind			$mod+h				focus left
+$mybind			$mod+j				focus down
+$mybind			$mod+k				focus up
+$mybind			$mod+l				focus right
 
-bindsym --to-code		$mod+Left			focus left
-bindsym --to-code		$mod+Down			focus down
-bindsym --to-code		$mod+Up				focus up
-bindsym --to-code		$mod+Right			focus right
+$mybind			$mod+Left			focus left
+$mybind			$mod+Down			focus down
+$mybind			$mod+Up				focus up
+$mybind			$mod+Right			focus right
 
 # I admit I may or may not have a habit from Windows seen here.
 # Besides, in a layout where all windows are floating and overlap
 # because there's no other way to use software with fixed size big windows,
 # and in commonplace 1 hand on mouse posture, this is useful!
-bindsym --to-code		$mod+Tab			focus right
-bindsym --to-code		$mod+Shift+Tab			focus left
-bindsym --to-code		$mod+Ctrl+Tab			focus down
-bindsym --to-code		$mod+Ctrl+Shift+Tab		focus up
+$mybind			$mod+Tab			focus right
+$mybind			$mod+Shift+Tab			focus left
+$mybind			$mod+Ctrl+Tab			focus down
+$mybind			$mod+Ctrl+Shift+Tab		focus up
 
 
 # Move focused window. Edited to comply with Vi keys.
-bindsym --to-code		$mod+Shift+h			move left
-bindsym --to-code		$mod+Shift+j			move down
-bindsym --to-code		$mod+Shift+k			move up
-bindsym --to-code		$mod+Shift+l			move right
+$mybind			$mod+Shift+h			move left
+$mybind			$mod+Shift+j			move down
+$mybind			$mod+Shift+k			move up
+$mybind			$mod+Shift+l			move right
 
-bindsym --to-code		$mod+Shift+Left			move left
-bindsym --to-code		$mod+Shift+Down			move down
-bindsym --to-code		$mod+Shift+Up			move up
-bindsym --to-code		$mod+Shift+Right		move right
+$mybind			$mod+Shift+Left			move left
+$mybind			$mod+Shift+Down			move down
+$mybind			$mod+Shift+Up			move up
+$mybind			$mod+Shift+Right		move right
 
 # Wrap current window into a horisontal split container
 # I use " the way it's in tmux! (because familiarity, and also because h is occupied by vi keys)
-bindsym --to-code		$mod+quotedbl			split h
-bindsym --to-code		$mod+apostrophe			split h
+$mybind			$mod+quotedbl			split h
+$mybind			$mod+apostrophe			split h
 # Allright, fine, g is also nice.
-bindsym --to-code		$mod+g				split h
+$mybind			$mod+g				split h
 
 # Wrap current window into a vertical split container
-bindsym --to-code		$mod+v				split v
+$mybind			$mod+v				split v
 
 # Put focused window/container as fullscreen.
-bindsym --to-code		$mod+f				fullscreen toggle
+$mybind			$mod+f				fullscreen toggle
 
 # Change current container's layout mode.
-bindsym --to-code		$mod+s				layout stacking
-bindsym --to-code		$mod+w				layout tabbed
-bindsym --to-code		$mod+e				layout toggle split
-bindsym --to-code		$mod+Ctrl+v			layout splitv
-bindsym --to-code		$mod+Ctrl+quotedbl		layout splith
-bindsym --to-code		$mod+Ctrl+apostrophe		layout splith
-bindsym --to-code		$mod+Ctrl+g			layout splith
+$mybind			$mod+s				layout stacking
+$mybind			$mod+w				layout tabbed
+$mybind			$mod+e				layout toggle split
+$mybind			$mod+Ctrl+v			layout splitv
+$mybind			$mod+Ctrl+quotedbl		layout splith
+$mybind			$mod+Ctrl+apostrophe		layout splith
+$mybind			$mod+Ctrl+g			layout splith
 
 # Toggle current container between tiling and floating. 
 # DUDE YOU CAN PUT A CONTAINER WITH MULTIPLE WINDOWS INTO FLOATING MODE HOLY COW
-bindsym --to-code		$mod+Shift+space		floating toggle
+$mybind			$mod+Shift+space		floating toggle
 
 # change focus between tiling / floating windows
-bindsym --to-code		$mod+space			focus mode_toggle
+$mybind			$mod+space			focus mode_toggle
 
 # focus the parent container
-bindsym --to-code		$mod+a				focus parent
+$mybind			$mod+a				focus parent
 
 # focus the child container
-bindsym --to-code		$mod+Shift+a			focus child
+$mybind			$mod+Shift+a			focus child
 
 # Toggle sticky status of the current window (to make it follow you on all workspaces)
-bindsym --to-code		$mod+q				sticky toggle
+$mybind			$mod+q				sticky toggle
 
 # Switch to a workspace. Makes sense to put workspace 0 onto ~, doesn't it?
 # (although I put a scratchpad thing there which I don't really use lmao)
 # actually yeah, scratch that scratchpad idea, I'll have another workspace instead lol
-bindsym --to-code		$mod+1				workspace 1
-bindsym --to-code		$mod+2				workspace 2
-bindsym --to-code		$mod+3				workspace 3
-bindsym --to-code		$mod+4				workspace 4
-bindsym --to-code		$mod+5				workspace 5
-bindsym --to-code		$mod+6				workspace 6
-bindsym --to-code		$mod+7				workspace 7
-bindsym --to-code		$mod+8				workspace 8
-bindsym --to-code		$mod+9				workspace 9
-bindsym --to-code		$mod+0				workspace 10
-bindsym --to-code		$mod+grave			workspace 0
-#bindsym			$mod+grave			scratchpad show
+$mybind			$mod+1				workspace 1
+$mybind			$mod+2				workspace 2
+$mybind			$mod+3				workspace 3
+$mybind			$mod+4				workspace 4
+$mybind			$mod+5				workspace 5
+$mybind			$mod+6				workspace 6
+$mybind			$mod+7				workspace 7
+$mybind			$mod+8				workspace 8
+$mybind			$mod+9				workspace 9
+$mybind			$mod+0				workspace 10
+$mybind			$mod+grave			workspace 0
+#$mybind			$mod+grave			scratchpad show
 
-bindsym --to-code		$mod+z				workspace prev
-bindsym --to-code		$mod+x				workspace next
+$mybind			$mod+z				workspace prev
+$mybind			$mod+x				workspace next
 
 # Move focused container to a workspace.
 # Keep in mind that it's faster to select entire containers with $mod+A, and then
 # move them at once. Sounds obvious, but I didn't figure that out myself for
 # an embarrassingly long time. ._.
-bindsym --to-code		$mod+Shift+1			move container to workspace 1
-bindsym --to-code		$mod+Shift+2			move container to workspace 2
-bindsym --to-code		$mod+Shift+3			move container to workspace 3
-bindsym --to-code		$mod+Shift+4			move container to workspace 4
-bindsym --to-code		$mod+Shift+5			move container to workspace 5
-bindsym --to-code		$mod+Shift+6			move container to workspace 6
-bindsym --to-code		$mod+Shift+7			move container to workspace 7
-bindsym --to-code		$mod+Shift+8			move container to workspace 8
-bindsym --to-code		$mod+Shift+9			move container to workspace 9
-bindsym --to-code		$mod+Shift+0			move container to workspace 10
-bindsym --to-code		$mod+Shift+grave		move container to workspace 0
-#bindsym			$mod+Shift+grave		move scratchpad
+$mybind			$mod+Shift+1			move container to workspace 1
+$mybind			$mod+Shift+2			move container to workspace 2
+$mybind			$mod+Shift+3			move container to workspace 3
+$mybind			$mod+Shift+4			move container to workspace 4
+$mybind			$mod+Shift+5			move container to workspace 5
+$mybind			$mod+Shift+6			move container to workspace 6
+$mybind			$mod+Shift+7			move container to workspace 7
+$mybind			$mod+Shift+8			move container to workspace 8
+$mybind			$mod+Shift+9			move container to workspace 9
+$mybind			$mod+Shift+0			move container to workspace 10
+$mybind			$mod+Shift+grave		move container to workspace 0
+#$mybind			$mod+Shift+grave		move scratchpad
 
-bindsym --to-code		$mod+Shift+z			move container to workspace prev
-bindsym --to-code		$mod+Shift+x			move container to workspace next
+$mybind			$mod+Shift+z			move container to workspace prev
+$mybind			$mod+Shift+x			move container to workspace next
 
-bindsym --to-code		$mod+Shift+less			move workspace to output left
-bindsym --to-code		$mod+Shift+greater		move workspace to output right
+$mybind			$mod+Shift+less			move workspace to output left
+$mybind			$mod+Shift+greater		move workspace to output right
 
 
 # Resize mode. Edited to comply with Vi keys.
 # Also, CTRL gives smaller steps while SHIFT gives bigger steps.
 mode "resize" {
 
-        bindsym			h			resize shrink width		5 px or 5 ppt
-        bindsym			j			resize grow height		5 px or 5 ppt
-        bindsym			k			resize shrink height		5 px or 5 ppt
-        bindsym			l			resize grow width		5 px or 5 ppt
-        bindsym			Left			resize shrink width		5 px or 5 ppt
-        bindsym			Down			resize grow height		5 px or 5 ppt
-        bindsym			Up			resize shrink height		5 px or 5 ppt
-        bindsym			Right			resize grow width		5 px or 5 ppt
+        $mybind		h				resize shrink width		5 px or 5 ppt
+        $mybind		j				resize grow height		5 px or 5 ppt
+        $mybind		k				resize shrink height		5 px or 5 ppt
+        $mybind		l				resize grow width		5 px or 5 ppt
+        $mybind		Left				resize shrink width		5 px or 5 ppt
+        $mybind		Down				resize grow height		5 px or 5 ppt
+        $mybind		Up				resize shrink height		5 px or 5 ppt
+        $mybind		Right				resize grow width		5 px or 5 ppt
 
-        bindsym			Shift+h			resize shrink width		15 px or 15 ppt
-        bindsym			Shift+j			resize grow height		15 px or 15 ppt
-        bindsym			Shift+k			resize shrink height		15 px or 15 ppt
-        bindsym			Shift+l			resize grow width		15 px or 15 ppt
-        bindsym			Shift+Left		resize shrink width		15 px or 15 ppt
-        bindsym			Shift+Down		resize grow height		15 px or 15 ppt
-        bindsym			Shift+Up		resize shrink height		15 px or 15 ppt
-        bindsym			Shift+Right		resize grow width		15 px or 15 ppt
+        $mybind		Shift+h				resize shrink width		15 px or 15 ppt
+        $mybind		Shift+j				resize grow height		15 px or 15 ppt
+        $mybind		Shift+k				resize shrink height		15 px or 15 ppt
+        $mybind		Shift+l				resize grow width		15 px or 15 ppt
+        $mybind		Shift+Left			resize shrink width		15 px or 15 ppt
+        $mybind		Shift+Down			resize grow height		15 px or 15 ppt
+        $mybind		Shift+Up			resize shrink height		15 px or 15 ppt
+        $mybind		Shift+Right			resize grow width		15 px or 15 ppt
 
-        bindsym			Ctrl+h			resize shrink width		2 px or 2 ppt
-        bindsym			Ctrl+j			resize grow height		2 px or 2 ppt
-        bindsym			Ctrl+k			resize shrink height		2 px or 2 ppt
-        bindsym			Ctrl+l			resize grow width		2 px or 2 ppt
-        bindsym			Ctrl+Left		resize shrink width		2 px or 2 ppt
-        bindsym			Ctrl+Down		resize grow height		2 px or 2 ppt
-        bindsym			Ctrl+Up			resize shrink height		2 px or 2 ppt
-        bindsym			Ctrl+Right		resize grow width		2 px or 2 ppt
+        $mybind		Ctrl+h				resize shrink width		2 px or 2 ppt
+        $mybind		Ctrl+j				resize grow height		2 px or 2 ppt
+        $mybind		Ctrl+k				resize shrink height		2 px or 2 ppt
+        $mybind		Ctrl+l				resize grow width		2 px or 2 ppt
+        $mybind		Ctrl+Left			resize shrink width		2 px or 2 ppt
+        $mybind		Ctrl+Down			resize grow height		2 px or 2 ppt
+        $mybind		Ctrl+Up				resize shrink height		2 px or 2 ppt
+        $mybind		Ctrl+Right			resize grow width		2 px or 2 ppt
         # back to normal: Enter or Escape
-        bindsym			Return			mode "default"
-        bindsym			Escape			mode "default"
+        $mybind		Return				mode "default"
+        $mybind		Escape				mode "default"
 }
-bindsym --to-code		$mod+r				mode "resize"
+$mybind			$mod+r				mode "resize"
 
 
 # Toggle the bar on/off
-bindsym --to-code		$mod+b				bar mode toggle
+$mybind			$mod+b				bar mode toggle
 
 # Got it from https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html
 set $mode_system System (l) lock, (q) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-		bindsym --to-code		l		exec --no-startup-id "i3exit lock", mode "default"
-		bindsym --to-code		q		exec --no-startup-id "i3exit logout", mode "default"
-		bindsym --to-code		s		exec --no-startup-id "i3exit suspend", mode "default"
-		bindsym --to-code		h		exec --no-startup-id "i3exit hibernate", mode "default"
-		bindsym --to-code		r		exec --no-startup-id "i3exit reboot", mode "default"
-		bindsym --to-code		Shift+s		exec --no-startup-id "i3exit shutdown", mode "default"
+	$mybind		l				exec --no-startup-id "i3exit lock", mode "default"
+	$mybind		q				exec --no-startup-id "i3exit logout", mode "default"
+	$mybind		s				exec --no-startup-id "i3exit suspend", mode "default"
+	$mybind		h				exec --no-startup-id "i3exit hibernate", mode "default"
+	$mybind		r				exec --no-startup-id "i3exit reboot", mode "default"
+	$mybind		Shift+s				exec --no-startup-id "i3exit shutdown", mode "default"
 
-		# back to normal: Enter or Escape
-		bindsym --to-code		Return		mode "default"
-		bindsym --to-code		Escape		mode "default"
+	# back to normal: Enter or Escape
+	$mybind		Return				mode "default"
+	$mybind		Escape				mode "default"
 }
-bindsym --to-code		$mod+Shift+e			mode "$mode_system"
+$mybind			$mod+Shift+e			mode "$mode_system"
 
 # Clicker mode - when in it, press the mouse button's number you want to repeatedly click.
 # If clicker is active, any number turns it off.
 mode "CLICKER" {
-		bindsym --to-code		1		exec --no-startup-id "clicker.sh 1", mode "default"
-		bindsym --to-code		2		exec --no-startup-id "clicker.sh 2", mode "default"
-		bindsym --to-code		3		exec --no-startup-id "clicker.sh 3", mode "default"
-		bindsym --to-code		4		exec --no-startup-id "clicker.sh 4", mode "default"
-		bindsym --to-code		5		exec --no-startup-id "clicker.sh 5", mode "default"
-		bindsym --to-code		6		exec --no-startup-id "clicker.sh 6", mode "default"
-		bindsym --to-code		7		exec --no-startup-id "clicker.sh 7", mode "default"
-		bindsym --to-code		8		exec --no-startup-id "clicker.sh 8", mode "default"
-		bindsym --to-code		9		exec --no-startup-id "clicker.sh 9", mode "default"
-		bindsym --to-code		Return		mode "default"
-		bindsym --to-code		Escape		mode "default"
+	$mybind		1				exec --no-startup-id "clicker.sh 1", mode "default"
+	$mybind		2				exec --no-startup-id "clicker.sh 2", mode "default"
+	$mybind		3				exec --no-startup-id "clicker.sh 3", mode "default"
+	$mybind		4				exec --no-startup-id "clicker.sh 4", mode "default"
+	$mybind		5				exec --no-startup-id "clicker.sh 5", mode "default"
+	$mybind		6				exec --no-startup-id "clicker.sh 6", mode "default"
+	$mybind		7				exec --no-startup-id "clicker.sh 7", mode "default"
+	$mybind		8				exec --no-startup-id "clicker.sh 8", mode "default"
+	$mybind		9				exec --no-startup-id "clicker.sh 9", mode "default"
+	$mybind		Return				mode "default"
+	$mybind		Escape				mode "default"
 }

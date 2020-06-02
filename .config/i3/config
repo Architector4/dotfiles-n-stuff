@@ -1,5 +1,5 @@
-# OHAI, i3  !!!
-# owait i3   ignores comments. UwU
+# OHAI, i3!!!
+# owait i3 ignores comments. UwU
 # Uhh, Architector #4 wrote this. Dunno if it's necessary to sign a config, but, eh.
 # vim:ts=8:
 
@@ -74,7 +74,6 @@ exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1"
 # My (less crappy) script that allows me to toggle Redshift (program that shifts
 # screen light to red, duh), which with "on" parameter turns it on instead.
 exec --no-startup-id "redshift.sh on" 
-
 
 # I like this font.
 # Also, apparently you should put your font config before your bar settings.
@@ -437,6 +436,9 @@ bindsym			$mod+Shift+grave		move container to workspace 0
 
 bindsym			$mod+Shift+z			move container to workspace prev
 bindsym			$mod+Shift+x			move container to workspace next
+
+bindsym			$mod+Shift+less			move workspace to output left
+bindsym			$mod+Shift+greater		move workspace to output right
 
 
 # Resize mode. Edited to comply with Vi keys.

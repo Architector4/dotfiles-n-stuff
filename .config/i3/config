@@ -1,11 +1,7 @@
-# OHAI, Sway!!!
-# owait Sway ignores comments. UwU
+# OHAI, i3!!!
+# owait i3 ignores comments. UwU
 # Uhh, Architector #4 wrote this. Dunno if it's necessary to sign a config, but, eh.
 # vim:ts=8:
-
-# ALSO OH GOD YOU CANT JUST PASTE AN i3 CONFIG HERE SWAY GETS IT ALL WRONG
-# AND HATES COMMENTS AT THE END OF THINGS
-# so yeah this is derivative off my i3 config lololol
 
 #################################################################
 #		SETTINGS: Stuff that isn't bindings		#
@@ -60,7 +56,7 @@ exec --no-startup-id "xrdb ~/.Xresources"
 # Clipboard manager
 exec --no-startup-id "copyq" 
 # Desktop compositor
-#exec --no-startup-id "picom" # Don't need a window compositor because Wayland/Sway acts as one!
+exec --no-startup-id "picom" 
 # Notification manager
 exec --no-startup-id "dunst" 
 # Control the pointer from the keyboard (actually really handy!)
@@ -77,7 +73,7 @@ exec --no-startup-id "i3_watch_lid.sh"
 exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1" 
 # My (less crappy) script that allows me to toggle Redshift (program that shifts
 # screen light to red, duh), which with "on" parameter turns it on instead.
-#exec --no-startup-id "redshift.sh on" # Couldn't figure out how to make reshift work on Wayland lol
+exec --no-startup-id "redshift.sh on" 
 
 # I like this font.
 # Also, apparently you should put your font config before your bar settings.
@@ -89,6 +85,12 @@ font pango:DejaVu Sans Mono 12
 bar {
 	# Disable clicking on the bar's workspace buttons
 	#$mybind		button1		nop
+	#$mybind		button2		nop
+	#$mybind		button3		nop
+	#$mybind		button4		nop
+	#$mybind		button5		nop
+	#$mybind		button6		nop
+	#$mybind		button7		nop
 	# Allows the bar to be displayed only on this screen
 	#output eDP		
 	# Shows tray icons only on the instance of the bar that is on this screen.
@@ -100,7 +102,8 @@ bar {
 	#status_command "cat /dev/urandom"	# That is actually really fun.
 	
 	colors {
-		# Bar colors. See Sway documentation for what is what: man 5 sway
+		# Bar colors. See i3 documentation for what is what:
+		# https://i3wm.org/docs/userguide.html#_colors
 		# Default colors:
 		#background	#000000
 		#statusline	#ffffff
@@ -136,10 +139,6 @@ bar {
 		urgent_workspace	#8888FF	#233597	#ffffff
 		binding_mode		#88FF88 #239735	#ffffff
 	}
-
-	# Sway specific stuff
-	height 19
-	status_padding 0
 }
 
 # Force preferred windows to float.
@@ -160,7 +159,8 @@ for_window [title="glxgears"]			floating enable
 #for_window [title=" - Oracle VM VirtualBox"]	floating enable
 #for_window [class="VirtualBoxVM"]		floating enable
 
-# Colors. See Sway documentation for what is what: man 5 sway
+# Colors. See i3 documentation for what is what:
+# https://i3wm.org/docs/userguide.html#_changing_colors
 
 # Default colors:
 #Class	-	-	-	border	backgr.	text	indic.	child_border
@@ -184,33 +184,6 @@ client.urgent			#8888FF	#233597	#ffffff	#000090	#000090
 client.placeholder		#000000	#0c0c0c	#ffffff	#000000	#0c0c0c
 
 
-### SWAY SPECIFIC STUFF
-
-# Enable touchpad tapping
-input * tap enabled
-# Set more (in)sane key repeat delay/rate
-input * repeat_delay 170
-input * repeat_rate 60
-# Numpad ON by default
-input * xkb_numlock enabled
-# I hate mouse acceleration
-input * accel_profile flat
-# I hate big mouse speed
-input * pointer_accel -0.5
-# Fine, my touchpad keeps big mouse speed.
-input "type:touchpad" pointer_accel 0
-# Muh keyboard layouts
-input * xkb_layout "us,ru"
-# allow switching keyboard layouts with ALT+SHIFT and also compose key
-input * xkb_options "grp:lalt_lshift_toggle,compose:rctrl"
-# Set wallpaper
-# output * bg ~/Pictures/Halifax_Sunset_by_Vlad_Drobinin.jpg center
-output * bg "#000000" solid_color
-# Get behavior closer to i3 with one child of a tabbed/stacked container
-hide_edge_borders --i3 none
-# Set same titlebar padding size as in i3
-titlebar_padding 2
-
 #################################################################
 #		BINDINGS: Stuff that isn't settings		#
 #################################################################
@@ -218,7 +191,7 @@ titlebar_padding 2
 # Sway's bindsym acts differently than i3's, so to keep
 # the two configs as close as possible, I have to use a variable
 # that is set to the correct binding command.
-set $mybind bindsym --to-code
+set $mybind bindsym
 
 
 # reload the configuration file
@@ -235,7 +208,7 @@ $mybind			$mod+Shift+r			restart
 # Your laptop's bindings may be different! (or you might not even have a laptop, I dunno)
 
 # F1	Help. Here opens current config file.
-$mybind			$mod+F1				exec --no-startup-id "i3-sensible-terminal -e $EDITOR ~/.config/sway/config"
+$mybind			$mod+F1				exec --no-startup-id "i3-sensible-terminal -e $EDITOR ~/.config/i3/config"
 # FN+F1 equates to Super+F1, but since Super(Mod4) is my $mod key, i3 complains about duplicate bindings.
 
 # F2	Brightness down.

@@ -38,6 +38,15 @@ include "%L"
 <Multi_key> <parenleft> <greater>		: "⁀" # Spacing
 <Multi_key> <parenright> <greater>		: " ͝" # Non-spacing
 # Did not account for these 2 symbols: ͡ ͜ # Non-spacing
+<Multi_key> <C> <less>				: "◠"
+<Multi_key> <C> <greater>			: "◡"
+
+
+# Backhand index pointing up/down/left/right - apparently you can use arrow keys!
+<Multi_key> <f> <Up>				: "👆"
+<Multi_key> <f> <Down>				: "👇"
+<Multi_key> <f> <Left>				: "👈"
+<Multi_key> <f> <Right>				: "👉"
 
 # Don't ask.
 <Multi_key> <O> <w> <O>				: "Rawr x3 nuzzles how are you pounces on you you're so warm o3o notices your face turn red o: someone's happy ;)"

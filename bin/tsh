@@ -1,1 +1,2 @@
+#!/bin/sh
 echo "Test executable shellscript; got arguments" $@

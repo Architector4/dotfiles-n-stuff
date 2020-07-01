@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Return current PulseAudio volume. Probably only specific to my setup tho
 
 if [[ -n $(pidof pulseaudio) ]];then

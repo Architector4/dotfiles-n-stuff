@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Load a specified file into the clipboard with its mimetype
 
 if [[ $# = 0 ]]; then

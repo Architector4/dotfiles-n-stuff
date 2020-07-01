@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Used for multiplayer sessions in videogame Terraria
 # When activated, this script spams random items the chat lol
 

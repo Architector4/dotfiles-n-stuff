@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # When an image is in clipboard, save it into a file
 
 if [[ $# = 0 ]]; then

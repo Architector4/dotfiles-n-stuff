@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 file=/tmp/randompic_$USER.png # lolololol
 

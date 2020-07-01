@@ -3,6 +3,9 @@ map <F6> :setlocal spell!<CR>
 " Spellcheck language - I need it only with Russian stuff
 :set spelllang=ru
 
+" Map double press of "MENU" key to "ESCAPE" key when in Insert mode
+:imap [29~ <Esc><Esc>
+
 " Show number lines on the left
 :set number
 " Turn on syntax highlighting

@@ -1,3 +1,4 @@
+
 ! Set DPI, because random applications get confused about it and mess things up.
 *.dpi: 72
 ! Monospace font for applications that care about it
@@ -68,7 +69,7 @@ URxvt.letterSpace:		-1
 ! Color depth
 URxvt.depth:			32
 ! Extensions to use
-URxvt.perl-ext-common:		default,clipboard,url-select,keyboard-select,resize-font
+URxvt.perl-ext-common:		default,clipboard,url-select,keyboard-select,resize-font,font-size
 
 ! EXTENSION url-select
 ! Does what it says on the tin - allows quickly opening URLs visible on the terminal.
@@ -97,3 +98,8 @@ URxvt.keyboard-select.clipboard: true
 URxvt.resize-font.smaller:	A-j
 ! Alt+J to make it bigger
 URxvt.resize-font.bigger:	A-k
+
+! EXTENSION font-size
+! Allows resizing the font realtime; alternative to resize-font in FreeBSD repos
+!URxvt.keysym.A-j:		font-size:decrease
+!URxvt.keysym.A-k:		font-size:increase

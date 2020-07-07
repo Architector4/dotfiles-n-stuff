@@ -69,7 +69,7 @@ URxvt.letterSpace:		-1
 ! Color depth
 URxvt.depth:			32
 ! Extensions to use
-URxvt.perl-ext-common:		default,clipboard,url-select,keyboard-select,resize-font,font-size
+URxvt.perl-ext-common:		default,clipboard,url-select,keyboard-select,font-size
 
 ! EXTENSION url-select
 ! Does what it says on the tin - allows quickly opening URLs visible on the terminal.
@@ -92,14 +92,9 @@ URxvt.keysym.M-s:		perl:keyboard-select:search
 ! When yanking a selection, put it into clipboard for quick CTRL+V action
 URxvt.keyboard-select.clipboard: true
 
-! EXTENSION resize-font
-! Allows resizing the font realtime
-! Alt+J to make it smaller
-URxvt.resize-font.smaller:	A-j
-! Alt+J to make it bigger
-URxvt.resize-font.bigger:	A-k
-
 ! EXTENSION font-size
-! Allows resizing the font realtime; alternative to resize-font in FreeBSD repos
-!URxvt.keysym.A-j:		font-size:decrease
-!URxvt.keysym.A-k:		font-size:increase
+! Allows resizing the font realtime
+! Available on https://github.com/majutsushi/urxvt-font-size
+! or "urxvt-font-size-git" in AUR
+URxvt.keysym.A-j:		font-size:decrease
+URxvt.keysym.A-k:		font-size:increase

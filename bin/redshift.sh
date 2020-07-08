@@ -3,7 +3,7 @@
 
 # Status file is an empty file that signifies if the script is running or not.
 # Helps to allow for the toggling behavior.
-STATUSFILE=~/.redshift_enabled
+STATUSFILE=~/.cache/.redshift_enabled
 
 if [ -f "$STATUSFILE" ] && [ "$1" != "on" ]; then
 	# Status file exists, meaning the script is running,

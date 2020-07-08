@@ -7,7 +7,7 @@ STATUSFILE=~/.redshift_enabled
 
 if [ -f "$STATUSFILE" ] && [ "$1" != "on" ]; then
 	# Status file exists, meaning the script is running,
-	# or "on" parameter was sent.
+	# and "on" parameter was not sent.
 	# Remove the status file!
 	rm $STATUSFILE
 	# Turn it off

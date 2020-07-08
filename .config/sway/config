@@ -77,7 +77,7 @@ exec --no-startup-id "i3_watch_lid.sh"
 exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1" 
 # My (less crappy) script that allows me to toggle Redshift (program that shifts
 # screen light to red, duh), which with "on" parameter turns it on instead.
-#exec --no-startup-id "redshift.sh on" # Couldn't figure out how to make reshift work on Wayland lol
+exec --no-startup-id "redshift.sh on"
 
 # I like this font.
 # Also, apparently you should put your font config before your bar settings.

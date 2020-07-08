@@ -216,6 +216,9 @@ output * bg "#000000" solid_color
 hide_edge_borders --i3 none
 # Set same titlebar padding size as in i3
 titlebar_padding 2
+# Move output 2 to the right of my primary one
+output eDP-1 pos 0 0
+output HDMI-A-1 pos 1920 0
 # Set background to a cool picture
 output * background ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg fill
 

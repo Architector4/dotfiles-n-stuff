@@ -479,8 +479,9 @@ $mybind			$mod+Shift+grave		move container to workspace 0
 $mybind			$mod+Shift+z			move container to workspace prev
 $mybind			$mod+Shift+x			move container to workspace next
 
-$mybind			$mod+Shift+less			move workspace to output left
-$mybind			$mod+Shift+greater		move workspace to output right
+# Apparently i3 needs specifically "less and greater", but sway needs specifically "comma" and "period"
+$mybind			$mod+Shift+comma		move workspace to output left
+$mybind			$mod+Shift+period		move workspace to output right
 
 
 # Resize mode. Edited to comply with Vi keys.

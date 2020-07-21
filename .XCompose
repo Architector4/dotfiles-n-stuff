@@ -18,6 +18,7 @@ include "%L"
 # These are cool things too I guess
 <Multi_key> <backslash> <slash>			: "∨"
 <Multi_key> <slash> <backslash>			: "∧"
+<Multi_key> <O> <asterisk>			: "⊙"
 
 # Workarounds to do Latin keyboard layout symbols on Cyrillic layout
 <Multi_key> <Cyrillic_BE> <Cyrillic_BE>		: "«"

@@ -8,6 +8,11 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+# Set language
+export LANG=en_US.utf8
+export LC_ALL=$LANG
+export LANGUAGE=$LANG
+
 #if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists

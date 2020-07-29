@@ -49,6 +49,10 @@ include "%L"
 <Multi_key> <f> <Left>				: "👈"
 <Multi_key> <f> <Right>				: "👉"
 
+
+# Lenny face
+<Multi_key> <l> <e>				: "( ͡° ͜ʖ ͡°)"
+
 # Don't ask.
 <Multi_key> <O> <w> <O>				: "Rawr x3 nuzzles how are you pounces on you you're so warm o3o notices your face turn red o: someone's happy ;)"
 

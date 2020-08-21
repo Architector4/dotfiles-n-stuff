@@ -95,7 +95,8 @@ export EDITOR=vim
 # Stop WINE from creating desktop shortcuts, menu entries and other stuff.
 export WINEDLLOVERRIDES=winemenubuilder.exe=d
 # Apparently this makes stuff faster lol
-export RADV_PERFTEST=aco
+# But it's default since Mesa 20.2 so worth disabling now lol
+#export RADV_PERFTEST=aco
 # Apparently this makes stuff even faster xd
 export WINEFSYNC=1
 # Fix Java fonts lol
@@ -131,6 +132,8 @@ alias feh="feh --conversion-timeout 1"
 # to provide equivalent functionality in all cases.
 #alias o="exo-open" 
 #alias о="exo-open" # Russian о here.
+# Use AMDVLK instead of Mesa's RADV for Vulkan - gives less performance, but why not.
+alias amdvlk='export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_icd64.json:/usr/share/vulkan/icd.d/amd_icd32.json'
 
 # "mkcd" to mkdir and then cd to the result
 mkcd() { mkdir "$@";cd "$@";}

@@ -1,12 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # When an image is in clipboard, save it into a file
 
-if [[ $# = 0 ]]; then
+if [ $# -eq 0 ]; then
 	echo "$0": no filename specified
 	exit 1
 fi
 
-tmpfile=/tmp/randompic_clip_$USER$RANDOM.png
+tmpfile=/tmp/randompic_clip_$USER.png
 file=$1
 xclip -selection clipboard -target image/png -out > "$tmpfile"
 if [ -s "$tmpfile" ]; then

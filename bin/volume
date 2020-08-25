@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # Return current PulseAudio volume. Probably only specific to my setup tho
 
-if [[ -n $(pidof pulseaudio) ]];then
+if [ -n "$(pidof pulseaudio)" ];then
 	pacmd list-sinks | grep "volume: front" | cut "-b30-34"
 fi

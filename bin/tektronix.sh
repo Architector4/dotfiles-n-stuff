@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # This script uses xterm's Tektronix terminal emulator emulation to show off random pictures
 # from /usr/share/tek2plot, which has weird cool graphs and some world map and looks hackery lol

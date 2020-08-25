@@ -1,7 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # Load a specified file into the clipboard with its mimetype
 
-if [[ $# = 0 ]]; then
+if [ $# -eq 0 ]; then
 	echo "$0": no filename specified
 	exit 1
 fi

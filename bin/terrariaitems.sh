@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Used for multiplayer sessions in videogame Terraria
-# When activated, this script spams random items the chat lol
+# Used for multiplayer sessions in Terraria
+# When activated, this script spams random item icons the chat lol
 
 function item() {
 	xdotool type "[i"

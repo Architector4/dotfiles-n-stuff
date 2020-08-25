@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # Toggle redshift
 
 # Status file is an empty file that signifies if the script is running or not.

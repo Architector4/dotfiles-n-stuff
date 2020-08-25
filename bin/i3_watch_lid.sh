@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # Look at ACPI events, and trigger i3lock when laptop lid is closed
 
 # the description of this file is invalid now that

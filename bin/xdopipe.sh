@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # Receive text on stdin and type it out with xdotool
 # Optional arguments are prepended to each line
 while read -r line; do

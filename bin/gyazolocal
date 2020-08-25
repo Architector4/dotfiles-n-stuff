@@ -2,19 +2,19 @@
 
 file=/tmp/randompic_$USER.png # lolololol
 
-if [[ $# > 0 ]];then
+if [ $# -gt 0 ];then
 	file=$1
 fi
 
-rm $file
+rm "$file"
 #scrot -s $file
 #scrot -a$(slop -f %x,%y,%w,%h -o) $file
 
 umask 077 # Prevent others from being able to read the file
-gyazolocal2 $file &&
+gyazolocal2 "$file" &&
 
 #xclip -in -selection clipboard -target image/png $file # does nothing xd
-copyq write image/png - < $file &&
+copyq write image/png - < "$file" &&
 copyq select 0 && 
 
 # Pop up a notification

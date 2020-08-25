@@ -7,8 +7,8 @@ else					# Running on wayland
 fi
 if [ -n "$GEOMETRY" ]; then
 	if [ -z "$WAYLAND_DISPLAY" ]; then	# Running on X
-		scrot -a "$GEOMETRY" $@
+		scrot -a "$GEOMETRY" "$@"
 	else					# Running on wayland
-		grim -g "$GEOMETRY" $@
+		grim -g "$GEOMETRY" "$@"
 	fi
 fi

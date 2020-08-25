@@ -2,9 +2,10 @@
 # Load a specified file into the clipboard with its mimetype
 
 if [[ $# = 0 ]]; then
-	echo $0: no filename specified
+	echo "$0": no filename specified
 	exit 1
 fi
 
 file=$1
-xclip -selection clipboard -target $(xdg-mime query filetype "$file") -in < "$file"
+mimetype=$(xdg-mime query filetype "$file")
+xclip -selection clipboard -target "$mimetype" -in < "$file"

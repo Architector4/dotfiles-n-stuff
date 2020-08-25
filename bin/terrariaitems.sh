@@ -7,9 +7,9 @@ function item() {
 	xdotool key 61
 	#xdotool type "1"
 	xdotool type "s"
-	xdotool type "$(($RANDOM%99))"
+	xdotool type "$((RANDOM%99))"
 	xdotool key Shift+47
-	xdotool type "$(($RANDOM%3929))"
+	xdotool type "$((RANDOM%3929))"
 	xdotool type "]"
 }
 function return() {
@@ -23,6 +23,9 @@ while true
 	return
 	for i in {1..10};do
 		item
+		true "$i" # To stop shellcheck from complaining
+		# Yeah this is trash code - it doesn't need to
+		# be performant lmao
 	done
 	return
 done

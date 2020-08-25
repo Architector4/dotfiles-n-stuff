@@ -34,8 +34,8 @@
 # handlers in /etc/acpi/events.
 
 
-acpi_listen | while read line; do
-	if (echo $line | grep "LID close"); then
+acpi_listen | while read -r line; do
+	if (echo "$line" | grep "LID close"); then
 		#echo "LOL LID CLOSE"
 		#sudo cpupower frequency-set -u 500M
 		#if ! pidof physlock ;then

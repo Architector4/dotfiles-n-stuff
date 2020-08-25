@@ -3,13 +3,13 @@
 
 # Status file is an empty file that signifies if the script is running or not.
 # Helps to allow for the toggling behavior.
-STATUSFILE=~/.cache/.redshift_enabled
+STATUSFILE=/tmp/redshift_toggled_on_$USER
 
 if [ -f "$STATUSFILE" ] && [ "$1" != "on" ]; then
 	# Status file exists, meaning the script is running,
 	# and "on" parameter was not sent.
 	# Remove the status file!
-	rm $STATUSFILE
+	rm "$STATUSFILE"
 	# Turn it off
 	if [ -n "$WAYLAND_DISPLAY" ]; then	# Running on Wayland
 		# When using AUR package "redshift-wayland-git", any

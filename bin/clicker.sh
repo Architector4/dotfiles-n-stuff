@@ -4,7 +4,7 @@
 
 # Status file is an empty file that signifies if the script is running or not.
 # Helps to allow for the toggling behavior.
-STATUSFILE=~/.clicking
+STATUSFILE=/tmp/clicker_clicking_$USER
 
 if [ -n "$1" ]; then
 	BUTTON="$1"
@@ -15,7 +15,7 @@ fi
 if [ -f "$STATUSFILE" ]; then
 	# Status file exists, meaning the script is running.
 	# Remove it!
-	rm $STATUSFILE
+	rm "$STATUSFILE"
 	# Release mouse, just in case.
 	xdotool mouseup $BUTTON
 	# Kill all instances of this script

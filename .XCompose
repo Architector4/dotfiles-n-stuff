@@ -42,6 +42,9 @@ include "%L"
 <Multi_key> <C> <less>				: "◠"
 <Multi_key> <C> <greater>			: "◡"
 
+# Non-breaking space
+<Multi_key> <space> <space>			: " "
+
 
 # Backhand index pointing up/down/left/right - apparently you can use arrow keys!
 <Multi_key> <f> <Up>				: "👆"

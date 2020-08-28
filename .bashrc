@@ -135,7 +135,7 @@ alias feh="feh --conversion-timeout 1"
 # Use AMDVLK instead of Mesa's RADV for Vulkan - gives less performance, but why not.
 alias amdvlk='export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_icd64.json:/usr/share/vulkan/icd.d/amd_icd32.json'
 # Use TkGlitch's version of AMDVLK for Vulkan
-alias amdvlk-tkg'export VK_ICD_FILENAMES=/opt/amdvlk/etc/vulkan/icd.d/amd_icd64.json:/opt/amdvlk/etc/vulkan/icd.d/amd_icd32.json'
+alias amdvlk-tkg='export VK_ICD_FILENAMES=/opt/amdvlk/etc/vulkan/icd.d/amd_icd64.json:/opt/amdvlk/etc/vulkan/icd.d/amd_icd32.json'
 
 # "mkcd" to mkdir and then cd to the result
 mkcd() { mkdir "$@";cd "$@";}

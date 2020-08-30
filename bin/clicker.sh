@@ -9,6 +9,7 @@ STATUSFILE=/tmp/clicker_clicking_$USER
 if [ -n "$1" ]; then
 	BUTTON="$1"
 else
+	# If no button is specified, assume button 1 (left mouse button) is to be pressed.
 	BUTTON=1
 fi
 

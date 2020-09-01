@@ -401,7 +401,8 @@ $mybind			$mod+a				focus parent
 $mybind			$mod+Shift+a			focus child
 
 # Toggle sticky status of the current window (to make it follow you on all workspaces)
-$mybind			$mod+q				sticky toggle
+# I ended up not using this though, so I guess it's worth disabling.
+#$mybind			$mod+q				sticky toggle
 
 # Switch to a workspace. Makes sense to put workspace 0 onto ~, doesn't it?
 # (although I put a scratchpad thing there which I don't really use lmao)
@@ -417,6 +418,7 @@ $mybind			$mod+8				workspace 8
 $mybind			$mod+9				workspace 9
 $mybind			$mod+0				workspace 10
 $mybind			$mod+grave			workspace 0
+$mybind			$mod+q				workspace back_and_forth
 #$mybind			$mod+grave			scratchpad show
 
 $mybind			$mod+z				workspace prev
@@ -437,6 +439,8 @@ $mybind			$mod+Shift+8			move container to workspace 8
 $mybind			$mod+Shift+9			move container to workspace 9
 $mybind			$mod+Shift+0			move container to workspace 10
 $mybind			$mod+Shift+grave		move container to workspace 0
+# No bind to move window to move to back_and_forth workspace,
+# as it'd be identical to "close window" bind.
 #$mybind			$mod+Shift+grave		move scratchpad
 
 $mybind			$mod+Shift+z			move container to workspace prev

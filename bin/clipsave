@@ -8,7 +8,7 @@ fi
 
 file=$1
 xclip -selection clipboard -target image/png -out > "$file"
-if [ -s "$tmpfile" ]; then
+if [ -s "$file" ]; then
 	# Using "mogrify" (from imagemagick) converts file to itself
 	# So if the original file was in JPEG format but saved as "file.png"
 	# it will convert it to PNG format to accomodate file extension

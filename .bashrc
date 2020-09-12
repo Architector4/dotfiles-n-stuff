@@ -103,6 +103,8 @@ export WINEFSYNC=1
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 # Timidity needs this to properly read my config apparently
 export MMPAT_PATH_TO_CFG=/etc/timidity++
+# Enable smooth touchpad scrolling on Firefox
+export MOZ_USE_XINPUT2=1
 
 # Honestly I don't know what I was doing  here.
 #export WINEPREFIX_POL="$WINEPREFIX"

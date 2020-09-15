@@ -15,6 +15,18 @@ include "%L"
 <Multi_key> <minus> <Cyrillic_BE>		: "←"
 <Multi_key> <minus> <Cyrillic_YU>		: "→"
 
+# Arrow pointing up/down/left/right - apparently you can use arrow keys!
+<Multi_key> <a> <Up>				: "↑"
+<Multi_key> <a> <Down>				: "↓"
+<Multi_key> <a> <Left>				: "←"
+<Multi_key> <a> <Right>				: "→"
+
+# Backhand index pointing up/down/left/right - apparently you can use arrow keys!
+<Multi_key> <f> <Up>				: "👆"
+<Multi_key> <f> <Down>				: "👇"
+<Multi_key> <f> <Left>				: "👈"
+<Multi_key> <f> <Right>				: "👉"
+
 # These are cool things too I guess
 <Multi_key> <backslash> <slash>			: "∨"
 <Multi_key> <slash> <backslash>			: "∧"
@@ -52,13 +64,6 @@ include "%L"
 <Multi_key> <space> <2>				: " "
 # Word joiner
 <Multi_key> <space> <3>				: "⁠"
-
-
-# Backhand index pointing up/down/left/right - apparently you can use arrow keys!
-<Multi_key> <f> <Up>				: "👆"
-<Multi_key> <f> <Down>				: "👇"
-<Multi_key> <f> <Left>				: "👈"
-<Multi_key> <f> <Right>				: "👉"
 
 
 # Lenny face

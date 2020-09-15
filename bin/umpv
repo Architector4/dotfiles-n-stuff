@@ -36,8 +36,12 @@ import fcntl
 import stat
 import string
 
-
+mpvappend = False
 files = sys.argv[1:]
+if files[0] == "--mpvappend":
+    mpvappend = True
+    files = files[1:]
+
 
 # this is the same method mpv uses to decide this
 def is_url(filename):
@@ -50,12 +54,15 @@ def is_url(filename):
     return all(map(lambda c: c in allowed_symbols, prefix))
 
 # make them absolute; also makes them safe against interpretation as options
-# Edit by Architector #4: DUHH I WANT TO PASS OPTIONS TO UMPV TOO, YOU KNOW
+# Edit by Architector #4
+# Adding an additional check if the path exists to allow passing options to mpv
+# on startup. Assumes there's no file that is named "--shuffle" or something tho.
 def make_abs(filename):
     if not is_url(filename):
-        return os.path.abspath(filename)
+        if os.path.exists(filename):
+            return os.path.abspath(filename)
     return filename
-#files = [make_abs(f) for f in files]
+files = [make_abs(f) for f in files]
 
 FIFO = os.path.join(os.getenv("HOME"), ".umpv_fifo")
 
@@ -78,7 +85,10 @@ if fifo_fd >= 0:
         # escape: \ \n "
         f = f.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n")
         f = "\"" + f + "\""
-        fifo.write("loadfile " + f + "\n")
+        if mpvappend:
+            fifo.write("loadfile " + f + " append\n")
+        else:
+            fifo.write("loadfile " + f + "\n")
 else:
     # Recreate pipe if it doesn't already exist.
     # Also makes sure it's safe, and no other user can create a bogus pipe

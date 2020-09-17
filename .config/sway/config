@@ -163,6 +163,7 @@ for_window [class="Pavucontrol"]		floating enable
 for_window [class="transmission"]		floating enable
 for_window [title="Blender Preferences"]	floating enable
 for_window [title="glxgears"]			floating enable
+for_window [class="Pcmanfm"]			floating enable
 #for_window [title=" - Oracle VM VirtualBox"]	floating enable
 #for_window [class="VirtualBoxVM"]		floating enable
 

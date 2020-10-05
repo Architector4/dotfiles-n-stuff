@@ -4,6 +4,7 @@
 ! Monospace font for applications that care about it
 *.font:				xft:DejaVu Sans Mono:pixelsize=12
 *.faceName:			xft:DejaVu Sans Mono:pixelsize=12
+!*.font:				-xos4-terminus-medium-*-*-*-14-*
 ! Font for things that only use bitmap fonts (forgot what things exactly lol)
 *.vt100.font:			6x13
 

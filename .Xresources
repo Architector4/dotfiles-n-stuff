@@ -2,9 +2,10 @@
 ! Set DPI, because random applications get confused about it and mess things up.
 *.dpi: 72
 ! Monospace font for applications that care about it
-*.font:				xft:DejaVu Sans Mono:pixelsize=12
-*.faceName:			xft:DejaVu Sans Mono:pixelsize=12
-!*.font:				-xos4-terminus-medium-*-*-*-14-*
+!*.font:				xft:DejaVu Sans Mono:pixelsize=12
+!*.faceName:			xft:DejaVu Sans Mono:pixelsize=12
+*.font:				-xos4-terminus-*-*-*-*-12-*
+*.faceName:			-xos4-terminus-*-*-*-*-12-*
 ! Font for things that only use bitmap fonts (forgot what things exactly lol)
 *.vt100.font:			6x13
 
@@ -66,7 +67,8 @@ URxvt.scrollBar:		False
 ! I like my scroll buffers BIG
 URxvt.saveLines:		16383
 ! Remove weird spacing between each letter cell
-URxvt.letterSpace:		-1
+! (not present with monospace font)
+!URxvt.letterSpace:		-1
 ! Color depth
 URxvt.depth:			32
 ! Extensions to use

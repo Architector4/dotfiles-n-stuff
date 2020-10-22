@@ -1,2 +1,2 @@
 #!/bin/sh
-xdg-open "$@"&
+for i in "$@"; do xdg-open "$i"&done

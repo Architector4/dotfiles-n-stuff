@@ -24,7 +24,8 @@ done
 
 case "$1" in
 	"C-x")		xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;; # Put image names in clipboard
-	"C-c")		while read file; do clipload "$file"; done ;; # Put the image in clipboard
+	"C-d")		while read file; do cp "$file" ~; done ;; # Copy images to home
+	"C-c")		while read file; do clipload "$file"; done ;; # Put images to clipboard
 	"C-e")		while read file; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;; # View properties of image (now that's a chonky command)
 	"C-g")		tr '\n' '\0' | xargs -0 gimp & ;; # Open all of these in gimp!
 	"C-slash")	urxvt -e vim "$(realpath "$0")"& ;; # For when I forget the bindings here

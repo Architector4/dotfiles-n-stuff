@@ -19,7 +19,7 @@ set $mod Mod4
 # Mod4 is Super key (or "Windows" key cuz Microsoft said so lol)
 
 # Command to lock the screen.
-set $lockcmd physlock
+set $lockcmd i3lock.sh
 
 # i3-gaps doesn't like window titles. Let's remove them!
 #default_border pixel 3

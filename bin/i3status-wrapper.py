@@ -29,29 +29,55 @@
 import sys
 import subprocess
 import json
+# Playerctl bindings: https://github.com/altdesktop/playerctl
+import gi
+gi.require_version('Playerctl', '2.0')
+from gi.repository import Playerctl
+import time
 
 def get_governor():
     """ Get the current governor for cpu0, assuming all CPUs use the same. """
     with open('/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor') as fp:
         return fp.readlines()[0].strip()
 
-#vidname="" # When rapidly switching workspaces, it fails to find the window.
-#vidstop=0 # This system here is to use what the previous query gave in case last one failed.
-    # bruh time
-def get_playing_video_name():
-    sub = subprocess.Popen("xprop -id $(xdotool search --classname umpv) WM_NAME | cut -d\\\" -f2-",
-            shell=True, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
-    stdout=sub.stdout.readlines()
-    if len(stdout) == 0:
-        #if vidstop>2:
-            #vidname=""
-        #vidstop+=1
-        #return vidname
-        return ""
-    line=stdout[0].decode("utf-8")[:-2]#[:-7]
-    vidname=line
-    vidstop=0
-    return line
+    ### This old code was querying the window title of a window of class "umpv", was hacky and dumb.
+##vidname="" # When rapidly switching workspaces, it fails to find the window.
+##vidstop=0 # This system here is to use what the previous query gave in case last one failed.
+#def get_playing_video_name():
+#    sub = subprocess.Popen("xprop -id $(xdotool search --classname umpv) WM_NAME | cut -d\\\" -f2-",
+#            shell=True, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+#    stdout=sub.stdout.readlines()
+#    if len(stdout) == 0:
+#        #if vidstop>2:
+#            #vidname=""
+#        #vidstop+=1
+#        #return vidname
+#        return ""
+#    line=stdout[0].decode("utf-8")[:-2]#[:-7]
+#    vidname=line
+#    vidstop=0
+#    return line
+
+# Get full media player status line using playerctl
+def get_playing_media_name():
+    player = Playerctl.Player()
+    artist = player.get_artist()
+    title = player.get_title()
+    pos = time.strftime("%H:%M:%S", time.gmtime(player.get_position()))
+    if 'mpris:length' in player.props.metadata.keys():
+        length = time.strftime("%H:%M:%S", time.gmtime(player.props.metadata['mpris:length']))
+    else:
+        length=None
+    output=""
+    if artist is not None:
+        output+=artist+" - "
+    output+=title
+    output+=" ("+pos
+    if length is not None:
+        output+="/"+length
+    output+=")"
+    return output
+
 
 def print_line(message):
     """ Non-buffered printing to stdout. """
@@ -90,14 +116,14 @@ if __name__ == '__main__':
         #j.insert(0, {'full_text' : '%s' % get_governor(), 'name' : 'gov'})
 
         try:
-            video = get_playing_video_name()
-            if video != "":
+            media = get_playing_media_name()
+            if media != "":
                 j.insert(0, {
-                    'name' : 'umpv',
+                    'name' : 'media',
                     #'markup' : 'pango', # Breaks with video title containing &
                     'color' : '#CCCCCC',
                     #'full_text' : '<span rise="3073">%s</span>' % video
-                    'full_text' : video
+                    'full_text' : media
                     })
         except:
             j.insert(0, {

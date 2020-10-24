@@ -278,18 +278,18 @@ $mybind			XF86AudioLowerVolume		exec --no-startup-id "pactl set-sink-volume @DEF
 # F8	Increase volume.
 $mybind			$mod+F8				exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%"
 $mybind			XF86AudioRaiseVolume		exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%"
-# Next 3 bindings are for media players. Mine are for mpv launched with "umpv" script.
+# Next 3 bindings are for media players. Mine use MPRIS implementation in dbus to control the first one
 # F9 	Previous playlist track.
-$mybind			$mod+F9				exec --no-startup-id "echo playlist-prev > ~/.umpv_fifo"
-$mybind			XF86AudioPrev			exec --no-startup-id "echo playlist-prev > ~/.umpv_fifo"
+$mybind			$mod+F9				exec --no-startup-id "playerctl previous"
+$mybind			XF86AudioPrev			exec --no-startup-id "playerctl previous"
 
 # F10 	Play/Pause.
-$mybind			$mod+F10			exec --no-startup-id "echo cycle pause   > ~/.umpv_fifo"
-$mybind			XF86AudioPlay			exec --no-startup-id "echo cycle pause   > ~/.umpv_fifo"
+$mybind			$mod+F10			exec --no-startup-id "playerctl play-pause"
+$mybind			XF86AudioPlay			exec --no-startup-id "playerctl play-pause"
 
 # F11	Next playlist track.
-$mybind			$mod+F11			exec --no-startup-id "echo playlist-next > ~/.umpv_fifo"
-$mybind			XF86AudioNext			exec --no-startup-id "echo playlist-next > ~/.umpv_fifo"
+$mybind			$mod+F11			exec --no-startup-id "playerctl next"
+$mybind			XF86AudioNext			exec --no-startup-id "playerctl next"
 
 # F12	Airplane mode. Triggers my redshift toggler script
 $mybind			$mod+F12			exec --no-startup-id "redshift.sh"

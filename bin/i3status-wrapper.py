@@ -68,6 +68,8 @@ def get_playing_media_name():
         length = time.strftime("%H:%M:%S", time.gmtime(player.props.metadata['mpris:length']))
     else:
         length=None
+    if (artist is None) & (title is None):
+        return "" # No valid media data yet
     output=""
     if artist is not None:
         output+=artist+" - "

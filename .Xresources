@@ -73,6 +73,8 @@ URxvt.saveLines:		16383
 URxvt.depth:			32
 ! Extensions to use
 URxvt.perl-ext-common:		default,clipboard,url-select,keyboard-select,font-size
+URxvt.keysym.M-j:		command:\033]721;1\007
+URxvt.keysym.M-k:		command:\033]720;1\007
 
 ! EXTENSION url-select
 ! Does what it says on the tin - allows quickly opening URLs visible on the terminal.
@@ -99,5 +101,5 @@ URxvt.keyboard-select.clipboard: true
 ! Allows resizing the font realtime
 ! Available on https://github.com/majutsushi/urxvt-font-size
 ! or "urxvt-font-size-git" in AUR
-URxvt.keysym.A-j:		font-size:decrease
-URxvt.keysym.A-k:		font-size:increase
+URxvt.keysym.A-h:		font-size:decrease
+URxvt.keysym.A-l:		font-size:increase

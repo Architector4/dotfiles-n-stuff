@@ -79,7 +79,8 @@ def get_playing_media_name():
             return "" # No valid media data yet
         output=""
         if artist is not None:
-            output+=artist+" - "
+            if len(artist)>0:
+                output+=artist+" - "
         output+=title
         output+=" ("+pos
         if length is not None:

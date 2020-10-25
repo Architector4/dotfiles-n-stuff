@@ -60,28 +60,33 @@ def get_governor():
 
 # Get full media player status line using playerctl
 def get_playing_media_name():
-    player = Playerctl.Player()
-    try:
-        title = player.get_title()
-    except: # Couldn't get title - happens when there is no media player.
-        return ""
-    artist = player.get_artist()
-    pos = time.strftime("%H:%M:%S", time.gmtime(player.get_position()/1000/1000))
-    if 'mpris:length' in player.props.metadata.keys():
-        length = time.strftime("%H:%M:%S", time.gmtime(player.props.metadata['mpris:length']/1000/1000))
-    else:
-        length=None
-    if (artist is None) & (title is None):
-        return "" # No valid media data yet
-    output=""
-    if artist is not None:
-        output+=artist+" - "
-    output+=title
-    output+=" ("+pos
-    if length is not None:
-        output+="/"+length
-    output+=")"
-    return output
+    man=Playerctl.PlayerManager().props.player_names
+    for name in man: # Iterate over every media player
+        player = Playerctl.Player.new_from_name(name)
+        try: # Try getting title
+            title = player.get_title()
+            if len(title)==0: # Title is empty
+                continue
+        except: # Couldn't get title - happens when there is no media player.
+            continue
+        artist = player.get_artist()
+        pos = time.strftime("%H:%M:%S", time.gmtime(player.get_position()/1000/1000))
+        if 'mpris:length' in player.props.metadata.keys():
+            length = time.strftime("%H:%M:%S", time.gmtime(player.props.metadata['mpris:length']/1000/1000))
+        else:
+            length=None
+        if (artist is None) & (title is None):
+            return "" # No valid media data yet
+        output=""
+        if artist is not None:
+            output+=artist+" - "
+        output+=title
+        output+=" ("+pos
+        if length is not None:
+            output+="/"+length
+        output+=")"
+        return output
+    return "" # No media players had title
 
 
 def print_line(message):

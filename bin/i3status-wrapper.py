@@ -61,8 +61,11 @@ def get_governor():
 # Get full media player status line using playerctl
 def get_playing_media_name():
     player = Playerctl.Player()
+    try:
+        title = player.get_title()
+    except: # Couldn't get title - happens when there is no media player.
+        return ""
     artist = player.get_artist()
-    title = player.get_title()
     pos = time.strftime("%H:%M:%S", time.gmtime(player.get_position()/1000/1000))
     if 'mpris:length' in player.props.metadata.keys():
         length = time.strftime("%H:%M:%S", time.gmtime(player.props.metadata['mpris:length']/1000/1000))

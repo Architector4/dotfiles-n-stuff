@@ -80,6 +80,8 @@ exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1"
 exec --no-startup-id "redshift.sh on"
 # KDE Connect is kewl actually
 exec --no-startup-id "kdeconnect-indicator"
+# syncthing is also cool
+exec --no-startup-id "syncthing"
 
 # I like this font.
 # Also, apparently you should put your font config before your bar settings.

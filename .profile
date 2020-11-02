@@ -40,3 +40,13 @@ if [ -n "$trashweight" ]; then
 	echo "Your trash folder weighs $trashweight btw"
 fi
 unset trashweight
+
+# Set environment variables related to GUIs
+# Some fixes to make custom compose key sequences from .XCompose work
+export XMODIFIERS="@im=none"
+export GTK_IM_MODULE="xim"
+export QT_IM_MODULE="xim"
+# Use qt5ct for customization
+export QT_QPA_PLATFORMTHEME="qt5ct"
+# Fix KeepAssXC from messing up its interface when X is launched with --dpi 72
+export QT_AUTO_SCREEN_SCALE_FACTOR=0

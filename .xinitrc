@@ -30,13 +30,6 @@ fi
 
 # For when I start X from a directory other than ~
 cd
-# Some fixes to make custom compose key sequences from .XCompose work
-export XMODIFIERS="@im=none"
-export GTK_IM_MODULE="xim"
-export QT_IM_MODULE="xim"
-export QT_QPA_PLATFORMTHEME="qt5ct"
-# Fix KeepAssXC from messing up its interface when X is launched with --dpi 72
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
 # Xorg on FreeBSD doesn't seem to remember this setting
 xinput set-prop "System mouse" "libinput Accel Speed" -1
 # What, you thought this isn't going to be another generic "dotfiles" repo with "i3" at the end of .xinitrc?

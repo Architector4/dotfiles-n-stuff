@@ -83,9 +83,9 @@ exec --no-startup-id "syncthing"
 # I like this font.
 # Also, apparently you should put your font config before your bar settings.
 #font pango:DejaVu Sans Mono 12px
-font -xos4-terminus-medium-*-*-*-12-*
+#font -xos4-terminus-medium-*-*-*-12-*
 #font pango:TimesNewRoman 12
-#font pango:Terminus (TTF) 12
+font pango:Terminus (TTF) 12
 
 # Bar settings
 bar {

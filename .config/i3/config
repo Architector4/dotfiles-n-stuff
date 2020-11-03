@@ -33,9 +33,12 @@ focus_follows_mouse no
 # sends you to your last one instead.
 workspace_auto_back_and_forth yes
 
-# No one touches my focus!!
-#no_focus [class=".*"]
-#focus_on_window_activation urgent
+# These apps take quite a bit of time to start.
+# And when they do pop up, they steal focus.
+# pls dont
+no_focus [class="Steam"]
+no_focus [class="Qutebrowser"]
+focus_on_window_activation urgent
 # Actually nevermind, this means that when I spawn a new window the focus is still on the old one.
 # That is very unusual for me. Besides, I think I'm okay with things stealing my focus
 # now that I've figured how to spawn a "new window here" template window, so that anything

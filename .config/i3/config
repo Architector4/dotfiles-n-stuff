@@ -377,7 +377,9 @@ $mybind			$mod+Shift+Right		move right
 $mybind			$mod+quotedbl			split h
 $mybind			$mod+apostrophe			split h
 # Allright, fine, g is also nice.
-$mybind			$mod+g				split h
+#$mybind			$mod+g				split h
+# Actually this ends up conflicting with my "record GIF" bind ($mod+Ctrl+g)
+# and I don't use it anyways, so rip this shortcut.
 
 # Wrap current window into a vertical split container
 $mybind			$mod+v				split v

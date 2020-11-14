@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import random, os, subprocess
+import random, subprocess
 
 responses=[
 "ЧО",

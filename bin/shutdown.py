@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import random, os
+import random, os, subprocess
 
 responses=[
 "ЧО",
@@ -21,7 +21,4 @@ responses=[
 ]
 
 response=random.choice(responses)
-
-#print(response)
-
-os.popen("notify-send \'"+response+"\'","r")
+subprocess.call(['notify-send', response], shell=False)

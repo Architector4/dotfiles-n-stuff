@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-import random
-import os
+import random, os
 
 responses=[
 "ЧО",
@@ -21,8 +20,8 @@ responses=[
 "А"
 ]
 
-response=random.randint(0,len(responses)-1)
+response=random.choice(responses)
 
-#print(responses[response])
+#print(response)
 
-os.popen("notify-send \""+responses[response]+"\"","r")
+os.popen("notify-send \'"+response+"\'","r")

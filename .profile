@@ -50,3 +50,5 @@ export QT_IM_MODULE="xim"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 # Fix KeepAssXC from messing up its interface when X is launched with --dpi 72
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
+# Fix qt5 ignoring my DPI setting by explicitly pointing it out to qt too
+export QT_FONT_DPI=72

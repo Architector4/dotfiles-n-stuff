@@ -105,6 +105,9 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswi
 export MMPAT_PATH_TO_CFG=/etc/timidity++
 # Enable smooth touchpad scrolling on Firefox
 export MOZ_USE_XINPUT2=1
+# Vulkan driver on Nvidia does not feel like working if there are any other present,
+# and this gets it going anyways lol
+# export VK_ICD_FILENAMES='/usr/share/vulkan/icd.d/nvidia_icd.json'
 
 # Honestly I don't know what I was doing  here.
 #export WINEPREFIX_POL="$WINEPREFIX"

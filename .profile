@@ -41,6 +41,32 @@ if [ -n "$trashweight" ]; then
 fi
 unset trashweight
 
+# I like having local binaries.
+#export PATH="$HOME/bin:$PATH" # Apparently I end up having this path set up thrice in this environment variable lol
+# Vim is goot.
+export EDITOR=vim
+# Stop WINE from creating desktop shortcuts, menu entries and other stuff.
+export WINEDLLOVERRIDES=winemenubuilder.exe=d
+# Apparently this makes stuff faster lol
+# But it's default since Mesa 20.2 so worth disabling now lol
+#export RADV_PERFTEST=aco
+# Apparently this makes stuff even faster xd
+export WINEFSYNC=1
+# Fix Java fonts lol
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+# Timidity needs this to properly read my config apparently
+export MMPAT_PATH_TO_CFG=/etc/timidity++
+# Enable smooth touchpad scrolling on Firefox
+export MOZ_USE_XINPUT2=1
+# Vulkan driver on Nvidia does not feel like working if there are any other present,
+# and this gets it going anyways lol
+# export VK_ICD_FILENAMES='/usr/share/vulkan/icd.d/nvidia_icd.json'
+
+# Honestly I don't know what I was doing  here.
+#export WINEPREFIX_POL="$WINEPREFIX"
+#export WINEPREFIX_NORM="$HOME/.wine"
+#export WINEPREFIX=$WINEPREFIX_NORM
+
 # Set environment variables related to GUIs
 # Some fixes to make custom compose key sequences from .XCompose work
 export XMODIFIERS="@im=none"
@@ -52,3 +78,4 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 # Fix qt5 ignoring my DPI setting by explicitly pointing it out to qt too
 export QT_FONT_DPI=72
+

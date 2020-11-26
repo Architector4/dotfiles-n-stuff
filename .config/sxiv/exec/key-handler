@@ -31,7 +31,7 @@ case "$1" in
 	"C-slash")	urxvt -e vim "$(realpath "$0")"& ;; # For when I forget the bindings here
 	"C-h")		urxvt -e vim "$(realpath "$0")"& ;; # For when I forget the bindings here
 	"C-i")		while read file; do notify-send "Uploading..." "$file"; imgur-screenshot.sh "$file"; done;; # Upload all images to imgur
-	#"C-comma")	rotate 270 ;;
-	#"C-period")	rotate	90 ;;
+	"C-comma")	rotate 270 ;;
+	"C-period")	rotate	90 ;;
 	#"C-slash")	rotate 180 ;;
 esac

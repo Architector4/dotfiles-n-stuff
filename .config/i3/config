@@ -284,6 +284,20 @@ $mybind			$mod+Print			mode CLICKER
 # Power button. Here mapped to a script that pops up a notification that basically says "no".
 $mybind			XF86PowerOff			exec --no-startup-id "shutdown.py"
 
+
+
+# Keys NOT on my laptop (and I have no idea what to bind them to):
+#XF86HomePage
+#XF86Mail
+#XF86Search
+#XF86Calculator
+#XF86Tools
+# They *are* present on some keyboards though. You can use "xev | grep keycode"
+# to get names of weird keys you haven't bound by the way.
+
+
+
+
 # I like these things to have available.
 $mybind			$mod+Ctrl+l			exec --no-startup-id $lockcmd
 $mybind			$mod+Ctrl+p			exec --no-startup-id "i3-sensible-terminal -e ping.sh"

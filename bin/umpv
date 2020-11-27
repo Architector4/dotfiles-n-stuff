@@ -1,8 +1,4 @@
-#!/usr/bin/env python
-
-
-# THIS IS EDITED FOR RANDOM PURPOSES BY ARCHITECTOR #4
-# THE ORIGINAL IS LOCATED HERE: https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
+#!/usr/bin/env python3
 
 """
 This script emulates "unique application" functionality on Linux. When starting
@@ -19,8 +15,6 @@ current terminal. It will not write output to stdout/stderr, because this
 will typically just fill ~/.xsession-errors with garbage.
 mpv will terminate if there are no more files to play, and running the umpv
 script after that will start a new mpv instance.
-Note that you can control the mpv instance by writing to the command fifo:
-    echo "cycle fullscreen" > ~/.umpv_fifo
 Note: you can supply custom mpv path and options with the MPV environment
       variable. The environment variable will be split on whitespace, and the
       first item is used as path to mpv binary and the rest is passed as options
@@ -30,6 +24,7 @@ Note: you can supply custom mpv path and options with the MPV environment
 
 import sys
 import os
+import socket
 import errno
 import subprocess
 import fcntl
@@ -41,6 +36,7 @@ files = sys.argv[1:]
 if files[0] == "--mpvappend":
     mpvappend = True
     files = files[1:]
+
 
 
 # this is the same method mpv uses to decide this
@@ -64,46 +60,39 @@ def make_abs(filename):
     return filename
 files = [make_abs(f) for f in files]
 
-FIFO = os.path.join(os.getenv("HOME"), ".umpv_fifo")
+SOCK = os.path.join(os.getenv("HOME"), ".umpv_socket")
 
-fifo_fd = -1
+sock = None
 try:
-    fifo_fd = os.open(FIFO, os.O_NONBLOCK | os.O_WRONLY)
-except OSError as e:
-    if e.errno == errno.ENXIO:
-        pass  # pipe has no writer
+    sock = socket.socket(socket.AF_UNIX)
+    sock.connect(SOCK)
+except socket.error as e:
+    if e.errno == errno.ECONNREFUSED:
+        sock = None
+        pass  # abandoned socket
     elif e.errno == errno.ENOENT:
+        sock = None
         pass # doesn't exist
     else:
         raise e
 
-if fifo_fd >= 0:
+if sock:
     # Unhandled race condition: what if mpv is terminating right now?
-    fcntl.fcntl(fifo_fd, fcntl.F_SETFL, 0) # set blocking mode
-    fifo = os.fdopen(fifo_fd, "w")
     for f in files:
         # escape: \ \n "
         f = f.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n")
         f = "\"" + f + "\""
         if mpvappend:
-            fifo.write("loadfile " + f + " append\n")
+            sock.send(("raw loadfile " + f + " append\n").encode("utf-8"))
         else:
-            fifo.write("loadfile " + f + "\n")
+            sock.send(("raw loadfile " + f + "\n").encode("utf-8"))
 else:
-    # Recreate pipe if it doesn't already exist.
-    # Also makes sure it's safe, and no other user can create a bogus pipe
-    # that breaks security.
-    try:
-        os.unlink(FIFO)
-    except OSError as e:
-        pass
-    os.mkfifo(FIFO, 0o600)
+    # Let mpv recreate socket if it doesn't already exist.
 
     opts = (os.getenv("MPV") or "mpv").split()
-    #opts.extend(["--no-terminal", "--force-window", "--input-file=" + FIFO,
+    #opts.extend(["--no-terminal", "--force-window", "--input-ipc-server=" + SOCK,
     #             "--"])
-    files.insert(0,"--input-file=" + FIFO) # Deprecated, apparently.
-    #files.insert(0,"--input-ipc-server=" + FIFO) # Not deprecated, but complicated.
+    files.insert(0,"--input-ipc-server=" + SOCK)
     files.insert(0,"--x11-name=umpv")
     opts.extend(files)
 

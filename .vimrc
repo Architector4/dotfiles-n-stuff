@@ -39,6 +39,8 @@ filetype plugin indent on
 :command ArchAutoWriteStop autocmd! TextChanged,TextChangedI <buffer>
 :command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
 
-" Execute command when writing without having to press Return when the command finishes
+" Execute command when writing without having to press Return when it's done
 :command -nargs=1 ArchExecOnWrite autocmd BufWritePost * :Silent <args>
+" Same, but show the result in foreground and have you press Return when it's done
+:command -nargs=1 ArchExecOnWriteFG autocmd BufWritePost * !<args>
 :command ArchExecOnWriteStop autocmd! BufWritePost *

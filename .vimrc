@@ -44,3 +44,11 @@ filetype plugin indent on
 " Same, but show the result in foreground and have you press Return when it's done
 :command -nargs=1 ArchExecOnWriteFG autocmd BufWritePost * !<args>
 :command ArchExecOnWriteStop autocmd! BufWritePost *
+
+" Return neovim to normal vim behavior
+" Don't jump all over the place when searching
+:set noincsearch
+" Don't replace highlighting on search results
+:set nohlsearch
+" Don't randomly shrink cursor depending on mode
+:set guicursor=

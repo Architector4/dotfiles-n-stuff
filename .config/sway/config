@@ -326,16 +326,16 @@ $mybind			XF86PowerOff			exec --no-startup-id "shutdown.py"
 
 
 
-# Keys NOT on my laptop (and I have no idea what to bind them to):
+# Keys NOT on my laptop:
+# They *are* present on some keyboards though. You can use "xev | grep keycode"
+# to get names of weird keys you haven't bound,  by the way.
 #XF86HomePage
 #XF86Mail
 #XF86Search
-#XF86Calculator
-#XF86Tools
-# They *are* present on some keyboards though. You can use "xev | grep keycode"
-# to get names of weird keys you haven't bound by the way.
-
-
+#XF86Calculator (I just use python for this lol)
+$mybind			XF86Calculator			exec --no-startup-id "i3-sensible-terminal -e python"
+#XF86Tools (I saw it with music icon, so music it is)
+$mybind			XF86Tools			exec --no-startup-id "i3-sensible-terminal -e ~/Documents/music/play.sh"
 
 
 # I like these things to have available.

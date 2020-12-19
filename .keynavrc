@@ -98,7 +98,7 @@ ctrl+shift+e drag 3 ctrl+shift
 #w windowzoom
 
 # Zoom to the cursor location with a given height and width
-c cursorzoom 200 200
+c cursorzoom 100 100
 
 # Handy for holding ctrl while using keynav:
 ctrl+h cut-left

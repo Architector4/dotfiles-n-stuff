@@ -1,2 +1,2 @@
 #!/bin/sh
-urxvt -e vim "$@"&
+i3-sensible-terminal -e vim "$@"&

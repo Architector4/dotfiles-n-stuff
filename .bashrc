@@ -5,6 +5,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Start .profile even if this is a non-login shell
+. ~/.profile
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;

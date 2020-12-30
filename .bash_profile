@@ -1,2 +1,2 @@
-# Run by bash on login shells only
+# This file is run by bash on login shells only
 . ~/.bashrc

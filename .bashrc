@@ -93,6 +93,10 @@ bind -m vi-insert "\C-l":clear-screen
 alias mountusb="sudo mount --options utf8,uid=$UID,nodev,nosuid,flush"
 # Watch the size of the unwritten filesystem cache - starts to rapidly decay to 0kB when running "sync".
 alias syncwatch="watch -n0.5 grep Dirty /proc/meminfo"
+# CPU speed options (cpupower caps out at minimum/maximum values anyways)
+alias cpuslow="sudo cpupower frequency-set -u 1M"
+alias cpumeh="sudo cpupower frequency-set -u 1500M"
+alias cpufast="sudo cpupower frequency-set -u 10000M"
 # ...
 alias sl="ls"
 # Because I use cyrillic sometimes even when I don't need to use cyrillic.

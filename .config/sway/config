@@ -116,6 +116,8 @@ bar {
 	# What command to use to get the text to draw on the bar.
 	status_command "i3status | i3status-wrapper.py"
 	#status_command "cat /dev/urandom"	# That is actually really fun.
+	# Change bar height
+	height 16
 	
 	colors {
 		# Bar colors. See Sway documentation for what is what: man 5 sway
@@ -156,7 +158,6 @@ bar {
 	}
 
 	# Sway specific stuff
-	height 18
 	status_padding 0
 }
 

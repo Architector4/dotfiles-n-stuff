@@ -15,8 +15,9 @@ case $- in
 esac
 
 # Enable completion features (YES PLEASE DO)
-[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
-	source /usr/local/share/bash-completion/bash_completion.sh
+# Apparently Arch enables this already lol
+#[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
+	#source /usr/local/share/bash-completion/bash_completion.sh
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

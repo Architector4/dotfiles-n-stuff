@@ -126,9 +126,9 @@ alias amdvlk='export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_icd64.json:/us
 alias amdvlk-tkg='export VK_ICD_FILENAMES=/opt/amdvlk/etc/vulkan/icd.d/amd_icd64.json:/opt/amdvlk/etc/vulkan/icd.d/amd_icd32.json'
 
 # "mkcd" to mkdir and then cd to the result
-mkcd() { mkdir "$@";cd "$@";}
+mkcd() { mkdir "$@"&&cd "$@";}
 # "cdls" to cd and ls straight up
-cdls() { cd "$@";ls;}
+cdls() { cd "$@"&&ls;}
 
 
 # taken from

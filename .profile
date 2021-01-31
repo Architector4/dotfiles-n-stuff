@@ -44,6 +44,7 @@ export WINEDLLOVERRIDES=winemenubuilder.exe=d
 #export RADV_PERFTEST=aco
 # Apparently this makes stuff even faster xd
 export WINEFSYNC=1
+export WINEESYNC=1
 # Fix Java fonts lol
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 # Timidity needs this to properly read my config apparently

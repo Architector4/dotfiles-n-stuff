@@ -70,9 +70,11 @@ exec --no-startup-id "copyq"
 # Notification manager
 exec --no-startup-id "dunst" 
 # Control the pointer from the keyboard (actually really handy!)
-exec --no-startup-id "keynav" 
+# (broken on Wayland)
+#exec --no-startup-id "keynav"
 # Hide the pointer when mouse isn't used
-exec --no-startup-id "unclutter -jitter 2 --ignore-scrolling" 
+# (broken on Wayland)
+#exec --no-startup-id "unclutter -jitter 2 --ignore-scrolling"
 # Set wallpaper to a cool picture (does nothing on sway now :c)
 # exec --no-startup-id "hsetroot -cover ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg"
 # My (crappy) script that turns on screen locker when laptop lid is closed

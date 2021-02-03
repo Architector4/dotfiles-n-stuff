@@ -1,4 +1,3 @@
 #!/bin/sh
-# Sorry, you gotta improvize the path yourself here lol
-find ~/Pictures/Glitchy/ | grep "\." | shuf -n 1 | xargs i3lock -nti 
-
+# Pick a random picture from ~/Pictures/Glitchy and lock with it
+i3lock -nti "$(find ~/Pictures/Glitchy | shuf -n 1)"

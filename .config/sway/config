@@ -226,7 +226,9 @@ input * xkb_layout "us,ru"
 # allow switching keyboard layouts with ALT+SHIFT and also compose key
 input * xkb_options "grp:lalt_lshift_toggle,compose:rctrl"
 # Hide mouse after a period of inactivity as unclutter does on X11
-seat * hide_cursor 5000
+set $unclutter seat * hide_cursor 5000
+set $clutter seat * hide_cursor 0
+$unclutter
 # Set wallpaper
 # output * bg ~/Pictures/Halifax_Sunset_by_Vlad_Drobinin.jpg center
 output * bg "#000000" solid_color
@@ -595,3 +597,30 @@ mode "CLICKER" {
 	$mybind		Return				mode "default"
 	$mybind		Escape				mode "default"
 }
+
+# I miss keynav and this isn't as good of a replacement :(
+mode "keynav" {
+	$mybind		h				seat * cursor move -5	0
+	$mybind		j				seat * cursor move 0	5
+	$mybind		k				seat * cursor move 0	-5
+	$mybind		l				seat * cursor move 5	0
+	$mybind		Shift+h				seat * cursor move -20	0
+	$mybind		Shift+j				seat * cursor move 0	20
+	$mybind		Shift+k				seat * cursor move 0	-20
+	$mybind		Shift+l				seat * cursor move 20	0
+	$mybind		1				seat * cursor press button1; seat * cursor release button1 # Left mouse button
+	$mybind		2				seat * cursor press button2; seat * cursor release button2 # Middle mouse button
+	$mybind		3				seat * cursor press button3; seat * cursor release button3 # Right mouse button
+	$mybind		q				seat * cursor press button1 # Left mouse button
+	$mybind		w				seat * cursor press button2 # Middle mouse button
+	$mybind		e				seat * cursor press button3 # Right mouse button
+	$mybind		4				seat * cursor press button4 # Scroll up
+	$mybind		r				seat * cursor press button5 # Scroll down
+	$mybind		5				seat * cursor press button5 # Scroll down
+	$mybind		6				seat * cursor press button6 # Scroll left
+	$mybind		7				seat * cursor press button7 # Scroll right
+	# Using $clutter/$unclutter here lags a lot, but is required because activity from these binds doesn't count for Sway lol
+	$mybind		Return				mode "default"; $unclutter
+	$mybind		Escape				mode "default"; $unclutter
+}
+$mybind			$mod+Ctrl+w			mode "keynav"; $clutter

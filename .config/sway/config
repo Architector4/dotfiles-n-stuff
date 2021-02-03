@@ -73,7 +73,7 @@ exec --no-startup-id "dunst"
 # (broken on Wayland)
 #exec --no-startup-id "keynav"
 # Hide the pointer when mouse isn't used
-# (broken on Wayland)
+# (broken on Wayland - replaced by wayland command below)
 #exec --no-startup-id "unclutter -jitter 2 --ignore-scrolling"
 # Set wallpaper to a cool picture (does nothing on sway now :c)
 # exec --no-startup-id "hsetroot -cover ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg"
@@ -225,6 +225,8 @@ input "type:touchpad" pointer_accel 0
 input * xkb_layout "us,ru"
 # allow switching keyboard layouts with ALT+SHIFT and also compose key
 input * xkb_options "grp:lalt_lshift_toggle,compose:rctrl"
+# Hide mouse after a period of inactivity as unclutter does on X11
+seat * hide_cursor 5000
 # Set wallpaper
 # output * bg ~/Pictures/Halifax_Sunset_by_Vlad_Drobinin.jpg center
 output * bg "#000000" solid_color

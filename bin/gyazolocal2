@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ -v "$DISPLAY" ]; then # Running on X
+if [ -v "DISPLAY" ]; then # Running on X
 	scrot -a "$(slop -f %x,%y,%w,%h -o -q)" "$@"
 else # Running on Wayland or whatever else
-	grim -g "$(slurp)"
+	grim -g "$(slurp)" "$@"
 fi

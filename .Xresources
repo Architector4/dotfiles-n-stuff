@@ -1,5 +1,5 @@
-
 ! Set DPI, because random applications get confused about it and mess things up.
+Xft.dpi: 72
 *.dpi: 72
 ! Monospace font for applications that care about it
 !*.font:				xft:DejaVu Sans Mono:pixelsize=12

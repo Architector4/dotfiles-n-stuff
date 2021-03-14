@@ -41,6 +41,7 @@ include "%L"
 <Multi_key> <Cyrillic_HARDSIGN>			: "}"
 <Multi_key> <Cyrillic_io>			: "`"
 <Multi_key> <Cyrillic_e>			: "'"
+<Multi_key> <backslash> <Cyrillic_te>		: "\\n"
 
 # Fun stuff
 <Multi_key> <minus> <underscore> <underscore>	: "￣"

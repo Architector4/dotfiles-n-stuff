@@ -21,6 +21,8 @@ map <F6> :setlocal spell!<CR>
 :set scrolloff=5
 " Make highlighting brighter to make it visible
 :set background=dark
+" make the TTY fast
+:set ttyfast
 
 filetype plugin indent on
 " Change some colors

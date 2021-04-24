@@ -88,7 +88,7 @@ def get_playing_media_name():
         if length is not None:
             output+="/"+length
         output+=")"
-        players.append(output)
+        players.append( (output, player.props.status) )
     return players
 
 
@@ -130,14 +130,25 @@ if __name__ == '__main__':
 
         try:
             players = get_playing_media_name()
-            for media in players:
-                if media != "":
+            for i, media in enumerate(players):
+                if media[0] != "":
+
+                    # Probably can be helped with Python 3.10 match-case...
+                    if media[1] == 'Playing':
+                            color = '#AAFFAA'
+                    else:
+                        if i%2 == 0:
+                            color = '#CCCCCC'
+                        else:
+                            color = '#AAAAAA'
+
+
                     j.insert(0, {
                         'name' : 'media',
                         #'markup' : 'pango', # Breaks with video title containing &
-                        'color' : '#CCCCCC',
+                        'color' : color,
                         #'full_text' : '<span rise="3073">%s</span>' % video
-                        'full_text' : media
+                        'full_text' : media[0]
                         })
         except:
             j.insert(0, {

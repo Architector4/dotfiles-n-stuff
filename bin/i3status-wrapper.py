@@ -60,6 +60,7 @@ def get_governor():
 
 # Get full media player status line using playerctl
 def get_playing_media_name():
+    players = []
     man=Playerctl.PlayerManager().props.player_names
     for name in man: # Iterate over every media player
         player = Playerctl.Player.new_from_name(name)
@@ -70,13 +71,14 @@ def get_playing_media_name():
         except: # Couldn't get title - happens when there is no media player.
             continue
         artist = player.get_artist()
-        pos = time.strftime("%H:%M:%S", time.gmtime(player.get_position()/1000/1000))
+        pos = time.strftime("%H:%M:%S", time.gmtime(player.get_position()/1000000))
         if 'mpris:length' in player.props.metadata.keys():
-            length = time.strftime("%H:%M:%S", time.gmtime(player.props.metadata['mpris:length']/1000/1000))
+            length = time.strftime("%H:%M:%S", time.gmtime(player.props.metadata['mpris:length']/1000000))
         else:
             length=None
         if (artist is None) & (title is None):
-            return "" # No valid media data yet
+            continue
+            #return "" # No valid media data yet
         output=""
         if artist is not None:
             if len(artist)>0:
@@ -86,8 +88,8 @@ def get_playing_media_name():
         if length is not None:
             output+="/"+length
         output+=")"
-        return output
-    return "" # No media players had title
+        players.append(output)
+    return players
 
 
 def print_line(message):
@@ -127,15 +129,16 @@ if __name__ == '__main__':
         #j.insert(0, {'full_text' : '%s' % get_governor(), 'name' : 'gov'})
 
         try:
-            media = get_playing_media_name()
-            if media != "":
-                j.insert(0, {
-                    'name' : 'media',
-                    #'markup' : 'pango', # Breaks with video title containing &
-                    'color' : '#CCCCCC',
-                    #'full_text' : '<span rise="3073">%s</span>' % video
-                    'full_text' : media
-                    })
+            players = get_playing_media_name()
+            for media in players:
+                if media != "":
+                    j.insert(0, {
+                        'name' : 'media',
+                        #'markup' : 'pango', # Breaks with video title containing &
+                        'color' : '#CCCCCC',
+                        #'full_text' : '<span rise="3073">%s</span>' % video
+                        'full_text' : media
+                        })
         except:
             j.insert(0, {
                 'name' : 'umpv',

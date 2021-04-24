@@ -128,36 +128,27 @@ if __name__ == '__main__':
         # CHANGE THIS LINE TO INSERT SOMETHING ELSE
         #j.insert(0, {'full_text' : '%s' % get_governor(), 'name' : 'gov'})
 
-        try:
-            players = get_playing_media_name()
-            for i, media in enumerate(players):
-                if media[0] != "":
+        players = get_playing_media_name()
+        for i, media in enumerate(players):
+            if media[0] != "":
 
-                    # Probably can be helped with Python 3.10 match-case...
-                    if media[1] == 'Playing':
-                            color = '#AAFFAA'
+                # Probably can be helped with Python 3.10 match-case...
+                if media[1] == 'Playing':
+                        color = '#AAFFAA'
+                else:
+                    if i%2 == 0:
+                        color = '#CCCCCC'
                     else:
-                        if i%2 == 0:
-                            color = '#CCCCCC'
-                        else:
-                            color = '#AAAAAA'
+                        color = '#AAAAAA'
 
 
-                    j.insert(0, {
-                        'name' : 'media',
-                        #'markup' : 'pango', # Breaks with video title containing &
-                        'color' : color,
-                        #'full_text' : '<span rise="3073">%s</span>' % video
-                        'full_text' : media[0]
-                        })
-        except:
-            j.insert(0, {
-                'name' : 'umpv',
-                #'markup' : 'pango', # Breaks with video title containing &
-                'color' : '#CCCCCC',
-                #'full_text' : '<span rise="3073">%s</span>' % video
-                'full_text' : "dangit."
-                })
+                j.insert(0, {
+                    'name' : 'media',
+                    #'markup' : 'pango', # Breaks with video title containing &
+                    'color' : color,
+                    #'full_text' : '<span rise="3073">%s</span>' % video
+                    'full_text' : media[0]
+                    })
 
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))

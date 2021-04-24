@@ -112,7 +112,7 @@ bar {
 	# Allows the bar to be displayed only on this screen
 	#output eDP		
 	# Shows tray icons only on the instance of the bar that is on this screen.
-	tray_output eDP
+	#tray_output eDP
 	# Put the bar at the top of the screen.
 	position top
 	# What command to use to get the text to draw on the bar.

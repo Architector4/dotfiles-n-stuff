@@ -550,3 +550,9 @@ mode "CLICKER" {
 	$mybind		Return				mode "default"
 	$mybind		Escape				mode "default"
 }
+
+# Keyboard shortcuts for managing dunst
+$mybind		$mod+Ctrl+space				exec --no-startup-id "dunstctl close"
+$mybind		$mod+Ctrl+Shift+space			exec --no-startup-id "dunstctl close-all"
+$mybind		$mod+Ctrl+grave				exec --no-startup-id "dunstctl history-pop"
+#$mybind	$mod+Ctrl+Shift+Period			exec --no-startup-id "dunstctl context"

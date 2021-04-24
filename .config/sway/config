@@ -624,3 +624,9 @@ mode "keynav" {
 	$mybind		Escape				mode "default"; $unclutter
 }
 $mybind			$mod+Ctrl+w			mode "keynav"; $clutter
+
+# Keyboard shortcuts for managing dunst
+$mybind		$mod+Ctrl+Space				exec --no-startup-id "dunstctl close"
+$mybind		$mod+Ctrl+Shift+Space			exec --no-startup-id "dunstctl close-all"
+$mybind		$mod+Ctrl+Grave				exec --no-startup-id "dunstctl history-pop"
+#$mybind	$mod+Ctrl+Shift+Period			exec --no-startup-id "dunstctl context"

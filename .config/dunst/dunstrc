@@ -227,20 +227,23 @@
     # "mod3" and "mod4" (windows-key).
     # Xev might be helpful to find names for keys.
 
+    # NOTE: Shortcuts are commented out here because they are best
+    # controlled using dunstctl.
+
     # Close notification.
-    close = mod4+ctrl+space
+    #close = mod4+ctrl+space
 
     # Close all notifications.
-    close_all = mod4+ctrl+shift+space
+    #close_all = mod4+ctrl+shift+space
 
     # Redisplay last message(s).
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1". Make sure this key actually exists on your keyboard layout,
     # e.g. check output of 'xmodmap -pke'
-    history = mod4+ctrl+grave
+    #history = mod4+ctrl+grave
 
     # Context menu.
-    context = mod4+ctrl+shift+period
+    #context = mod4+ctrl+shift+period
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.

@@ -63,32 +63,36 @@ def get_playing_media_name():
     players = []
     man=Playerctl.PlayerManager().props.player_names
     for name in man: # Iterate over every media player
-        player = Playerctl.Player.new_from_name(name)
-        try: # Try getting title
-            title = player.get_title()
-            if len(title)==0: # Title is empty
+        try: # A media player's properties may sometimes be unavailable for some reason
+            player = Playerctl.Player.new_from_name(name)
+            try: # Try getting title
+                title = player.get_title()
+                if len(title)==0: # Title is empty
+                    continue
+            except: # Couldn't get title - happens when there is no media player.
                 continue
-        except: # Couldn't get title - happens when there is no media player.
+            artist = player.get_artist()
+            pos = time.strftime("%H:%M:%S", time.gmtime(player.get_position()/1000000))
+            if 'mpris:length' in player.props.metadata.keys():
+                length = time.strftime("%H:%M:%S", time.gmtime(player.props.metadata['mpris:length']/1000000))
+            else:
+                length=None
+            if (artist is None) & (title is None):
+                continue
+                #return "" # No valid media data yet
+            output=""
+            if artist is not None:
+                if len(artist)>0:
+                    output+=artist+" - "
+            output+=title
+            output+=" ("+pos
+            if length is not None:
+                output+="/"+length
+            output+=")"
+            players.append( (output, player.props.status) )
+        except:
+            players.append( ("?", "?") )
             continue
-        artist = player.get_artist()
-        pos = time.strftime("%H:%M:%S", time.gmtime(player.get_position()/1000000))
-        if 'mpris:length' in player.props.metadata.keys():
-            length = time.strftime("%H:%M:%S", time.gmtime(player.props.metadata['mpris:length']/1000000))
-        else:
-            length=None
-        if (artist is None) & (title is None):
-            continue
-            #return "" # No valid media data yet
-        output=""
-        if artist is not None:
-            if len(artist)>0:
-                output+=artist+" - "
-        output+=title
-        output+=" ("+pos
-        if length is not None:
-            output+="/"+length
-        output+=")"
-        players.append( (output, player.props.status) )
     return players
 
 

@@ -69,7 +69,7 @@ def get_playing_media_name():
                 title = player.get_title()
                 if len(title)==0: # Title is empty
                     continue
-            except: # Couldn't get title - happens when there is no media player.
+            except Exception: # Couldn't get title - happens when there is no media player.
                 continue
             artist = player.get_artist()
             pos = time.strftime("%H:%M:%S", time.gmtime(player.get_position()/1000000))
@@ -90,7 +90,7 @@ def get_playing_media_name():
                 output+="/"+length
             output+=")"
             players.append( (output, player.props.status) )
-        except:
+        except Exception:
             players.append( ("?", "?") )
             continue
     return players

@@ -23,6 +23,8 @@ map <F6> :setlocal spell!<CR>
 :set background=dark
 " make the TTY fast
 :set ttyfast
+" Don't put double space after periods when joining lines with space
+:set nojoinspaces
 
 filetype plugin indent on
 " Change some colors

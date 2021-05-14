@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -v "WAYLAND_DISPLAY" ]; then # Running on Wayland
+if [ -n "$WAYLAND_DISPLAY" ]; then # Running on Wayland
 	grim -g "$(slurp)" "$@"
 else # Running on X or whatever else
 	scrot -a "$(slop -f %x,%y,%w,%h -o -q)" "$@"

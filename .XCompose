@@ -32,6 +32,9 @@ include "%L"
 <Multi_key> <slash> <backslash>			: "∧"
 <Multi_key> <O> <asterisk>			: "⊙"
 
+# This character Does Not Exist
+<Multi_key> <less> <question> <greater>		: "�"
+
 # Workarounds to do Latin keyboard layout symbols on Cyrillic layout
 <Multi_key> <Cyrillic_BE> <Cyrillic_BE>		: "«"
 <Multi_key> <Cyrillic_YU> <Cyrillic_YU>		: "»"

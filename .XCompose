@@ -34,6 +34,7 @@ include "%L"
 
 # This character Does Not Exist
 <Multi_key> <less> <question> <greater>		: "�"
+<Multi_key> <bracketleft> <minus> <bracketright>: "□"
 
 # Workarounds to do Latin keyboard layout symbols on Cyrillic layout
 <Multi_key> <Cyrillic_BE> <Cyrillic_BE>		: "«"

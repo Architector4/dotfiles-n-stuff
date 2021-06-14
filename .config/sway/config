@@ -615,6 +615,10 @@ mode "keynav" {
 	$mybind		Shift+j				seat * cursor move 0	20
 	$mybind		Shift+k				seat * cursor move 0	-20
 	$mybind		Shift+l				seat * cursor move 20	0
+	$mybind		Mod1+h				seat * cursor move -1	0
+	$mybind		Mod1+j				seat * cursor move 0	1
+	$mybind		Mod1+k				seat * cursor move 0	-1
+	$mybind		Mod1+l				seat * cursor move 1	0
 	$mybind		1				seat * cursor press button1; seat * cursor release button1 # Left mouse button
 	$mybind		2				seat * cursor press button2; seat * cursor release button2 # Middle mouse button
 	$mybind		3				seat * cursor press button3; seat * cursor release button3 # Right mouse button

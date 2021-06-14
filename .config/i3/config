@@ -72,8 +72,9 @@ exec --no-startup-id "keynav"
 exec --no-startup-id "unclutter -jitter 2 --ignore-scrolling" 
 # Set wallpaper to a cool picture
 exec --no-startup-id "hsetroot -cover ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg" 
-# My (crappy) script that turns on screen locker when laptop lid is closed
-exec --no-startup-id "i3_watch_lid.sh" 
+# My (crappy) script that turns on screen locker when laptop lid is closed.
+# Disabled as my lid itself is broken and I can't verify if it even works.
+#exec --no-startup-id "i3_watch_lid.sh" 
 # When an application wants to do an administrative thing (i.e. you run gparted
 # or "systemctl restart something"), this will pop up asking me for password to
 # confirm the action.

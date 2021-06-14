@@ -11,8 +11,9 @@ window:
 font:
   normal:
     family: Terminus
-    style: bold
-  size: 12
+      #style: bold
+  # Alacritty's font scaling is funky; this seems to match up lol
+  size: 8
 
 
   #glyph_offset:

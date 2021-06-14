@@ -637,3 +637,7 @@ $mybind		$mod+Ctrl+Space				exec --no-startup-id "dunstctl close"
 $mybind		$mod+Ctrl+Shift+Space			exec --no-startup-id "dunstctl close-all"
 $mybind		$mod+Ctrl+Grave				exec --no-startup-id "dunstctl history-pop"
 #$mybind	$mod+Ctrl+Shift+Period			exec --no-startup-id "dunstctl context"
+
+
+# Keyboard shortcuts for managing copyq
+$mybind		$mod+Shift+v				exec --no-startup-id "copyq menu"

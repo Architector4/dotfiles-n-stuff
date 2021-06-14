@@ -8,4 +8,8 @@ fi
 
 file=$1
 mimetype=$(xdg-mime query filetype "$file")
-xclip -selection clipboard -target "$mimetype" -in < "$file"
+if [ -n "$WAYLAND_DISPLAY" ]; then # Running on Wayland
+	wl-copy --type "$mimetype" < "$file"
+else # Running on X or whatever else
+	xclip -selection clipboard -target "$mimetype" -in < "$file"
+fi

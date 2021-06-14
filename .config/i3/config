@@ -55,8 +55,8 @@ floating_minimum_size 1 x 1
 floating_maximum_size -1 x -1
 
 # Launch cool stuff
-# PulseAudio, to hear things
-exec --no-startup-id "start-pulseaudio-x11" 
+# PulseAudio, to hear things. Handled automatically by PipeWire in my case
+#exec --no-startup-id "start-pulseaudio-x11" 
 # To set up colors, fonts, and other various things which programs
 # (like terminal emulator urxvt) read from X resources
 exec --no-startup-id "xrdb ~/.Xresources" 

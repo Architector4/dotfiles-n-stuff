@@ -358,11 +358,11 @@ $mybind			$mod+Shift+Return		append_layout "~/.config/i3/placeholder"
 
 # Take a screenshot. This script of mine gives me a screen region selection,
 # puts it to /tmp/randompic_$USER.png, and into the clipboard, to then use either.
-$mybind --release	$mod+Shift+s			exec --no-startup-id "gyazolocal"
+$mybind 		$mod+Shift+s			exec --no-startup-id "gyazolocal"
 # And this one uploads to imgur and copies the link.
-$mybind --release	$mod+Ctrl+s			exec --no-startup-id "gyazo"
+$mybind 		$mod+Ctrl+s			exec --no-startup-id "gyazo"
 # This one uploads a gif to imgur and copies the link.
-$mybind --release	$mod+Ctrl+g			exec --no-startup-id "gyazogif"
+$mybind 		$mod+Ctrl+g			exec --no-startup-id "gyazogif"
 
 # I have only bare essentials installed on my system, meaning that
 # I also use only essential shortcuts that are very important.

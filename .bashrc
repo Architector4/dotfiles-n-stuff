@@ -94,7 +94,7 @@ bind -m vi-insert "\C-l":clear-screen
 
 
 # Mount a device with safe parameters and have it belong to me so that I can write to it
-alias mountusb="sudo mount --options utf8,uid=$UID,nodev,nosuid,flush,sync"
+alias mountusb="sudo mount --options utf8,uid=$UID,nodev,nosuid,flush"
 # Watch the size of the unwritten filesystem cache - starts to rapidly decay to 0kB when running "sync".
 alias syncwatch="watch -n0.5 grep Dirty /proc/meminfo"
 # CPU speed options (cpupower caps out at minimum/maximum values anyways)

@@ -221,8 +221,8 @@ input * pointer_accel -0.5
 input "type:touchpad" pointer_accel 0
 # Muh keyboard layouts
 input * xkb_layout "us,ru"
-# allow switching keyboard layouts with ALT+SHIFT and also compose key
-input * xkb_options "grp:lalt_lshift_toggle,compose:rctrl"
+# allow switching keyboard layouts with ALT+SHIFT, compose key, and CapsLock act as Menu key
+input * xkb_options "grp:lalt_lshift_toggle,compose:rctrl,caps:menu"
 # Hide mouse after a period of inactivity as unclutter does on X11
 set $unclutter seat * hide_cursor 5000
 set $clutter seat * hide_cursor 0

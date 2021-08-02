@@ -126,6 +126,8 @@ alias amdvlk='export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_icd64.json:/us
 alias amdvlk-tkg='export VK_ICD_FILENAMES=/opt/amdvlk/etc/vulkan/icd.d/amd_icd64.json:/opt/amdvlk/etc/vulkan/icd.d/amd_icd32.json'
 # Make cp do reflinks by default
 alias cp="cp --reflink=auto"
+# Fill the screen with character "EEEE" (calibration test)
+alias EEEEE="echo -e '\e#8'"
 
 # "mkcd" to mkdir and then cd to the result
 mkcd() { mkdir "$@"&&cd "$@";}

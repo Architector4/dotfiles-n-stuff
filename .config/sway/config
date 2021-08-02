@@ -122,27 +122,27 @@ bar {
 	colors {
 		# Bar colors. See Sway documentation for what is what: man 5 sway
 		# Default colors:
-		#background	#000000
-		#statusline	#ffffff
-		#separator	#666666
+		background	#000000
+		statusline	#ffffff
+		separator	#666666
 		#Class	-	-	border	backgr.	text
-		#focused_workspace	#4c7899	#285577	#ffffff
-		#active_workspace	#333333	#5f676a	#ffffff
-		#inactive_workspace	#333333	#222222	#888888
-		#urgent_workspace	#2f343a	#900000	#ffffff
-		#binding_mode		#2f343a	#900000	#ffffff
+		focused_workspace	#4c7899	#285577	#ffffff
+		active_workspace	#333333	#5f676a	#ffffff
+		inactive_workspace	#333333	#222222	#888888
+		urgent_workspace	#2f343a	#900000	#ffffff
+		binding_mode		#2f343a	#900000	#ffffff
 
 		# Default colors, adjusted to match high contrast edits seen
 		# farther down in the config.
-		#background	#000000
-		#statusline	#ffffff
-		#separator	#666666
-		##Class	-	-	border	backgr.	text
-		#focused_workspace	#8888FF	#335577	#ffffff
-		#active_workspace	#5F676A	#333333	#ffffff
-		#inactive_workspace	#222222	#111111 #888888
-		#urgent_workspace	#2f343a	#900000	#ffffff
-		#binding_mode		#2f343a	#900000	#ffffff
+		background	#000000
+		statusline	#ffffff
+		separator	#666666
+		#Class	-	-	border	backgr.	text
+		focused_workspace	#8888FF	#335577	#ffffff
+		active_workspace	#5F676A	#333333	#ffffff
+		inactive_workspace	#222222	#111111 #888888
+		urgent_workspace	#2f343a	#900000	#ffffff
+		binding_mode		#2f343a	#900000	#ffffff
 
 		# And switching red and blue channels in those default colors.
 		# Also messed with urgent and binding mode colors.
@@ -184,11 +184,11 @@ for_window [class="Pcmanfm"]			floating enable
 
 # Default colors:
 #Class	-	-	-	border	backgr.	text	indic.	child_border
-#client.focused			#4c7899	#285577	#ffffff	#2e9ef4	#285577
-#client.focused_inactive	#333333	#5f676a	#ffffff	#484e50	#5f676a
-#client.unfocused		#333333	#222222	#888888	#292d2e	#222222
-#client.urgent			#2f343a	#900000	#ffffff	#900000	#900000
-#client.placeholder		#000000	#0c0c0c	#ffffff	#000000	#0c0c0c
+client.focused			#4c7899	#285577	#ffffff	#2e9ef4	#285577
+client.focused_inactive		#333333	#5f676a	#ffffff	#484e50	#5f676a
+client.unfocused		#333333	#222222	#888888	#292d2e	#222222
+client.urgent			#2f343a	#900000	#ffffff	#900000	#900000
+client.placeholder		#000000	#0c0c0c	#ffffff	#000000	#0c0c0c
 
 # Having trouble distinguishing windows that are in focus and the next window indicator.
 # This is a higher contrast version of the default colors to aid in that.

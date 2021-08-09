@@ -71,10 +71,9 @@ disk "/media/freebsd" {
         format = "BSD %avail"
 }
 
-
 volume master {
-	format = "♪: %volume"
-	format_muted = "♪: %volume (MUTED)"
+	format = "♪ %volume"
+	format_muted = "♪ %volume (MUTED)"
 	device = "pulse"
 	#device = "pulse:alsa_output.pci-0000_00_14.2.analog-stereo"
 }

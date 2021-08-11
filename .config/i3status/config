@@ -15,6 +15,7 @@ general {
 order += "ipv6"
 order += "ethernet _first_"
 order += "wireless _first_"
+order += "disk /mnt"
 order += "disk /media/freebsd"
 order += "disk /media/ext_hdd"
 order += "disk /"
@@ -66,9 +67,12 @@ disk "/media/ext_hdd" {
         format = "EX %avail"
 }
 
-
 disk "/media/freebsd" {
         format = "BSD %avail"
+}
+
+disk "/mnt" {
+        format = "MNT %avail"
 }
 
 volume master {

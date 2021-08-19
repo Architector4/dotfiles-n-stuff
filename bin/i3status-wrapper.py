@@ -49,7 +49,7 @@ def conv_si(num):
 
 def get_max_frequency():
     """ Get the maximum allowed frequency for cpu0, assuming all CPUs use the same. """
-    with open ('/sys/devices/system/cpu/cpufreq/policy0/cpuinfo_max_freq') as fp:
+    with open ('/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq') as fp:
         return int(fp.readlines()[0].strip())*1000
 
 def get_governor():

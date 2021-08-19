@@ -35,6 +35,23 @@ gi.require_version('Playerctl', '2.0')
 from gi.repository import Playerctl
 import time
 
+si_units = ["", "K", "M", "G", "T"]
+
+def conv_si(num):
+    """
+    Convert input number to a shorter string with a SI unit postfix.
+    Does not support float values.
+    """
+    for iteration, unit in enumerate(si_units):
+        if num < 10000 or unit == si_units[-1]:
+            return str(num)+unit
+        num = num//1000
+
+def get_max_frequency():
+    """ Get the maximum allowed frequency for cpu0, assuming all CPUs use the same. """
+    with open ('/sys/devices/system/cpu/cpufreq/policy0/cpuinfo_max_freq') as fp:
+        return int(fp.readlines()[0].strip())*1000
+
 def get_governor():
     """ Get the current governor for cpu0, assuming all CPUs use the same. """
     with open('/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor') as fp:
@@ -131,6 +148,11 @@ if __name__ == '__main__':
         # insert information into the start of the json, but could be anywhere
         # CHANGE THIS LINE TO INSERT SOMETHING ELSE
         #j.insert(0, {'full_text' : '%s' % get_governor(), 'name' : 'gov'})
+        j.insert(0, {
+            'name' : 'max_freq',
+            'color': '#CCCCCC',
+            'full_text': conv_si(get_max_frequency())+"Hz"
+            })
 
         players = get_playing_media_name()
         for i, media in enumerate(players):

@@ -217,7 +217,8 @@ input * xkb_numlock enabled
 input * accel_profile flat
 # I hate big mouse speed
 input * pointer_accel -0.5
-# Fine, my touchpad keeps big mouse speed.
+# Enable mouse acceleration and big mouse speed for touchpads tho
+input "type:touchpad" accel_profile adaptive
 input "type:touchpad" pointer_accel 0
 # Muh keyboard layouts
 input * xkb_layout "us,ru"

@@ -71,3 +71,6 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 #export QT_FONT_DPI=72
 # Some Qt applications can break with different font DPI; this fixes that
 #export QT_AUTO_SCREEN_SCALE_FACTOR=0
+
+# Disable .NET telemetry
+export DOTNET_CLI_TELEMETRY_OPTOUT=1

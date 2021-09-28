@@ -89,7 +89,7 @@ def get_playing_media_name():
             except Exception: # Couldn't get title - happens when there is no media player.
                 continue
             artist = player.get_artist()
-            pos = time.strftime("%H:%M:%S", time.gmtime(player.get_position()/1000000))
+            pos = time.strftime("%H:%M:%S", time.gmtime(max(player.get_position()/1000000, 0)))
             if 'mpris:length' in player.props.metadata.keys():
                 length = time.strftime("%H:%M:%S", time.gmtime(player.props.metadata['mpris:length']/1000000))
             else:

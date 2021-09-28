@@ -58,6 +58,7 @@ include "%L"
 # Did not account for these 2 symbols: ͡ ͜ # Non-spacing
 <Multi_key> <C> <less>				: "◠"
 <Multi_key> <C> <greater>			: "◡"
+<Multi_key> <slash> <exclam> <backslash>	: "⚠"
 
 # Non-breaking space
 <Multi_key> <space> <space>			: " "

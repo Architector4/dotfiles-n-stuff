@@ -37,6 +37,8 @@ filetype plugin indent on
 :hi DiffChange	ctermbg=20
 " Set background color of text that differs to red
 :hi DiffText	ctermbg=4
+" Set colors for gvim
+highlight Normal guifg=white guibg=black
 
 " When ArchAutoWrite is enabled, write out the file every time it's changed
 :command ArchAutoWrite autocmd TextChanged,TextChangedI <buffer> silent write
@@ -56,3 +58,4 @@ filetype plugin indent on
 :set nohlsearch
 " Don't randomly shrink cursor depending on mode
 :set guicursor=
+

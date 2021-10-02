@@ -114,6 +114,7 @@ alias amdvlk='export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_icd64.json:/us
 # Use TkGlitch's version of AMDVLK for Vulkan
 alias amdvlk-tkg='export VK_ICD_FILENAMES=/opt/amdvlk/etc/vulkan/icd.d/amd_icd64.json:/opt/amdvlk/etc/vulkan/icd.d/amd_icd32.json'
 # Make cp do reflinks by default
+# This is not needed on GNU coreutils v9.0 or later
 alias cp="cp --reflink=auto"
 # Fill the screen with character "EEEE" (calibration test)
 alias EEEEE="echo -e '\e#8'"

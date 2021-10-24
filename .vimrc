@@ -6,8 +6,8 @@ map <F6> :setlocal spell!<CR>
 " Map double press of "MENU" key to "ESCAPE" key when in Insert mode
 :imap [29~ <Esc><Esc>
 
-" Show number lines on the left
-:set number
+" Show number lines on the left, both relative and absolute
+:set number relativenumber
 " Turn on syntax highlighting
 :syntax on
 " When using TAB autocompletion, show a list of autocompletable things

@@ -89,7 +89,10 @@ def get_playing_media_name():
             except Exception: # Couldn't get title - happens when there is no media player.
                 continue
             artist = player.get_artist()
-            pos = time.strftime("%H:%M:%S", time.gmtime(max(player.get_position()/1000000, 0)))
+            try:
+                pos = time.strftime("%H:%M:%S", time.gmtime(max(player.get_position()/1000000, 0)))
+            except gi.repository.GLib.Error: # Player position may be not supported
+                pos = None
             if 'mpris:length' in player.props.metadata.keys():
                 length = time.strftime("%H:%M:%S", time.gmtime(player.props.metadata['mpris:length']/1000000))
             else:
@@ -102,10 +105,11 @@ def get_playing_media_name():
                 if len(artist)>0:
                     output+=artist+" - "
             output+=title
-            output+=" ("+pos
-            if length is not None:
-                output+="/"+length
-            output+=")"
+            if pos is not None:
+                output+=" ("+pos
+                if length is not None:
+                    output+="/"+length
+                output+=")"
             players.append( (output, player.props.status) )
         except Exception:
             players.append( ("?", "?") )

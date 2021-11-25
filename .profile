@@ -33,6 +33,8 @@ if [ -n "$trashweight" ]; then
 fi
 unset trashweight
 
+# Get rid of lesspipe
+unset LESSPIPE
 # I like having local binaries.
 #export PATH="$HOME/bin:$PATH" # Apparently I end up having this path set up thrice in this environment variable lol
 # Vim is goot.

@@ -1,6 +1,6 @@
 #!/bin/sh
 # Start X server with key repeating starting when you hold a key for
 # at least 170ms (or 0.17s), and repeat the key every 16ms (or 0.016s);
+# Setting DPI value to a correct one for my screen instead of hardcoded 96;
 # and ignoring incoming TCP connections.
-# "--dpi 72" can also be specified here.
-exec X -ardelay 170 -arinterval 16 -nolisten tcp "$@"
+exec X -ardelay 170 -arinterval 16 -dpi 142 -nolisten tcp "$@"

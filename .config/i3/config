@@ -86,12 +86,12 @@ exec --no-startup-id "redshift.sh on"
 exec --no-startup-id "kdeconnect-indicator"
 
 # I like this font.
-#font pango:Terminus (TTF) 12
+#font pango:Terminus (TTF) 8
 # i3 clips the TTF version, so here's X core font description lol
 font -*-terminus-medium-*-*-*-16-*
 # Possible alternatives:
-#font pango:DejaVu Sans Mono 12
-#font pango:TimesNewRoman 12
+#font pango:DejaVu Sans Mono 8
+#font pango:TimesNewRoman 8
 # Also, apparently you should put your font config before your bar settings.
 
 # Bar settings

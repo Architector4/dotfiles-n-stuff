@@ -12,7 +12,6 @@ font:
   normal:
     family: Terminus
       #style: bold
-  # Alacritty's font scaling is funky; this seems to match up lol
   size: 8
 
 

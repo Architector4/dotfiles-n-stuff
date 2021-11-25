@@ -48,9 +48,6 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
 # Prompt
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 

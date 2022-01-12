@@ -86,12 +86,12 @@ exec --no-startup-id "redshift.sh on"
 exec --no-startup-id "kdeconnect-indicator"
 
 # I like this font.
-#font pango:Terminus (TTF) 8
+#font pango:Terminus (TTF) 12
 # i3 clips the TTF version, so here's X core font description lol
 font -*-terminus-medium-*-*-*-16-*
 # Possible alternatives:
-#font pango:DejaVu Sans Mono 8
-#font pango:TimesNewRoman 8
+#font pango:DejaVu Sans Mono 12
+#font pango:TimesNewRoman 12
 # Also, apparently you should put your font config before your bar settings.
 
 # Bar settings
@@ -114,7 +114,7 @@ bar {
 	status_command "i3status | i3status-wrapper.py"
 	#status_command "cat /dev/urandom"	# That is actually really fun.
 	# Change bar height
-	#height 16
+	height 20
 	
 	colors {
 		# Bar colors. See i3 documentation for what is what:

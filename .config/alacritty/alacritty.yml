@@ -8,6 +8,10 @@ window:
     x: 1
     y: 1
 
+scrolling:
+  history: 65536
+
+
 font:
   normal:
     family: Terminus

@@ -117,7 +117,7 @@ bar {
 	status_command "i3status | i3status-wrapper.py"
 	#status_command "cat /dev/urandom"	# That is actually really fun.
 	# Change bar height
-	#height 16
+	height 19
 	
 	colors {
 		# Bar colors. See Sway documentation for what is what: man 5 sway

@@ -70,7 +70,8 @@ include "%L"
 <Multi_key> <space> <2>				: " "
 # Word joiner
 <Multi_key> <space> <3>				: "⁠"
-
+# Right-to-left override
+<Multi_key> <space> <4>				: "‮"
 
 # Lenny face
 <Multi_key> <l> <e>				: "( ͡° ͜ʖ ͡°)"

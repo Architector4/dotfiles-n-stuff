@@ -26,7 +26,7 @@ order += "battery all"
 order += "tztime local"
 
 ipv6 {
-	format_up = "IPv6: %ip"
+	format_up = "IPv6: good"
 	format_down = ""
 }
 

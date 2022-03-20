@@ -45,7 +45,7 @@ ethernet _first_ {
 
 ethernet wg0 {
 	format_up = "WG: %ip"
-	format_down = "lol"
+	format_down = ""
 }
 
 battery all {

@@ -10,8 +10,6 @@ Please note that I have long and flexible fingers, and as a result completely do
 
 #
 
-#
-
 ---
 
 #

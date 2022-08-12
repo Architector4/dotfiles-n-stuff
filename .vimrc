@@ -1,7 +1,7 @@
 " Toggle spellcheck on F6
 map <F6> :setlocal spell!<CR>
-" Spellcheck language - I need it only with Russian stuff
-:set spelllang=ru
+" Spellcheck language
+:set spelllang=ru,en
 
 " Map double press of "MENU" key to "ESCAPE" key when in Insert mode
 :imap [29~ <Esc><Esc>

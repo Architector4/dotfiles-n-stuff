@@ -31,6 +31,7 @@ include "%L"
 <Multi_key> <backslash> <slash>			: "∨"
 <Multi_key> <slash> <backslash>			: "∧"
 <Multi_key> <O> <asterisk>			: "⊙"
+<Multi_key> <i> <n> <t>				: "∫"
 
 # This character Does Not Exist
 <Multi_key> <less> <question> <greater>		: "�"

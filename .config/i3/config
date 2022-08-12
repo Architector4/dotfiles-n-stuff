@@ -175,6 +175,7 @@ for_window [class="Pcmanfm"]			floating enable
 for_window [title="TEST"]			floating enable
 #for_window [title=" - Oracle VM VirtualBox"]	floating enable
 #for_window [class="VirtualBoxVM"]		floating enable
+for_window [class="re.sonny.Junction"]		floating enable
 
 # Colors. See i3 documentation for what is what:
 # https://i3wm.org/docs/userguide.html#_changing_colors

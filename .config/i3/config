@@ -23,8 +23,8 @@ set $lockcmd i3lock.sh
 # muh gaps
 #gaps inner 10
 
-# Actually I don't want gaps anymore, but i3's borders are too thick so imma change
-default_border normal 1
+# Actually I don't want gaps anymore
+default_border normal 2
 
 # Makes it so that you need to click on a window for it to have focus.
 focus_follows_mouse no
@@ -339,11 +339,11 @@ $mybind			$mod+minus			gaps	inner	current	plus	10
 $mybind			$mod+equal			gaps	inner	current	minus	10
 
 # Allow changing border type between normal, 3 pixel wide and none.
-$mybind			$mod+Ctrl+1			border	normal	1
-$mybind			$mod+Ctrl+2			border	pixel	1
+$mybind			$mod+Ctrl+1			border	normal	2
+$mybind			$mod+Ctrl+2			border	pixel	2
 $mybind			$mod+Ctrl+3			border	none
-$mybind			$mod+Ctrl+4			border	pixel	3
-$mybind			$mod+Ctrl+5			border	pixel	2
+$mybind			$mod+Ctrl+4			border	pixel	1
+$mybind			$mod+Ctrl+5			border	pixel	3
 
 # Force kill current window. Scary, hence awkward to press.
 $mybind			$mod+Shift+Ctrl+q		exec --no-startup-id "forcekill.sh"

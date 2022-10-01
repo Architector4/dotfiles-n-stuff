@@ -32,6 +32,8 @@ include "%L"
 <Multi_key> <slash> <backslash>			: "∧"
 <Multi_key> <O> <asterisk>			: "⊙"
 <Multi_key> <i> <n> <t>				: "∫"
+<Multi_key> <bar> <bar>				: "█"
+<Multi_key> <c> <bar>				: "🮕"
 
 # This character Does Not Exist
 <Multi_key> <less> <question> <greater>		: "�"

@@ -2,7 +2,7 @@
 # Script to change backlight brightness (works only on Linux)
 # Pass parameter like "brightness.sh 4" or "brightness.sh -4"
 # This script assumens that the backlight is in this exact location and user has write access.
-# Assumed location is /sys/class/backlight/amdgpu_bl0/brightness
+# Assumed location is a single directory in /sys/class/backlight/*/brightness
 
 # For write access, you can add this udev rule in file /etc/udev/rules.d/90-backlight.rules:
 #ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness"

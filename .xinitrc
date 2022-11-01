@@ -32,5 +32,7 @@ fi
 cd
 # Xorg on FreeBSD doesn't seem to remember this setting
 xinput set-prop "System mouse" "libinput Accel Speed" -1
+# Calibrate touchscreen
+xinput --map-to-output 'ELAN0732:00 04F3:251C' eDP-1
 # What, you thought this isn't going to be another generic "dotfiles" repo with "i3" at the end of .xinitrc?
 exec i3

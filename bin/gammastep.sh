@@ -1,9 +1,9 @@
 #!/bin/sh
-# Toggle redshift
+# Toggle gammastep
 
 # Status file is an empty file that signifies if the script is running or not.
 # Helps to allow for the toggling behavior.
-STATUSFILE=/tmp/redshift_toggled_on_$USER
+STATUSFILE=/tmp/gammastep_toggled_on_$USER
 
 if [ -f "$STATUSFILE" ] && [ "$1" != "on" ]; then
 	# Status file exists, meaning the script is running,
@@ -12,16 +12,14 @@ if [ -f "$STATUSFILE" ] && [ "$1" != "on" ]; then
 	rm "$STATUSFILE"
 	# Turn it off
 	if [ -n "$WAYLAND_DISPLAY" ]; then	# Running on Wayland
-		# When using AUR package "redshift-wayland-git", any
-		# invocation of redshift keeps being open until killed, and
-		# killing it resets the red tint, essentially doing what is needed.
-		killall redshift
+		# Seems to work better on Wayland
+		killall gammastep
 	else					# Running on X
-		redshift -x
+		gammastep -x
 	fi
 else
 	# If it's not running or "on" parameter was sent,
-	# turn on redshift and create statusfile.
+	# turn on gammastep and create statusfile.
 	touch "$STATUSFILE"
-	redshift -P -O 2750K
+	gammastep -P -O 2750K
 fi

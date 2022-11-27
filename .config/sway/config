@@ -86,7 +86,7 @@ exec --no-startup-id "dunst"
 exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1" 
 # My (less crappy) script that allows me to toggle Redshift (program that shifts
 # screen light to red, duh), which with "on" parameter turns it on instead.
-exec --no-startup-id "redshift.sh on"
+exec --no-startup-id "gammastep.sh on"
 # KDE Connect is kewl actually
 exec --no-startup-id "kdeconnect-indicator"
 
@@ -309,9 +309,9 @@ $mybind			XF86AudioPlay			exec --no-startup-id "playerctl play-pause"
 $mybind			$mod+F11			exec --no-startup-id "playerctl next"
 $mybind			XF86AudioNext			exec --no-startup-id "playerctl next"
 
-# F12	Airplane mode. Triggers my redshift toggler script
-$mybind			$mod+F12			exec --no-startup-id "redshift.sh"
-$mybind			XF86RFKill			exec --no-startup-id "redshift.sh"
+# F12	Airplane mode. Triggers my gammastep toggler script
+$mybind			$mod+F12			exec --no-startup-id "gammastep.sh"
+$mybind			XF86RFKill			exec --no-startup-id "gammastep.sh"
 
 # PrintScreen (or Insert if pressed with FN) is the key I have right after F12. Let's extend the bindings past F12! :D
 # Opens the "CLICKER" mode, as seen at the end of the file.

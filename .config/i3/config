@@ -415,12 +415,6 @@ $mybind			$mod+f				fullscreen toggle
 $mybind			$mod+s				layout stacking
 $mybind			$mod+w				layout tabbed
 $mybind			$mod+e				layout toggle split
-$mybind			$mod+Ctrl+v			layout splitv
-$mybind			$mod+Ctrl+quotedbl		layout splith
-$mybind			$mod+Ctrl+apostrophe		layout splith
-# Conflicts with my "record GIF" bind ($mod+Ctrl+g)
-#$mybind			$mod+Ctrl+g			layout splith
-
 # Toggle current container between tiling and floating. 
 # DUDE YOU CAN PUT A CONTAINER WITH MULTIPLE WINDOWS INTO FLOATING MODE HOLY COW
 $mybind			$mod+Shift+space		floating toggle

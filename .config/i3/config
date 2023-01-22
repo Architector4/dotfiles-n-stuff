@@ -325,6 +325,9 @@ $mybind --release	$mod+Shift+s			exec --no-startup-id "gyazolocal"
 $mybind --release	$mod+Ctrl+s			exec --no-startup-id "gyazo"
 # This one uploads a gif to imgur and copies the link.
 $mybind --release	$mod+Ctrl+g			exec --no-startup-id "gyazogif"
+# Record a video (without audio) on a selected region on screen.
+# Run a second time to stop recording.
+$mybind --release	$mod+Shift+g			exec --no-startup-id "videorecord.sh"
 
 # I have only bare essentials installed on my system, meaning that
 # I also use only essential shortcuts that are very important.

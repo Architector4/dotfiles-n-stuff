@@ -30,7 +30,6 @@ else
 		-show_region 1 \
 		$(slop -f "-grab_x %x -grab_y %y -video_size %wx%h ") \
 		-i :0 \
-		-r 30 \
 		-preset fast \
 		"$OUTPUT" &
 		#-grab_x 200 \

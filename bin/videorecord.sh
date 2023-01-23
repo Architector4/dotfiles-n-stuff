@@ -31,6 +31,8 @@ else
 		$(slop -f "-grab_x %x -grab_y %y -video_size %wx%h ") \
 		-i :0 \
 		-preset fast \
+		-pix_fmt yuv420p \
+		-crf 30 \
 		"$OUTPUT" &
 		#-grab_x 200 \
 		#-grab_y 200 \

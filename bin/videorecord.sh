@@ -9,12 +9,23 @@ STATUSFILE=/tmp/vid_recording_toggled_on_$USER
 OUTPUT=/tmp/vid_recording.mp4
 
 if [ -f "$STATUSFILE" ] && [ "$1" != "on" ]; then
-	# Status file exists, meaning the script is running,
-	# and "on" parameter was not sent.
-	# Kill ffmpeg...
-	kill $(cat "$STATUSFILE")
+	# Status file exists, meaning the script is
+	# probably running, and "on" parameter was not sent.
+
+	id=$(cat "$STATUSFILE")
 	# Remove the status file!
 	rm "$STATUSFILE"
+
+	# Check what is running on that process ID...
+	cmd=$(cat /proc/"$id"/comm)
+	if [ "$cmd" != "ffmpeg" ]; then
+		# Actually ffmpeg isn't even running...
+		# Just restart the script!
+		exec "$0" "$@"
+	fi
+
+	# Kill ffmpeg...
+	kill "$id"
 	# Serve the file...
 	dragon-drop "$OUTPUT"
 	# Remove the file!

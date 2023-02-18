@@ -28,11 +28,16 @@ if [ -f "$STATUSFILE" ] && [ "$1" != "on" ]; then
 	kill "$id"
 	# Serve the file...
 	dragon-drop "$OUTPUT"
+	# Some programs don't like the file disappearing even after seeing it, so...
+	# Sleep a bit!
+	sleep 10
 	# Remove the file!
 	rm "$OUTPUT"
 else
 	# If it's not running or "on" parameter was sent,
 	# do the thing!!
+	# Just in case...
+	rm "$OUTPUT"
 	ffmpeg \
 		-loglevel 8 \
 		-y \

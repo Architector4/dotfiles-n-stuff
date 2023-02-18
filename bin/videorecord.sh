@@ -44,7 +44,7 @@ else
 		-f x11grab \
 		-framerate 30 \
 		-show_region 1 \
-		$(slop -f "-grab_x %x -grab_y %y -video_size %wx%h ") \
+		-grab_x $(slop -f "%x -grab_y %y -video_size %wx%h ") \
 		-i :0 \
 		-vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" \
 		-preset fast \

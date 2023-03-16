@@ -41,6 +41,7 @@ if [ -f "$STATUSFILE" ] && [ "$1" != "on" ]; then
 else
 	# If it's not running or "on" parameter was sent,
 	# do the thing!!
+	# shellcheck disable=SC2046
 	ffmpeg \
 		-loglevel 8 \
 		-y \

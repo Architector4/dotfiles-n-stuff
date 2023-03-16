@@ -26,18 +26,21 @@ if [ -f "$STATUSFILE" ] && [ "$1" != "on" ]; then
 
 	# Kill ffmpeg...
 	kill "$id"
+	# Wait for it to actually die...
+	while kill -0 "$id" 2> /dev/null; do sleep 0.01; done;
+	# Rename the file to not conflict with further recording...
+	OUTPUT_MOVED=$(mktemp -u).mp4
+	mv "$OUTPUT" "$OUTPUT_MOVED"
 	# Serve the file...
-	dragon-drop "$OUTPUT"
+	dragon-drop "$OUTPUT_MOVED"
 	# Some programs don't like the file disappearing even after seeing it, so...
 	# Sleep a bit!
 	sleep 10
 	# Remove the file!
-	rm "$OUTPUT"
+	rm "$OUTPUT_MOVED"
 else
 	# If it's not running or "on" parameter was sent,
 	# do the thing!!
-	# Just in case...
-	rm "$OUTPUT"
 	ffmpeg \
 		-loglevel 8 \
 		-y \

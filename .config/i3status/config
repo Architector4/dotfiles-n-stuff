@@ -50,6 +50,7 @@ ethernet wg0 {
 
 battery all {
         format = "%status %percentage %consumption"
+	format_down = ""
 }
 
 tztime local {

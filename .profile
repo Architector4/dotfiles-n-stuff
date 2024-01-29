@@ -23,6 +23,11 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# set PATH so it includes user's cargo bin if it exists
+if [ -d "$HOME/.cargo/bin" ] ; then
+    PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 # Not needed anymore since I have figured how to do it in /etc/vconsole.conf
 #setfont /usr/share/kbd/consolefonts/Cyr_a8x16.psfu.gz
 

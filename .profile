@@ -70,8 +70,8 @@ export MOZ_USE_XINPUT2=1
 # Set environment variables related to GUIs
 # Some fixes to make custom compose key sequences from .XCompose work
 export XMODIFIERS="@im=none"
-export GTK_IM_MODULE="xim"
-export QT_IM_MODULE="xim"
+export GTK_IM_MODULE="ibus"
+export QT_IM_MODULE="ibus"
 # Use qt5ct for customization
 export QT_QPA_PLATFORMTHEME="qt5ct"
 # Below can be useful to specify DPI to Qt

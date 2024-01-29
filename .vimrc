@@ -27,6 +27,8 @@ map <F6> :setlocal spell!<CR>
 :set ttyfast
 " Don't put double space after periods when joining lines with space
 :set nojoinspaces
+" Enable mouse, actually
+:set mouse=a
 
 filetype plugin indent on
 " Change some colors

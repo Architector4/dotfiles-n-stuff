@@ -16,8 +16,8 @@
 
 ! Foreground and background colors.
 ! URxvt entry is to give it transparency
-*.foreground:			#FFFFFF
-*.background:			#000000
+*.foreground:			#000000
+*.background:			#FFFFFF
 URxvt.background:		[85]#000000
 
 ! Black

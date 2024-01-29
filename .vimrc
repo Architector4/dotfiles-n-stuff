@@ -7,7 +7,9 @@ map <F6> :setlocal spell!<CR>
 :imap [29~ <Esc><Esc>
 
 " Show number lines on the left, both relative and absolute
-:set number relativenumber
+":set number relativenumber
+" actually just normal numbers are fine
+:set number
 " Turn on syntax highlighting
 :syntax on
 " When using TAB autocompletion, show a list of autocompletable things

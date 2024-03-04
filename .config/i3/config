@@ -105,9 +105,9 @@ bar {
 	#$mybind		button6		nop
 	#$mybind		button7		nop
 	# Allows the bar to be displayed only on this screen
-	#output eDP-1		
+	#output eDP-2
 	# Shows tray icons only on the instance of the bar that is on this screen.
-	tray_output eDP-1
+	tray_output eDP-2
 	# Put the bar at the top of the screen.
 	position top
 	# What command to use to get the text to draw on the bar.

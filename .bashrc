@@ -95,7 +95,8 @@ alias mountusb="sudo mount --options utf8,uid=$UID,nodev,nosuid,flush"
 alias syncwatch="watch -n0.5 grep Dirty /proc/meminfo"
 # CPU speed options (cpupower caps out at minimum/maximum values anyways)
 alias cpuslow="sudo cpupower frequency-set -u 1M"
-alias cpumeh="sudo cpupower frequency-set -u 1500M"
+alias cpumeh="sudo cpupower frequency-set -u 1900M"
+alias cpuquiet="sudo cpupower frequency-set -u 3000M"
 alias cpufast="sudo cpupower frequency-set -u 10000M"
 # ...
 alias sl="ls"

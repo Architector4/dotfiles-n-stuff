@@ -41,10 +41,17 @@ if [ -f "$STATUSFILE" ] && [ "$1" != "on" ]; then
 else
 	# If it's not running or "on" parameter was sent,
 	# do the thing!!
-	# shellcheck disable=SC2046
+	
+	# Hacky approach, get first sink monitor in the list...
+	PACTL_MONITOR=$(pactl list short sources | grep monitor | cut -f2 | head -n1)
+
+	# shellcheck disable=SC2046  # intentionally unquoted parameter with slop lol
 	ffmpeg \
 		-loglevel 8 \
 		-y \
+		-f pulse \
+		-ac 2 \
+		-i "$PACTL_MONITOR" \
 		-f x11grab \
 		-framerate 30 \
 		-show_region 1 \

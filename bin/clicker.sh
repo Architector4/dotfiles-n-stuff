@@ -27,10 +27,10 @@ else
 	touch "$STATUSFILE"
 	while true;do
 		# Make this number higher for slower clicks, lower for faster.
-		sleep 0.03
+		sleep 0.008
 		xdotool mousedown $BUTTON
 		# Give it some time of being held, just in case
-		sleep 0.03
+		sleep 0.008
 		# Raise the button
 		xdotool mouseup $BUTTON
 	done

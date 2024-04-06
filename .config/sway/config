@@ -108,9 +108,9 @@ bar {
 	#$mybind		button6		nop
 	#$mybind		button7		nop
 	# Allows the bar to be displayed only on this screen
-	#output eDP		
+	#output eDP-2
 	# Shows tray icons only on the instance of the bar that is on this screen.
-	#tray_output eDP
+	#tray_output eDP-2
 	# Put the bar at the top of the screen.
 	position top
 	# What command to use to get the text to draw on the bar.
@@ -180,6 +180,7 @@ for_window [class="Pcmanfm"]			floating enable
 for_window [title="TEST"]			floating enable
 #for_window [title=" - Oracle VM VirtualBox"]	floating enable
 #for_window [class="VirtualBoxVM"]		floating enable
+for_window [class="re.sonny.Junction"]		floating enable
 
 # Colors. See Sway documentation for what is what: man 5 sway
 
@@ -237,8 +238,9 @@ hide_edge_borders --i3 none
 # Set same titlebar padding size as in i3
 titlebar_padding 2
 # Move output 2 to the right of my primary one
-output eDP-1 pos 0 0
+output eDP-2 pos 0 0
 output HDMI-A-1 pos 1920 0
+#output * adaptive_sync disabled
 # Set background to a cool picture
 output * background ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg fill
 
@@ -365,6 +367,9 @@ $mybind 		$mod+Shift+s			exec --no-startup-id "gyazolocal"
 $mybind 		$mod+Ctrl+s			exec --no-startup-id "gyazo"
 # This one uploads a gif to imgur and copies the link.
 $mybind 		$mod+Ctrl+g			exec --no-startup-id "gyazogif"
+# Record a video (without audio) on a selected region on screen.
+# Run a second time to stop recording.
+$mybind 		$mod+Shift+g			exec --no-startup-id "videorecord.sh"
 
 # I have only bare essentials installed on my system, meaning that
 # I also use only essential shortcuts that are very important.
@@ -397,7 +402,7 @@ $mybind			$mod+Shift+q			kill
 $mybind			button2				kill
 
 # Start dmenu (a program launcher)
-$mybind			$mod+d				exec --no-startup-id  dmenu_run
+$mybind			$mod+d				exec --no-startup-id  dmenu-wl_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.

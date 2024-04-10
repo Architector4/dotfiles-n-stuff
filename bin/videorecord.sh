@@ -51,7 +51,9 @@ else
 		GEOMETRY=$(slurp)
 		if [ -n "$GEOMETRY" ]; then
 			wf-recorder \
-				-g "$GEOMETRY" \
+				--geometry "$GEOMETRY" \
+				--pixel-format yuv420p \
+				--framerate 30 \
 				--audio="$PACTL_MONITOR" \
 				-f "$OUTPUT" &
 				echo $! > "$STATUSFILE"

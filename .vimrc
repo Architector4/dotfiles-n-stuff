@@ -62,4 +62,8 @@ highlight Normal guifg=white guibg=black
 :set nohlsearch
 " Don't randomly shrink cursor depending on mode
 :set guicursor=
-
+" Don't use new color scheme due to multiple readability issues
+if has('nvim')
+	:set notermguicolors
+	:colorscheme vim
+endif

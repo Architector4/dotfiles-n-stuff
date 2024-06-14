@@ -35,6 +35,11 @@ gi.require_version('Playerctl', '2.0')
 from gi.repository import Playerctl
 import time
 
+debug = False
+if len(sys.argv) >= 2:
+    if sys.argv[1] == "debug":
+        debug = True
+
 si_units = ["", "K", "M", "G", "T"]
 
 def conv_si(num):
@@ -78,15 +83,32 @@ def get_governor():
 # Get full media player status line using playerctl
 def get_playing_media_name():
     players = []
-    man=Playerctl.PlayerManager().props.player_names
+    if debug:
+        man=[0]
+    else:
+        man=Playerctl.PlayerManager().props.player_names
     for name in man: # Iterate over every media player
         try: # A media player's properties may sometimes be unavailable for some reason
-            player = Playerctl.Player.new_from_name(name)
+            if debug:
+                class Wet:
+                    metadata = {"mpris:length": 10000039}
+                    status = "Playing"
+                class Woot:
+                    props = Wet
+                    def get_title():
+                        return "title"
+                    def get_artist():
+                        return "artist"
+                    def get_position():
+                        return 9999999
+                player = Woot
+            else:
+                player = Playerctl.Player.new_from_name(name)
             try: # Try getting title
                 title = player.get_title()
                 if len(title)==0: # Title is empty
                     continue
-            except Exception: # Couldn't get title - happens when there is no media player.
+            except InterruptedError: # Couldn't get title - happens when there is no media player.
                 continue
             artist = player.get_artist()
             try:
@@ -111,7 +133,7 @@ def get_playing_media_name():
                     output+="/"+length
                 output+=")"
             players.append( (output, player.props.status) )
-        except Exception:
+        except InterruptedError:
             players.append( ("?", "?") )
             continue
     return players
@@ -124,6 +146,8 @@ def print_line(message):
 
 def read_line():
     """ Interrupted respecting reader for stdin. """
+    if debug:
+        return """,[{"name": "media", "color": "#AAFFAA", "full_text": "Venetian Snares - MORE DRUG N BASS (00:03:21/00:05:19)"}, {"name": "max_freq", "color": "#CCCCCC", "full_text": "4829MHz"}, {"name": "ethernet", "instance": "wg0", "color": "#00FF00", "markup": "none", "full_text": "WG: 10.169.199.25"}, {"name": "ipv6", "color": "#FF0000", "markup": "none", "full_text": ""}, {"name": "ethernet", "instance": "eno1", "color": "#00FF00", "markup": "none", "full_text": "E: 192.168.1.144"}, {"name": "wireless", "instance": "_first_", "color": "#FF0000", "markup": "none", "full_text": ""}, {"name": "disk_info", "instance": "/mnt", "markup": "none", "full_text": ""}, {"name": "disk_info", "instance": "/media/freebsd", "markup": "none", "full_text": ""}, {"name": "disk_info", "instance": "/media/ext_hdd", "markup": "none", "full_text": "EX 1.2 TiB"}, {"name": "disk_info", "instance": "/", "markup": "none", "full_text": "252.2 GiB"}, {"name": "volume", "instance": "pulse.Master.0", "markup": "none", "full_text": "\u266a 35%"}, {"name": "cpu_usage", "markup": "none", "full_text": "CPU 06%"}, {"name": "battery", "instance": "/sys/class/power_supply/BAT0/uevent", "markup": "none", "full_text": "BAT 49.69% 0.00W"}, {"name": "tztime", "instance": "local", "markup": "none", "full_text": "Fri Jun, 2024-06-14, 10:04:38"}]"""
     # try reading a line, removing any extra whitespace
     try:
         line = sys.stdin.readline().strip()

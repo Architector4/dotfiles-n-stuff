@@ -84,10 +84,10 @@ def get_governor():
 def get_playing_media_name():
     players = []
     if debug:
-        man=[0]
+        names=[0]
     else:
-        man=Playerctl.PlayerManager().props.player_names
-    for name in man: # Iterate over every media player
+        names=Playerctl.list_players()
+    for name in names: # Iterate over every media player
         try: # A media player's properties may sometimes be unavailable for some reason
             if debug:
                 class Wet:

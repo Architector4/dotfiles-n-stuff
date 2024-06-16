@@ -108,7 +108,7 @@ def get_playing_media_name():
                 title = player.get_title()
                 if len(title)==0: # Title is empty
                     continue
-            except InterruptedError: # Couldn't get title - happens when there is no media player.
+            except Exception: # Couldn't get title - happens when there is no media player.
                 continue
             artist = player.get_artist()
             try:
@@ -133,7 +133,7 @@ def get_playing_media_name():
                     output+="/"+length
                 output+=")"
             players.append( (output, player.props.status) )
-        except InterruptedError:
+        except Exception:
             players.append( ("?", "?") )
             continue
     return players

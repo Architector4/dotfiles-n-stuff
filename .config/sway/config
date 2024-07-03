@@ -89,6 +89,8 @@ exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1"
 exec --no-startup-id "gammastep.sh on"
 # KDE Connect is kewl actually
 exec --no-startup-id "kdeconnect-indicator"
+# Notify me of fan profile changes on my ASUS laptop
+exec --no-startup-id "/usr/bin/FanNotifications/fan-boost-notification/FanNotifications.sh"
 
 # I like this font.
 font pango:Terminus (TTF) 12

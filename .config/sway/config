@@ -273,12 +273,12 @@ $mybind			$mod+F1				exec --no-startup-id "i3-sensible-terminal -e $EDITOR ~/.co
 # FN+F1 equates to Super+F1, but since Super(Mod4) is my $mod key, i3 complains about duplicate bindings.
 
 # F2	Brightness down.
-$mybind			$mod+F2				exec --no-startup-id "brightness.sh -4"
-$mybind			XF86MonBrightnessDown		exec --no-startup-id "brightness.sh -4"
+$mybind			$mod+F2				exec --no-startup-id "brightness.sh -2"
+$mybind			XF86MonBrightnessDown		exec --no-startup-id "brightness.sh -2"
 
 # F3	Brightness up.
-$mybind			$mod+F3				exec --no-startup-id "brightness.sh 4"
-$mybind			XF86MonBrightnessUp		exec --no-startup-id "brightness.sh 4"
+$mybind			$mod+F3				exec --no-startup-id "brightness.sh 2"
+$mybind			XF86MonBrightnessUp		exec --no-startup-id "brightness.sh 2"
 
 # F4	Switch projector mode. Here toggles touchpad.
 $mybind			$mod+F4				exec --no-startup-id "toggletouch.sh"

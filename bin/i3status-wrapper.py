@@ -35,6 +35,8 @@ gi.require_version('Playerctl', '2.0')
 from gi.repository import Playerctl
 import time
 
+import subprocess
+
 debug = False
 if len(sys.argv) >= 2:
     if sys.argv[1] == "debug":
@@ -159,14 +161,7 @@ def read_line():
     except KeyboardInterrupt:
         sys.exit()
 
-if __name__ == '__main__':
-    # Skip the first line which contains the version header.
-    print_line(read_line())
-
-    # The second line contains the start of the infinite array.
-    print_line(read_line())
-
-    while True:
+def process_line():
         line, prefix = read_line(), ''
         # ignore comma at start of lines
         if line.startswith(','):
@@ -206,3 +201,26 @@ if __name__ == '__main__':
 
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
+
+if __name__ == '__main__':
+    primary = "primary" in sys.argv
+
+    if "primary" in sys.argv:
+        process_line()
+    else:
+        # Skip the first line which contains the version header.
+        print_line(read_line())
+
+        # The second line contains the start of the infinite array.
+        print_line(read_line())
+
+        # The third line, which is the first item in the infinite array.
+        # For some reason, the subprocess invoked below misses it lol
+        print_line(read_line())
+
+        while True:
+            # Creating an entire process to process a single line,
+            # for each line, is wasteful. But it's fast enough,
+            # and a better compromise for me than having it leak memory.
+            # About that: https://github.com/altdesktop/playerctl/issues/335
+            proc = subprocess.run(args=[sys.argv[0], "primary"])

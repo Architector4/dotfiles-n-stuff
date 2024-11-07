@@ -242,8 +242,9 @@ titlebar_padding 2
 # Move output 2 to the right of my primary one
 output eDP-2 pos 0 0
 output HDMI-A-1 pos 1920 0
-output eDP-2 adaptive_sync disabled
-output HDMI-A-1 adaptive_sync enabled
+output * adaptive_sync disabled
+output * max_render_time off
+output * allow_tearing yes
 # Set background to a cool picture
 output * background ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg fill
 

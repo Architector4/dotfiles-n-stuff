@@ -44,8 +44,8 @@ else
 	# If it's not running or "on" parameter was sent,
 	# do the thing!!
 	
-	# Hacky approach, get first sink monitor in the list...
-	PACTL_MONITOR=$(pactl list short sources | grep monitor | cut -f2 | grep -v "hdmi" | head -n1)
+	# Hacky approach, get last sink monitor in the list...
+	PACTL_MONITOR=$(pactl list short sources | grep monitor | cut -f2 | grep -v "hdmi" | tail -n1)
 
 	if [ -n "$WAYLAND_DISPLAY" ]; then # Running on Wayland
 		GEOMETRY=$(slurp)

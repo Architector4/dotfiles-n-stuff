@@ -70,11 +70,9 @@ exec --no-startup-id "copyq"
 # Notification manager
 exec --no-startup-id "dunst" 
 # Control the pointer from the keyboard (actually really handy!)
-# (broken on Wayland)
-#exec --no-startup-id "keynav"
+#exec --no-startup-id "keynav" # (broken on Wayland)
 # Hide the pointer when mouse isn't used
-# (broken on Wayland - replaced by wayland command below)
-#exec --no-startup-id "unclutter -jitter 2 --ignore-scrolling"
+#exec --no-startup-id "unclutter -jitter 2 --ignore-scrolling" # (broken on Wayland - replaced by wayland command below)
 # Set wallpaper to a cool picture (does nothing on sway now :c)
 # exec --no-startup-id "hsetroot -cover ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg"
 # My (crappy) script that turns on screen locker when laptop lid is closed.
@@ -118,7 +116,7 @@ bar {
 	# What command to use to get the text to draw on the bar.
 	status_command "i3status | i3status-wrapper.py"
 	#status_command "cat /dev/urandom"	# That is actually really fun.
-	# Change bar height
+	# Change bar height (sway renders it 1 pixel too high compared to i3)
 	height 19
 	
 	colors {
@@ -184,7 +182,8 @@ for_window [title="TEST"]			floating enable
 #for_window [class="VirtualBoxVM"]		floating enable
 for_window [class="re.sonny.Junction"]		floating enable
 
-# Colors. See Sway documentation for what is what: man 5 sway
+# Colors. See Sway documentation for what is what:
+# man 5 sway
 
 # Default colors:
 #Class	-	-	-	border	backgr.	text	indic.	child_border

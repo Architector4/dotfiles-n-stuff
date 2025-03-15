@@ -18,16 +18,6 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-# set PATH so it includes user's cargo bin if it exists
-if [ -d "$HOME/.cargo/bin" ] ; then
-    PATH="$HOME/.cargo/bin:$PATH"
-fi
-
 # Not needed anymore since I have figured how to do it in /etc/vconsole.conf
 #setfont /usr/share/kbd/consolefonts/Cyr_a8x16.psfu.gz
 
@@ -40,8 +30,6 @@ unset trashweight
 
 # Get rid of lesspipe
 unset LESSOPEN
-# I like having local binaries.
-#export PATH="$HOME/bin:$PATH" # Apparently I end up having this path set up thrice in this environment variable lol
 # Vim is goot.
 export EDITOR=vim
 # Stop WINE from creating desktop shortcuts, menu entries and other stuff.
@@ -58,28 +46,7 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswi
 export MMPAT_PATH_TO_CFG=/etc/timidity++
 # Enable smooth touchpad scrolling on Firefox
 export MOZ_USE_XINPUT2=1
-# Vulkan driver on Nvidia does not feel like working if there are any other present,
-# and this gets it going anyways lol
-# export VK_ICD_FILENAMES='/usr/share/vulkan/icd.d/nvidia_icd.json'
-
-# Honestly I don't know what I was doing  here.
-#export WINEPREFIX_POL="$WINEPREFIX"
-#export WINEPREFIX_NORM="$HOME/.wine"
-#export WINEPREFIX=$WINEPREFIX_NORM
-
-# Set environment variables related to GUIs
-# Some fixes to make custom compose key sequences from .XCompose work
-export XMODIFIERS="@im=none"
-export GTK_IM_MODULE="ibus"
-export QT_IM_MODULE="ibus"
-# Use qt5ct for customization
-export QT_QPA_PLATFORMTHEME="qt5ct"
-# Below can be useful to specify DPI to Qt
-#export QT_FONT_DPI=72
-# Some Qt applications can break with different font DPI; this fixes that
-#export QT_AUTO_SCREEN_SCALE_FACTOR=0
 # Make applications using winit not care about DPI
 export WINIT_X11_SCALE_FACTOR=1
-
 # Disable .NET telemetry
 export DOTNET_CLI_TELEMETRY_OPTOUT=1

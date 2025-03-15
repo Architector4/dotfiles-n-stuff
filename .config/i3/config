@@ -56,29 +56,29 @@ floating_maximum_size -1 x -1
 
 # Launch cool stuff
 # PulseAudio, to hear things. Handled automatically by PipeWire in my case
-#exec --no-startup-id "start-pulseaudio-x11" 
+#exec --no-startup-id "start-pulseaudio-x11"
 # To set up colors, fonts, and other various things which programs
 # (like terminal emulator urxvt) read from X resources
-exec --no-startup-id "xrdb ~/.Xresources" 
+exec --no-startup-id "xrdb ~/.Xresources"
 # Clipboard manager
-exec --no-startup-id "copyq" 
+exec --no-startup-id "copyq"
 # Desktop compositor
-exec --no-startup-id "picom" 
+exec --no-startup-id "picom"
 # Notification manager
-exec --no-startup-id "dunst" 
+exec --no-startup-id "dunst"
 # Control the pointer from the keyboard (actually really handy!)
-exec --no-startup-id "keynav" 
+exec --no-startup-id "keynav"
 # Hide the pointer when mouse isn't used
-exec --no-startup-id "unclutter -jitter 2 --ignore-scrolling" 
+exec --no-startup-id "unclutter -jitter 2 --ignore-scrolling"
 # Set wallpaper to a cool picture
-exec --no-startup-id "hsetroot -cover ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg" 
+exec --no-startup-id "hsetroot -cover ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg"
 # My (crappy) script that turns on screen locker when laptop lid is closed.
 # Disabled as my lid itself is broken and I can't verify if it even works.
-#exec --no-startup-id "i3_watch_lid.sh" 
+#exec --no-startup-id "i3_watch_lid.sh"
 # When an application wants to do an administrative thing (i.e. you run gparted
 # or "systemctl restart something"), this will pop up asking me for password to
 # confirm the action.
-exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1" 
+exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1"
 # My (less crappy) script that allows me to toggle Redshift (program that shifts
 # screen light to red, duh), which with "on" parameter turns it on instead.
 exec --no-startup-id "gammastep.sh on"
@@ -117,7 +117,7 @@ bar {
 	#status_command "cat /dev/urandom"	# That is actually really fun.
 	# Change bar height
 	height 20
-	
+
 	colors {
 		# Bar colors. See i3 documentation for what is what:
 		# https://i3wm.org/docs/userguide.html#_colors
@@ -252,7 +252,7 @@ $mybind			$mod+F6				exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ to
 $mybind			XF86AudioMute 			exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 
 # F7	Decrease volume.
-$mybind			$mod+F7				exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%" 
+$mybind			$mod+F7				exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%"
 $mybind			XF86AudioLowerVolume		exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%"
 
 # F8	Increase volume.
@@ -336,7 +336,7 @@ $mybind --release	$mod+Shift+g			exec --no-startup-id "videorecord.sh"
 $mybind			$mod+u				exec --no-startup-id "espeak uwu?"
 
 # Gaps size.
-# It's great fun increasing gaps size until containers get a 
+# It's great fun increasing gaps size until containers get a
 # negative size and applications start freaking out... :D
 # (though, then they start glitching out and not working properly in most cases...)
 $mybind			$mod+BackSpace			gaps	inner	current	set	0
@@ -420,7 +420,8 @@ $mybind			$mod+f				fullscreen toggle
 $mybind			$mod+s				layout stacking
 $mybind			$mod+w				layout tabbed
 $mybind			$mod+e				layout toggle split
-# Toggle current container between tiling and floating. 
+
+# Toggle current container between tiling and floating.
 # DUDE YOU CAN PUT A CONTAINER WITH MULTIPLE WINDOWS INTO FLOATING MODE HOLY COW
 $mybind			$mod+Shift+space		floating toggle
 
@@ -569,4 +570,8 @@ mode "CLICKER" {
 $mybind		$mod+Ctrl+space				exec --no-startup-id "dunstctl close"
 $mybind		$mod+Ctrl+Shift+space			exec --no-startup-id "dunstctl close-all"
 $mybind		$mod+Ctrl+grave				exec --no-startup-id "dunstctl history-pop"
-#$mybind	$mod+Ctrl+Shift+Period			exec --no-startup-id "dunstctl context"
+$mybind		$mod+Ctrl+Shift+greater			exec --no-startup-id "dunstctl context"
+
+
+# Keyboard shortcuts for managing copyq
+$mybind		$mod+Shift+v				exec --no-startup-id "copyq menu"

@@ -59,16 +59,16 @@ floating_maximum_size -1 x -1
 
 # Launch cool stuff
 # PulseAudio, to hear things. Handled automatically by PipeWire in my case
-#exec --no-startup-id "start-pulseaudio-x11" 
+#exec --no-startup-id "start-pulseaudio-x11"
 # To set up colors, fonts, and other various things which programs
 # (like terminal emulator urxvt) read from X resources
-exec --no-startup-id "xrdb ~/.Xresources" 
+exec --no-startup-id "xrdb ~/.Xresources"
 # Clipboard manager
-exec --no-startup-id "copyq" 
+exec --no-startup-id "copyq"
 # Desktop compositor
 #exec --no-startup-id "picom" # Don't need a window compositor because Wayland/Sway acts as one!
 # Notification manager
-exec --no-startup-id "dunst" 
+exec --no-startup-id "dunst"
 # Control the pointer from the keyboard (actually really handy!)
 #exec --no-startup-id "keynav" # (broken on Wayland)
 # Hide the pointer when mouse isn't used
@@ -77,11 +77,11 @@ exec --no-startup-id "dunst"
 # exec --no-startup-id "hsetroot -cover ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg"
 # My (crappy) script that turns on screen locker when laptop lid is closed.
 # Disabled as my lid itself is broken and I can't verify if it even works.
-#exec --no-startup-id "i3_watch_lid.sh" 
+#exec --no-startup-id "i3_watch_lid.sh"
 # When an application wants to do an administrative thing (i.e. you run gparted
 # or "systemctl restart something"), this will pop up asking me for password to
 # confirm the action.
-exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1" 
+exec --no-startup-id "/usr/lib/polkit-kde-authentication-agent-1"
 # My (less crappy) script that allows me to toggle Redshift (program that shifts
 # screen light to red, duh), which with "on" parameter turns it on instead.
 exec --no-startup-id "gammastep.sh on"
@@ -118,7 +118,7 @@ bar {
 	#status_command "cat /dev/urandom"	# That is actually really fun.
 	# Change bar height (sway renders it 1 pixel too high compared to i3)
 	height 19
-	
+
 	colors {
 		# Bar colors. See Sway documentation for what is what: man 5 sway
 		# Default colors:
@@ -240,10 +240,11 @@ hide_edge_borders --i3 none
 titlebar_padding 2
 # Move output 2 to the right of my primary one
 output eDP-2 pos 0 0
+#output eDP-2 mode "1920x1200@60Hz"
 output HDMI-A-1 pos 1920 0
 output * adaptive_sync disabled
-output * max_render_time off
-output * allow_tearing yes
+#output * max_render_time 17
+output * allow_tearing on
 # Set background to a cool picture
 output * background ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg fill
 
@@ -295,7 +296,7 @@ $mybind			$mod+F6				exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ to
 $mybind			XF86AudioMute 			exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 
 # F7	Decrease volume.
-$mybind			$mod+F7				exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%" 
+$mybind			$mod+F7				exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%"
 $mybind			XF86AudioLowerVolume		exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%"
 
 # F8	Increase volume.
@@ -379,7 +380,7 @@ $mybind 		$mod+Shift+g			exec --no-startup-id "videorecord.sh"
 $mybind			$mod+u				exec --no-startup-id "espeak uwu?"
 
 # Gaps size.
-# It's great fun increasing gaps size until containers get a 
+# It's great fun increasing gaps size until containers get a
 # negative size and applications start freaking out... :D
 # (though, then they start glitching out and not working properly in most cases...)
 $mybind			$mod+BackSpace			gaps	inner	current	set	0
@@ -464,8 +465,7 @@ $mybind			$mod+s				layout stacking
 $mybind			$mod+w				layout tabbed
 $mybind			$mod+e				layout toggle split
 
-
-# Toggle current container between tiling and floating. 
+# Toggle current container between tiling and floating.
 # DUDE YOU CAN PUT A CONTAINER WITH MULTIPLE WINDOWS INTO FLOATING MODE HOLY COW
 $mybind			$mod+Shift+space		floating toggle
 
@@ -642,10 +642,10 @@ mode "keynav" {
 $mybind			$mod+Ctrl+w			mode "keynav"; $clutter
 
 # Keyboard shortcuts for managing dunst
-$mybind		$mod+Ctrl+Space				exec --no-startup-id "dunstctl close"
-$mybind		$mod+Ctrl+Shift+Space			exec --no-startup-id "dunstctl close-all"
-$mybind		$mod+Ctrl+Grave				exec --no-startup-id "dunstctl history-pop"
-#$mybind	$mod+Ctrl+Shift+Period			exec --no-startup-id "dunstctl context"
+$mybind		$mod+Ctrl+space				exec --no-startup-id "dunstctl close"
+$mybind		$mod+Ctrl+Shift+space			exec --no-startup-id "dunstctl close-all"
+$mybind		$mod+Ctrl+grave				exec --no-startup-id "dunstctl history-pop"
+$mybind		$mod+Ctrl+Shift+period			exec --no-startup-id "dunstctl context"
 
 
 # Keyboard shortcuts for managing copyq

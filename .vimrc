@@ -67,3 +67,9 @@ if has('nvim')
 	:set notermguicolors
 	:colorscheme vim
 endif
+
+" Disable syntax highlighting if using vimdiff mode,
+" since colors tend to conflict lol
+if &diff
+	syntax off
+endif

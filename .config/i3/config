@@ -304,8 +304,8 @@ $mybind			XF86PowerOff			exec --no-startup-id "shutdown.py"
 #XF86HomePage
 #XF86Mail
 #XF86Search
-#XF86Calculator (I just use python for this lol)
-$mybind			XF86Calculator			exec --no-startup-id "i3-sensible-terminal -e python"
+#XF86Calculator (I just use qalc for this lol)
+$mybind			XF86Calculator			exec --no-startup-id "i3-sensible-terminal -e qalc"
 #XF86Tools (I saw it with music icon, so music it is)
 $mybind			XF86Tools			exec --no-startup-id "i3-sensible-terminal -e ~/Documents/music/play.sh"
 

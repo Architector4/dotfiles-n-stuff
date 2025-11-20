@@ -91,7 +91,7 @@ exec --no-startup-id "kdeconnect-indicator"
 exec --no-startup-id "/usr/bin/FanNotifications/fan-boost-notification/FanNotifications.sh"
 
 # I like this font.
-font pango:Terminus (TTF) 12
+font pango:Terminus 12
 # Possible alternatives:
 #font pango:DejaVu Sans Mono 12
 #font pango:TimesNewRoman 12

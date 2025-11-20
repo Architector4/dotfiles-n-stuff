@@ -239,8 +239,8 @@ hide_edge_borders --i3 none
 # Set same titlebar padding size as in i3
 titlebar_padding 2
 # Move output 2 to the right of my primary one
+output eDP-1 pos 0 0
 output eDP-2 pos 0 0
-#output eDP-2 mode "1920x1200@60Hz"
 output HDMI-A-1 pos 1920 0
 output * adaptive_sync disabled
 #output * max_render_time 17

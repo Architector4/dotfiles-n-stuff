@@ -203,10 +203,10 @@ def process_line():
         print_line(prefix+json.dumps(j))
 
 if __name__ == '__main__':
-    primary = "primary" in sys.argv
 
     if "primary" in sys.argv:
-        process_line()
+        for _ in range(1800):
+            process_line()
     else:
         # Skip the first line which contains the version header.
         print_line(read_line())

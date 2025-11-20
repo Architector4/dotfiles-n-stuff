@@ -1,0 +1,10 @@
+[Unit]
+Description=ASUS TUF Fan boost notifications
+
+[Service]
+# Script from this: https://github.com/MioKira/tuf-fan-boost-notification
+# Installed from this: https://aur.archlinux.org/packages/tuf-fan-boost-notification-git
+ExecStart=/usr/bin/FanNotifications/fan-boost-notification/FanNotifications.sh
+
+[Install]
+WantedBy=default.target

@@ -245,6 +245,7 @@ output HDMI-A-1 pos 1920 0
 output * adaptive_sync disabled
 #output * max_render_time 17
 output * allow_tearing on
+for_window [all] allow_tearing on
 # Set background to a cool picture
 output * background ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg fill
 

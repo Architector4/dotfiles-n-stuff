@@ -1,5 +1,13 @@
 #!/bin/sh
-# This script checks for differences between
-# files here and in the home directory,
-# excluding files present there but not here.
-diff -rq . ~ | grep -v "Only in /"
+
+if [ $# -eq 0 ]; then
+	# This script checks for differences between
+	# files here and in the home directory,
+	# excluding files present there but not here.
+	diff -rq . ~ | grep -v "Only in /"
+	exit 0
+fi
+
+for var in "$@"; do
+	vimdiff ~/"$var" "$var"
+done

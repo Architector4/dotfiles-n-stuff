@@ -1,0 +1,48 @@
+[keyboard]
+bindings = [
+	{ action = "Copy",		mods = "Control|Alt",	key = "C"	},
+	{ action = "Paste",		mods = "Control|Alt",	key = "V"	},
+	{ action = "DecreaseFontSize",	mods = "Alt",		key = "H"	},
+	{ action = "IncreaseFontSize",	mods = "Alt",		key = "L"	},
+	{ action = "ScrollLineUp",	mods = "Alt",		key = "K"	},
+	{ action = "ScrollLineDown",	mods = "Alt",		key = "J"	},
+	{ action = "ToggleViMode",	mods = "Alt",		key = "Escape"	},
+	{ action = "ToggleViMode",	mods = "None",		key = "Escape",	mode = "Vi" },
+]
+
+[colors]
+primary = { background = "#000000", foreground = "#ffffff" }
+
+normal = {
+	black = "#444444",
+	blue = "#6666FF",
+	cyan = "#77BBFF",
+	green = "#00DD00",
+	magenta = "#FF44FF",
+	red = "#FF2222",
+	white = "#FFFFFF",
+	yellow = "#FFEE00",
+}
+
+bright = {
+	black = "#666666",
+	blue = "#6666FF",
+	cyan = "#77BBFF",
+	green = "#00DD00",
+	magenta = "#FF44FF",
+	red = "#FF2222",
+	white = "#FFFFFF",
+	yellow = "#FFEE55",
+}
+
+[font]
+size = 12
+normal = { family = "Terminus" }
+
+[scrolling]
+history = 65536
+
+[window]
+opacity = 0.8
+dimensions = { columns = 80, lines = 24 }
+padding = { x = 1, y = 1 }

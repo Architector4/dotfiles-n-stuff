@@ -55,6 +55,9 @@ else
 				--pixel-format yuv420p \
 				--framerate 30 \
 				--audio="$PACTL_MONITOR" \
+				--no-damage \
+				-p crf=29 \
+				-p preset=medium \
 				-f "$OUTPUT" &
 				echo $! > "$STATUSFILE"
 		fi
@@ -72,10 +75,12 @@ else
 				-framerate 30 \
 				-show_region 1 \
 				$GEOMETRY \
-				-i :0 \
+				-i "$DISPLAY" \
 				-vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" \
 				-pix_fmt yuv420p \
-				-crf 30 \
+				-tune zerolatency \
+				-movflags +faststart \
+				-crf 29 \
 				"$OUTPUT" &
 				#-grab_x 200 \
 				#-grab_y 200 \

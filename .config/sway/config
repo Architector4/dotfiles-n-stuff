@@ -236,14 +236,35 @@ output * bg "#000000" solid_color
 hide_edge_borders --i3 none
 # Set same titlebar padding size as in i3
 titlebar_padding 2
+
 # Move output 2 to the right of my primary one
+# This is duplicated because my laptop has a "MUX mode" that allows switching which GPU is primary,
+# which changes the name of the internal laptop display name but not of the external HDMI one lol
 output eDP-1 pos 0 0
 output eDP-2 pos 0 0
 output HDMI-A-1 pos 1920 0
-output * adaptive_sync disabled
-#output * max_render_time 17
+
+# doesn't hurt i think?
+output * adaptive_sync enabled
+
+# hell yea
 output * allow_tearing on
-for_window [all] allow_tearing on
+# This below forces vsync off on all fullscreen windows, even if they want vsync.
+# Not a good idea, because otherwise they end up with runaway framerates and turn the computer into a heater!
+#for_window [all] allow_tearing on
+
+# BUT! For some reason, on my hardware, only with Sway, AMDGPU shits itself or something when trying
+# to allow tearing to windows on my secondary monitor, so deal with that.
+# https://github.com/swaywm/sway/issues/8773
+output HDMI-A-1 allow_tearing off
+# At least one can use a hack to delay the presentation message such that the time between receiving
+# input and showing output is lower than with a full vsync. All that is left is to hope that I won
+# the number guessing game well enough!
+output HDMI-A-1 max_render_time 7
+
+output * subpixel rgb
+
+
 # Set background to a cool picture
 output * background ~/Pictures/neon-2880x1800-synthwave-retrowave-grid-mountains-orange-hd-14398.jpg fill
 

@@ -34,6 +34,7 @@ include "%L"
 <Multi_key> <i> <n> <t>				: "∫"
 <Multi_key> <bar> <bar>				: "█"
 <Multi_key> <c> <bar>				: "🮕"
+<Multi_key> <X>					: "⛌"
 
 # This character Does Not Exist
 <Multi_key> <less> <question> <greater>		: "�"
@@ -87,7 +88,6 @@ include "%L"
 
 # Fun characters to include someday
 # ⋚ ⋛
-
 
 
 

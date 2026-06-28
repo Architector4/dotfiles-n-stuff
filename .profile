@@ -52,3 +52,7 @@ export WINIT_X11_SCALE_FACTOR=1
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # New Python 3.13 REPL has its own bespoke set of behavior that conflicts with my GNU readline muscle memory
 export PYTHON_BASIC_REPL=1
+# Make Qt applications use qt5ct/qt6ct for theming
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+export GTK_THEME=Adwaita:dark

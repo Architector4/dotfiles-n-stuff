@@ -48,7 +48,8 @@ else
 	PACTL_MONITOR=$(pactl list short sources | grep monitor | cut -f2 | grep -v "hdmi" | tail -n1)
 
 	if [ -n "$WAYLAND_DISPLAY" ]; then # Running on Wayland
-		GEOMETRY=$(slurp)
+		# Fancy one-liner from here: https://github.com/emersion/slurp/issues/16#issuecomment-3896655428
+		GEOMETRY=$(swaymsg -t get_tree | jq -r '.. | ((.nodes? + .floating_nodes?) // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)
 		if [ -n "$GEOMETRY" ]; then
 			wf-recorder \
 				--geometry "$GEOMETRY" \

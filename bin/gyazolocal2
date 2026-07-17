@@ -1,7 +1,8 @@
 #!/bin/sh
 
 if [ -n "$WAYLAND_DISPLAY" ]; then # Running on Wayland
-	grim -g "$(slurp)" "$@"
+	# Fancy one-liner from here: https://github.com/emersion/slurp/issues/16#issuecomment-3896655428
+	grim -g "$(swaymsg -t get_tree | jq -r '.. | ((.nodes? + .floating_nodes?) // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" "$@"
 else # Running on X or whatever else
 	scrot -a "$(slop -f %x,%y,%w,%h -o -q)" "$@"
 fi

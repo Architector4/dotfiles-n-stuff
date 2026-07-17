@@ -244,8 +244,8 @@ output eDP-1 pos 0 0
 output eDP-2 pos 0 0
 output HDMI-A-1 pos 1920 0
 
-# doesn't hurt i think?
-output * adaptive_sync enabled
+# breaks shit and makes games laggy, don't recommend
+output * adaptive_sync disabled
 
 # hell yea
 output * allow_tearing on

@@ -10,8 +10,7 @@ codegen-units = 1
 
 # Outside of these two though, just use native CPU and mold linker for faster builds
 [build]
-linker = "clang"
-rustflags = ["-Ctarget-cpu=native", "-Clink-arg=-fuse-ld=mold"]
+rustflags = ["-Clinker=clang", "-Ctarget-cpu=native", "-Clink-arg=-fuse-ld=mold"]
 
 # Also put builds in a separate folder lol
 target-dir = ".cache/cargo-builds"

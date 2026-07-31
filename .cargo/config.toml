@@ -1,16 +1,10 @@
-[alias]
-# These two will build the bestest most optimized ever rust binary ever!!!!!!!!!!
-placebobuild =	['build',	'--profile', 'placebo', '--config', 'build.rustflags = ["-Ctarget-cpu=x86-64-v3", "-Clinker=clang", "-Clink-arg=-fuse-ld=lld", "-Clink-arg=-Wl,-O2", "-Clink-arg=-Wl,--icf=all"]']
-placeborun =	['run',		'--profile', 'placebo', '--config', 'build.rustflags = ["-Ctarget-cpu=x86-64-v3", "-Clinker=clang", "-Clink-arg=-fuse-ld=lld", "-Clink-arg=-Wl,-O2", "-Clink-arg=-Wl,--icf=all"]']
-
-[profile.placebo]
-inherits = "release"
+[profile.release]
 lto = "fat"
 codegen-units = 1
 
-# Outside of these two though, just use native CPU and mold linker for faster builds
 [build]
-rustflags = ["-Clinker=clang", "-Ctarget-cpu=native", "-Clink-arg=-fuse-ld=mold"]
+# Not sure how much of this actually meaningfully matters, but whatever lmao
+rustflags = ["-Ctarget-cpu=x86-64-v3", "-Clinker=clang", "-Clink-arg=-fuse-ld=lld", "-Clink-arg=-Wl,--lto-O3", "-Clink-arg=-Wl,--lto-partitions=1", "-Clink-arg=-Wl,--lto-whole-program-visibility", "-Clink-arg=-Wl,--lto-CGO3"]
 
 # Also put builds in a separate folder lol
 target-dir = ".cache/cargo-builds"

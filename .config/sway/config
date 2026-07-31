@@ -247,8 +247,9 @@ output HDMI-A-1 pos 1920 0
 # breaks shit and makes games laggy, don't recommend
 output * adaptive_sync disabled
 
-# hell yea
-output * allow_tearing on
+# Normally I'd turn it on, but my main screen is 165Hz so it doesn't really benefit from turning off vsync,
+# and having tearing allowed on my secondary screen glitches out (see below), so whatever lmao
+output * allow_tearing off
 # This below forces vsync off on all fullscreen windows, even if they want vsync.
 # Not a good idea, because otherwise they end up with runaway framerates and turn the computer into a heater!
 #for_window [all] allow_tearing on

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Sway refuses to do set this quite important environment variable, and,
+# as far as I can tell, this is the only relatively sane way to do so.
+# https://github.com/swaywm/sway/issues/4025#issuecomment-5254713539
+
+export XDG_CURRENT_DESKTOP=sway
+exec sway

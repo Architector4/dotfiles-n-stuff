@@ -7,6 +7,9 @@
 # AND HATES COMMENTS AT THE END OF THINGS
 # so yeah this is derivative off my i3 config lololol
 
+# Weird systemd crap that sway should be doing but refuses to do so everyone else has to pick up the slack
+include /etc/sway/config.d/50-system-user.conf
+
 #################################################################
 #		SETTINGS: Stuff that isn't bindings		#
 #################################################################
